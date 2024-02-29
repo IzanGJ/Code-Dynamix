@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-         String menu = "**************** Menú de opciones ****************\n 1. Darse de Alta\n 2. Darse de baja\n 3. Contacto \n 4. Salir\n**************************************************\n";
+  public static void main(String[] args) throws IOException {
+    String menu = "**************** Menú de opciones ****************\n 1. Darse de Alta\n 2. Darse de baja\n 3. Contacto \n 4. Salir\n**************************************************\n";
 
     String opcion = "";
     String empresa = "";
@@ -36,26 +36,28 @@ public class Main {
             telf = input.readLine();}
           System.out.print("Email: ");
           email = input.readLine();
-          System.out.println("¡Te has registrado con éxito!");
+          System.out.println("¡Te has registrado con éxito!\n");
           break;
           
         case "2":
-          System.out.println("¡Te has dado de baja con éxito!");
+          System.out.println("¡Te has dado de baja con éxito!\n");
           break;
           
         case "3":
-          System.out.println("*contacto*");
+          System.out.println("Telefono: 936 542 333");
+          System.out.println("Correo: contacto@codedynamix.com");
+          System.out.println("Dirección: Pg. de Gràcia, 120, Gràcia, 08008 Barcelona\n");
           break;
           
         case "4":
           System.out.println("¡Hasta pronto!");
+          opcion = "4";
           break;
           
         default:
-          System.out.println("Opción no válida");
+          System.out.println("Opción no válida\n");
           break;
       }
     }
-    }
-    
+  }
 }
