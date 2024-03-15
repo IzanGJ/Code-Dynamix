@@ -4,7 +4,6 @@ public class CompanyObj {
     private String name;
     private String cif;
 
-  
 public CompanyObj(String name, String cif) {
         this.name = name;
         this.cif = cif;
@@ -18,8 +17,12 @@ public CompanyObj(String name, String cif) {
       this.cif = cif;
     }
 
-    
     public String getNombre() {
         return this.name;
+    }
+
+    
+    public String getCif() {
+        return this.cif;
     }
 }
