@@ -22,4 +22,16 @@ public class ProductObj {
     public void setPrice(float price) {
       this.price = price;
     }
+    
+    public int getCode() {
+        return code;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public float getPrice() {
+        return price;
+    }
 }

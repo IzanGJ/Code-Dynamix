@@ -16,9 +16,9 @@ public class Persistence {
     private String pathFile;
     private File folderFile;
 
-    public Persistence() {
+    public Persistence(String nameFile) {
         folder = "data";
-        fileName = "company.txt";
+        fileName = nameFile;
         pathFile = folder + File.separator + fileName;
         folderFile = new File(folder);
     }
@@ -44,6 +44,7 @@ public class Persistence {
     public HashMap<String, CompanyObj> readCompany() {
         HashMap<String, CompanyObj> company = new HashMap<String, CompanyObj>();
         if (folderFile.exists() == false) {
+            folderFile.mkdir();
             return company;
         } else {
             File f = new File(pathFile);
@@ -56,7 +57,7 @@ public class Persistence {
                     while ((linea = br.readLine()) != null) {
                         String[] datos = linea.split("\\|");
                         CompanyObj companyObj = new CompanyObj(datos[0], datos[1]);
-                        company.put(datos[0], companyObj);
+                        company.put(datos[1], companyObj);
                     }
                     br.close();
                     return company;
@@ -67,5 +68,51 @@ public class Persistence {
         }
         return company;
     }
+    
 
+    public void writeProduct(HashMap<Integer, ProductObj> c) {
+        if (folderFile.exists() == false) {
+            folderFile.mkdir();
+        } else {
+            try {
+                BufferedWriter bw = new BufferedWriter(new FileWriter(pathFile));
+                for (int clave : c.keySet()) {
+                    ProductObj valor = c.get(clave);
+                    bw.write(valor.getCode() + "|" + valor.getDescription() + "|" + valor.getPrice());
+                    bw.newLine();
+                }
+                bw.close();
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+    }
+
+    public HashMap<Integer, ProductObj> readProduct() {
+        HashMap<Integer, ProductObj> product = new HashMap<Integer, ProductObj>();
+        if (folderFile.exists() == false) {
+            folderFile.mkdir();
+            return product;
+        } else {
+            File f = new File(pathFile);
+            if (f.exists() == false) {
+                return product;
+            } else {
+                try {
+                    BufferedReader br = new BufferedReader(new FileReader(f));
+                    String linea;
+                    while ((linea = br.readLine()) != null) {
+                        String[] datos = linea.split("\\|");
+                        ProductObj productObj = new ProductObj(Integer.parseInt(datos[0]), datos[1], Float.parseFloat(datos[2]));
+                        product.put(Integer.parseInt(datos[0]), productObj);
+                    }
+                    br.close();
+                    return product;
+                } catch (IOException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        }
+        return product;
+    }
 }
