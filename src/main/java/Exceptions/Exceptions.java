@@ -21,7 +21,7 @@ public class ComprasExceptions extends Exception {
             "< ERROR 002: Número fora de rang>",
             "< ERROR 003: Ja existeix un producte amb aquest nom >",
             "< ERROR 004: No hi han empreses registrades>",
-            "< ERROR 005: No hi han productes regitrats>"
+            "< ERROR 005: No hi han productes registrats>"
             );
      private final int code;
      
