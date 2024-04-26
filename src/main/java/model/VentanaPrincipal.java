@@ -5,6 +5,8 @@ import javax.swing.ImageIcon;
 public class VentanaPrincipal extends javax.swing.JFrame {
     public VentanaPrincipal() {
         initComponents();
+        ImageIcon img = new ImageIcon("src\\main\\java\\images\\icon.png");
+        setIconImage(img.getImage());
     }
 
 
