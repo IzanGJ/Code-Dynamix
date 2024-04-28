@@ -191,7 +191,8 @@ public class VentanaCompanyies extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        
+        VentanaCompanyiesMostrar dialog = new VentanaCompanyiesMostrar(new javax.swing.JFrame(), true); 
+        dialog.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
