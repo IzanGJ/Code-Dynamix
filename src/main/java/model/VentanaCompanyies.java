@@ -90,6 +90,11 @@ public class VentanaCompanyies extends javax.swing.JDialog {
         });
 
         jButton5.setText("Modificar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("Tornar");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -166,6 +171,7 @@ public class VentanaCompanyies extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -194,6 +200,11 @@ public class VentanaCompanyies extends javax.swing.JDialog {
         VentanaCompanyiesMostrar dialog = new VentanaCompanyiesMostrar(new javax.swing.JFrame(), true); 
         dialog.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        VentanaCompanyiesModificar dialog = new VentanaCompanyiesModificar(new javax.swing.JFrame(), true); 
+        dialog.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
