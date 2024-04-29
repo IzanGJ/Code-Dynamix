@@ -1,7 +1,12 @@
 package view;
 
 public class ValidarDatos {
-    public static boolean esCifValido(String cif) {
+    
+    public ValidarDatos() {
+        
+    }
+    
+    public boolean esCifValido(String cif) {
         if (cif == null || cif.length() != 9) {
             return false;
         }
