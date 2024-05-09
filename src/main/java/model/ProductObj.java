@@ -1,18 +1,24 @@
 package model;
 
 public abstract class ProductObj {
+    private String name;
     private int code;
     private String description;
     private float price;
     private int weight;
     private String color;
 
-    public ProductObj(int code, String description, float price, int weight, String color) {
+    public ProductObj(String name, int code, String description, float price, int weight, String color) {
+        this.name = name;
         this.code = code;
         this.description = description;
         this.price = price;
         this.weight = weight;
         this.color = color;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
     
     public void setCode(int code) {

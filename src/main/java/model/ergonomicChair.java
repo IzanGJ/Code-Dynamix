@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
 /**
@@ -13,8 +9,8 @@ public class ergonomicChair extends ProductObj {
     private int wheels;
     private boolean armrest;
 
-    public ergonomicChair(boolean backrest, int wheels, boolean armrest, int code, String description, float price, int weight, String color) {
-        super(code, description, price, weight, color);
+    public ergonomicChair(boolean backrest, int wheels, boolean armrest, String name, int code, String description, float price, int weight, String color) {
+        super(name, code, description, price, weight, color);
         this.backrest = backrest;
         this.wheels = wheels;
         this.armrest = armrest;

@@ -1,6 +1,6 @@
 package view;
 
-import exceptions.*;
+import exceptions.CompanyException;
 import model.*;
 import java.util.HashMap;
 

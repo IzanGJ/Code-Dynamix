@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
 /**
@@ -14,13 +10,14 @@ public class ergonomicKeyboard extends ProductObj{
     private int lenght;
     private boolean wireless;
 
-    public ergonomicKeyboard(String type, String language, int lenght, boolean wireless, int code, String description, float price, int weight, String color) {
-        super(code, description, price, weight, color);
+    public ergonomicKeyboard(String type, String language, int lenght, boolean wireless, String name, int code, String description, float price, int weight, String color) {
+        super(name, code, description, price, weight, color);
         this.type = type;
         this.language = language;
         this.lenght = lenght;
         this.wireless = wireless;
     }
+
 
     public void setType(String type) {
         this.type = type;

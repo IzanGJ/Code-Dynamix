@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
 /**
@@ -14,8 +10,8 @@ public class ergonomicTable extends ProductObj{
     private boolean adjustableHeight;
     private String material;
 
-    public ergonomicTable(int wheels, int legs, boolean adjustableHeight, String material, int code, String description, float price, int weight, String color) {
-        super(code, description, price, weight, color);
+    public ergonomicTable(int wheels, int legs, boolean adjustableHeight, String material, String name, int code, String description, float price, int weight, String color) {
+        super(name, code, description, price, weight, color);
         this.wheels = wheels;
         this.legs = legs;
         this.adjustableHeight = adjustableHeight;
