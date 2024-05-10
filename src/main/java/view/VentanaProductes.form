@@ -49,7 +49,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
-    <Property name="title" type="java.lang.String" value="Administrar companyies"/>
+    <Property name="title" type="java.lang.String" value="Administrar productes"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
@@ -76,9 +76,9 @@
               <EmptySpace pref="74" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jButtonAlta" min="-2" pref="133" max="-2" attributes="0"/>
+                      <Component id="jButtonRegistrar" min="-2" pref="133" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButtonBaja" min="-2" pref="133" max="-2" attributes="0"/>
+                      <Component id="Esborrar" min="-2" pref="133" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jButtonMostrar" min="-2" pref="133" max="-2" attributes="0"/>
@@ -100,8 +100,8 @@
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="34" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButtonBaja" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
-                  <Component id="jButtonAlta" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
+                  <Component id="Esborrar" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
+                  <Component id="jButtonRegistrar" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -116,20 +116,20 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="jButtonAlta">
+    <Component class="javax.swing.JButton" name="jButtonRegistrar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Donar d&apos;alta"/>
+        <Property name="text" type="java.lang.String" value="Registrar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAltaActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRegistrarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonBaja">
+    <Component class="javax.swing.JButton" name="Esborrar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Donar de baixa"/>
+        <Property name="text" type="java.lang.String" value="Esborrar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonBajaActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EsborrarActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonModificar">
@@ -150,7 +150,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButtonMostrar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Mostrar Empreses"/>
+        <Property name="text" type="java.lang.String" value="Veure producte"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonMostrarActionPerformed"/>
@@ -189,7 +189,7 @@
               <Font name="Courier New" size="30" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Companyies"/>
+            <Property name="text" type="java.lang.String" value="Productes"/>
           </Properties>
         </Component>
       </SubComponents>

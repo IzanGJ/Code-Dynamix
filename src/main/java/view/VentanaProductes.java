@@ -3,10 +3,10 @@ package view;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-public class VentanaCompanyies extends javax.swing.JDialog {
+public class VentanaProductes extends javax.swing.JDialog {
     Interprete interprete;
 
-    public VentanaCompanyies(java.awt.Frame parent, boolean modal) {
+    public VentanaProductes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         interprete = Interprete.obtenerInstancia();
         initComponents();
@@ -26,8 +26,8 @@ public class VentanaCompanyies extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButtonAlta = new javax.swing.JButton();
-        jButtonBaja = new javax.swing.JButton();
+        jButtonRegistrar = new javax.swing.JButton();
+        Esborrar = new javax.swing.JButton();
         jButtonModificar = new javax.swing.JButton();
         jButtonVolver = new javax.swing.JButton();
         jButtonMostrar = new javax.swing.JButton();
@@ -68,20 +68,20 @@ public class VentanaCompanyies extends javax.swing.JDialog {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Administrar companyies");
+        setTitle("Administrar productes");
         setResizable(false);
 
-        jButtonAlta.setText("Donar d'alta");
-        jButtonAlta.addActionListener(new java.awt.event.ActionListener() {
+        jButtonRegistrar.setText("Registrar");
+        jButtonRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAltaActionPerformed(evt);
+                jButtonRegistrarActionPerformed(evt);
             }
         });
 
-        jButtonBaja.setText("Donar de baixa");
-        jButtonBaja.addActionListener(new java.awt.event.ActionListener() {
+        Esborrar.setText("Esborrar");
+        Esborrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBajaActionPerformed(evt);
+                EsborrarActionPerformed(evt);
             }
         });
 
@@ -99,7 +99,7 @@ public class VentanaCompanyies extends javax.swing.JDialog {
             }
         });
 
-        jButtonMostrar.setText("Mostrar Empreses");
+        jButtonMostrar.setText("Veure producte");
         jButtonMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonMostrarActionPerformed(evt);
@@ -110,7 +110,7 @@ public class VentanaCompanyies extends javax.swing.JDialog {
 
         jLabel2.setFont(new java.awt.Font("Courier New", 1, 30)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Companyies");
+        jLabel2.setText("Productes");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -137,9 +137,9 @@ public class VentanaCompanyies extends javax.swing.JDialog {
                 .addContainerGap(74, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Esborrar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButtonMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -155,8 +155,8 @@ public class VentanaCompanyies extends javax.swing.JDialog {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Esborrar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -178,15 +178,15 @@ public class VentanaCompanyies extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButtonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaActionPerformed
-        VentanaCompanyiesAlta dialog = new VentanaCompanyiesAlta(new javax.swing.JFrame(), true); 
+    private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
+        VentanaProductesRegistrar dialog = new VentanaProductesRegistrar(new javax.swing.JFrame(), true); 
         dialog.setVisible(true);
-    }//GEN-LAST:event_jButtonAltaActionPerformed
+    }//GEN-LAST:event_jButtonRegistrarActionPerformed
 
-    private void jButtonBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBajaActionPerformed
+    private void EsborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EsborrarActionPerformed
         VentanaCompanyiesBaixa dialog = new VentanaCompanyiesBaixa(new javax.swing.JFrame(), true); 
         dialog.setVisible(true);
-    }//GEN-LAST:event_jButtonBajaActionPerformed
+    }//GEN-LAST:event_EsborrarActionPerformed
 
     private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
         this.dispose();
@@ -229,20 +229,21 @@ public class VentanaCompanyies extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaCompanyies.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaProductes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaCompanyies.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaProductes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaCompanyies.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaProductes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaCompanyies.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaProductes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VentanaCompanyies dialog = new VentanaCompanyies(new javax.swing.JFrame(), true);
+                VentanaProductes dialog = new VentanaProductes(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -255,12 +256,12 @@ public class VentanaCompanyies extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Esborrar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButtonAlta;
-    private javax.swing.JButton jButtonBaja;
     private javax.swing.JButton jButtonModificar;
     private javax.swing.JButton jButtonMostrar;
+    private javax.swing.JButton jButtonRegistrar;
     private javax.swing.JButton jButtonVolver;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
