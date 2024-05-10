@@ -8,7 +8,7 @@ public class Interprete {
     private static Interprete instancia;
     private static ValidarDatos validador;
     private HashMap<String, CompanyObj> companies;
-    private HashMap<Integer, ProductObj> products;
+    private HashMap<String, ProductObj> Order;
     
     public static Interprete obtenerInstancia() {
         if (instancia == null) {
@@ -20,7 +20,7 @@ public class Interprete {
     
     public Interprete() {
         companies = new HashMap<String, CompanyObj>();
-        products = new HashMap<Integer, ProductObj>();
+        Order = new HashMap<String, ProductObj>();
         validador = new ValidarDatos();
     }
     

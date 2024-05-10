@@ -1,26 +1,21 @@
 package model;
 
-public class OrderObj {
-    private ProductObj product;
-    private CompanyObj company;
-    private int amount;
+import java.util.ArrayList;
 
-    public OrderObj(ProductObj product, CompanyObj company, int amount) {
-        this.product = product;
+public class OrderObj {
+    private CompanyObj company;
+    private ArrayList<ProductObj> products;
+
+    public OrderObj(CompanyObj company, ArrayList<ProductObj> products) {
         this.company = company;
-        this.amount = amount;
+        this.products = products;
     }
 
-  
-    public void setProduct(ProductObj product) {
-        this.product = product;
+    public void setProducts(ArrayList<ProductObj> products) {
+        this.products = products;
     }
 
     public void setCompany(CompanyObj company) {
         this.company = company;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
     }
 }

@@ -1,17 +1,25 @@
 package view;
 
+import java.net.URL;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-public class VentanaCompanyies extends javax.swing.JDialog {
+public class VentanaCompras extends javax.swing.JDialog {
     Interprete interprete;
 
-    public VentanaCompanyies(java.awt.Frame parent, boolean modal) {
+    public VentanaCompras(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         interprete = Interprete.obtenerInstancia();
         initComponents();
         ImageIcon img = new ImageIcon("src\\main\\java\\images\\icon.png");
         setIconImage(img.getImage());
+        jComboBox.removeAllItems();
+        jComboBox.addItem("Selecciona un producte...");
+        jComboBox.addItem("Taula Ergonòmica");
+        jComboBox.addItem("Cadira Ergonòmica");
+        jComboBox.addItem("Teclat Ergonòmic");
+        jComboBox.addItem("Ratolí Ergonòmic");
     }
 
     /**
@@ -26,13 +34,12 @@ public class VentanaCompanyies extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButtonAlta = new javax.swing.JButton();
-        jButtonBaja = new javax.swing.JButton();
-        jButtonModificar = new javax.swing.JButton();
-        jButtonVolver = new javax.swing.JButton();
-        jButtonMostrar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jButtonVolver = new javax.swing.JButton();
+        jButtonEnviar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jComboBox = new javax.swing.JComboBox<>();
 
         jButton2.setText("Companyies");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -68,49 +75,14 @@ public class VentanaCompanyies extends javax.swing.JDialog {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Companyies");
+        setTitle("Pedir Productes");
         setResizable(false);
-
-        jButtonAlta.setText("Donar d'alta");
-        jButtonAlta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAltaActionPerformed(evt);
-            }
-        });
-
-        jButtonBaja.setText("Donar de baixa");
-        jButtonBaja.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBajaActionPerformed(evt);
-            }
-        });
-
-        jButtonModificar.setText("Modificar");
-        jButtonModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonModificarActionPerformed(evt);
-            }
-        });
-
-        jButtonVolver.setText("Tornar");
-        jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonVolverActionPerformed(evt);
-            }
-        });
-
-        jButtonMostrar.setText("Mostrar Empreses");
-        jButtonMostrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonMostrarActionPerformed(evt);
-            }
-        });
 
         jPanel2.setBackground(new java.awt.Color(112, 193, 255));
 
         jLabel2.setFont(new java.awt.Font("Courier New", 1, 30)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Companyies");
+        jLabel2.setText("Productes");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -118,7 +90,7 @@ public class VentanaCompanyies extends javax.swing.JDialog {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -128,42 +100,67 @@ public class VentanaCompanyies extends javax.swing.JDialog {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        jButtonVolver.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButtonVolver.setText("Tornar");
+        jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVolverActionPerformed(evt);
+            }
+        });
+
+        jButtonEnviar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonEnviar.setLabel("Enviar");
+        jButtonEnviar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEnviarActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Afegir producte:");
+
+        jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jComboBoxPopupMenuWillBecomeVisible(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(74, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap(113, Short.MAX_VALUE)
+                .addComponent(jButtonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(113, 113, 113))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(91, 91, 91)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonEnviar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(jButtonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(73, 73, 73))
+                        .addComponent(jComboBox, 0, 188, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel1)
+                    .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 283, Short.MAX_VALUE)
+                .addComponent(jButtonEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addGap(18, 18, 18))
         );
 
         pack();
@@ -178,39 +175,19 @@ public class VentanaCompanyies extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButtonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaActionPerformed
-        VentanaCompanyiesAlta dialog = new VentanaCompanyiesAlta(new javax.swing.JFrame(), true); 
-        dialog.setVisible(true);
-    }//GEN-LAST:event_jButtonAltaActionPerformed
-
-    private void jButtonBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBajaActionPerformed
-        VentanaCompanyiesBaixa dialog = new VentanaCompanyiesBaixa(new javax.swing.JFrame(), true); 
-        dialog.setVisible(true);
-    }//GEN-LAST:event_jButtonBajaActionPerformed
-
     private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonVolverActionPerformed
 
-    private void jButtonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMostrarActionPerformed
-        
-        if (!interprete.getCompanies().isEmpty()) {
-            VentanaCompanyiesMostrar dialog = new VentanaCompanyiesMostrar(new javax.swing.JFrame(), true); 
-            dialog.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(this, "Encara no hi han empreses registrades");
-        }
-        
-    }//GEN-LAST:event_jButtonMostrarActionPerformed
+    private void jButtonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnviarActionPerformed
 
-    private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
-        if (!interprete.getCompanies().isEmpty()) {
-            VentanaCompanyiesModificar dialog = new VentanaCompanyiesModificar(new javax.swing.JFrame(), true); 
-            dialog.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(this, "Encara no hi han empreses registrades");
+    }//GEN-LAST:event_jButtonEnviarActionPerformed
+
+    private void jComboBoxPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxPopupMenuWillBecomeVisible
+        if (jComboBox.getItemAt(0).equals("Selecciona un producte...")) {
+            jComboBox.removeItemAt(0);
         }
-    }//GEN-LAST:event_jButtonModificarActionPerformed
+    }//GEN-LAST:event_jComboBoxPopupMenuWillBecomeVisible
 
     /**
      * @param args the command line arguments
@@ -229,20 +206,35 @@ public class VentanaCompanyies extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaCompanyies.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaCompras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaCompanyies.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaCompras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaCompanyies.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaCompras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaCompanyies.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaCompras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VentanaCompanyies dialog = new VentanaCompanyies(new javax.swing.JFrame(), true);
+                VentanaCompras dialog = new VentanaCompras(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -257,11 +249,10 @@ public class VentanaCompanyies extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButtonAlta;
-    private javax.swing.JButton jButtonBaja;
-    private javax.swing.JButton jButtonModificar;
-    private javax.swing.JButton jButtonMostrar;
+    private javax.swing.JButton jButtonEnviar;
     private javax.swing.JButton jButtonVolver;
+    private javax.swing.JComboBox<String> jComboBox;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

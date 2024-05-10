@@ -2,6 +2,7 @@ package view;
 
 import exceptions.CompanyException;
 import java.util.HashMap;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.CompanyObj;
 
@@ -14,6 +15,8 @@ public class VentanaCompanyiesModificar extends javax.swing.JDialog {
         interprete = Interprete.obtenerInstancia();
         companies = interprete.getCompanies();
         initComponents();
+        ImageIcon img = new ImageIcon("src\\main\\java\\images\\icon.png");
+        setIconImage(img.getImage());
         jComboBox.removeAllItems();
         jComboBox.addItem("Selecciona una empresa...");
         

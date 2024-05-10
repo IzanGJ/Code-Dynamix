@@ -1,6 +1,7 @@
 package view;
 
 import exceptions.CompanyException;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class VentanaCompanyiesBaixa extends javax.swing.JDialog {
@@ -10,6 +11,8 @@ public class VentanaCompanyiesBaixa extends javax.swing.JDialog {
         super(parent, modal);
         interprete = Interprete.obtenerInstancia();
         initComponents();
+        ImageIcon img = new ImageIcon("src\\main\\java\\images\\icon.png");
+        setIconImage(img.getImage());
     }
 
     
