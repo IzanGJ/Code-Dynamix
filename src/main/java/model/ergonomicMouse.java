@@ -9,8 +9,8 @@ public class ergonomicMouse extends ProductObj {
     private int lateralButtons;
     private boolean wireless;
 
-    public ergonomicMouse(boolean handDexterity, int lateralButtons, boolean wireless, String name, int code, String description, float price, int weight, String color) {
-        super(name, code, description, price, weight, color);
+    public ergonomicMouse(boolean handDexterity, int lateralButtons, boolean wireless, String name, int code, String description, int weight, String color) {
+        super(name, code, description, weight, color);
         this.handDexterity = handDexterity;
         this.lateralButtons = lateralButtons;
         this.wireless = wireless;

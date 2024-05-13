@@ -1,7 +1,6 @@
 package model;
 
 /**
- *
  * @author loren
  */
 public class ergonomicTable extends ProductObj{
@@ -10,8 +9,8 @@ public class ergonomicTable extends ProductObj{
     private boolean adjustableHeight;
     private String material;
 
-    public ergonomicTable(int wheels, int legs, boolean adjustableHeight, String material, String name, int code, String description, float price, int weight, String color) {
-        super(name, code, description, price, weight, color);
+    public ergonomicTable(int wheels, int legs, boolean adjustableHeight, String material, String name, int code, String description, int weight, String color) {
+        super(name, code, description, weight, color);
         this.wheels = wheels;
         this.legs = legs;
         this.adjustableHeight = adjustableHeight;

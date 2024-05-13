@@ -10,8 +10,8 @@ public class ergonomicKeyboard extends ProductObj{
     private int lenght;
     private boolean wireless;
 
-    public ergonomicKeyboard(String type, String language, int lenght, boolean wireless, String name, int code, String description, float price, int weight, String color) {
-        super(name, code, description, price, weight, color);
+    public ergonomicKeyboard(String type, String language, int lenght, boolean wireless, String name, int code, String description, int weight, String color) {
+        super(name, code, description, weight, color);
         this.type = type;
         this.language = language;
         this.lenght = lenght;
