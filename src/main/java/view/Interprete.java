@@ -46,7 +46,6 @@ public class Interprete {
         }
     }
     
-    
     public boolean modificarEmpresa(String nombre, String cif, String anterior) throws CompanyException {
         if (!nombre.equals("")) {
             if (!cif.equals("")) {
@@ -67,8 +66,7 @@ public class Interprete {
         } else {
             throw new CompanyException(CompanyException.NAME_EMPTY);
         }
-    }
-    
+    } 
     
     public boolean bajaEmpresa(String cif) throws CompanyException {
         if (companies.containsKey(cif.toUpperCase())) {
@@ -81,10 +79,9 @@ public class Interprete {
         }
         return true;
     }
-
+    
     public HashMap<String, CompanyObj> getCompanies() {
         return companies;
     }
-
 }
 
