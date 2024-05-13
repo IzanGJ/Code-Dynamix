@@ -179,13 +179,11 @@ public class VentanaProductes extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
-        VentanaProductesRegistrar dialog = new VentanaProductesRegistrar(new javax.swing.JFrame(), true); 
-        dialog.setVisible(true);
+       
     }//GEN-LAST:event_jButtonRegistrarActionPerformed
 
     private void EsborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EsborrarActionPerformed
-        VentanaCompanyiesBaixa dialog = new VentanaCompanyiesBaixa(new javax.swing.JFrame(), true); 
-        dialog.setVisible(true);
+
     }//GEN-LAST:event_EsborrarActionPerformed
 
     private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
@@ -193,14 +191,9 @@ public class VentanaProductes extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonVolverActionPerformed
 
     private void jButtonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMostrarActionPerformed
-        
-        if (!interprete.getCompanies().isEmpty()) {
-            VentanaCompanyiesMostrar dialog = new VentanaCompanyiesMostrar(new javax.swing.JFrame(), true); 
-            dialog.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(this, "Encara no hi han empreses registrades");
-        }
-        
+        VentanaProductesVeure dialog = new VentanaProductesVeure(new javax.swing.JFrame(), true); 
+         dialog.setVisible(true);        
+       
     }//GEN-LAST:event_jButtonMostrarActionPerformed
 
     private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
