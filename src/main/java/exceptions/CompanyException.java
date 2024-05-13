@@ -13,10 +13,10 @@ public class CompanyException extends Exception {
     public static final int EMPRESA_NOT_FOUND = 5;
 
     private final List<String> missatges = Arrays.asList(
-        "*L'empresa ja s'ha registrat",
+        "*Ya hi ha una empresa amb aquest CIF",
         "< ERROR 002: Número fora de rang>",
         "*El nom de l'empresa no pot estar buit",
-        "*El cif de l'empresa no pot estar biut",
+        "*El cif de l'empresa no pot estar buit",
         "*El cif introduït no es vàlid",
         "No s'ha trobat cap empresa amb aquest CIF");
     
