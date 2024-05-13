@@ -8,11 +8,10 @@ public abstract class ProductObj {
     private int weight;
     private String color;
 
-    public ProductObj(String name, int code, String description, float price, int weight, String color) {
+    public ProductObj(String name, int code, String description, int weight, String color) {
         this.name = name;
         this.code = code;
         this.description = description;
-        this.price = price;
         this.weight = weight;
         this.color = color;
     }

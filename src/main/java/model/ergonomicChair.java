@@ -9,8 +9,8 @@ public class ergonomicChair extends ProductObj {
     private int wheels;
     private boolean armrest;
 
-    public ergonomicChair(boolean backrest, int wheels, boolean armrest, String name, int code, String description, float price, int weight, String color) {
-        super(name, code, description, price, weight, color);
+    public ergonomicChair(boolean backrest, int wheels, boolean armrest, String name, int code, String description, int weight, String color) {
+        super(name, code, description, weight, color);
         this.backrest = backrest;
         this.wheels = wheels;
         this.armrest = armrest;
