@@ -25,6 +25,7 @@ public class Interprete {
     }
      
     public void registrarEmpresa(String nombre, String cif) throws CompanyException, SQLException {
+        companies = dao.allCompanies();
         if (cifEmpty(cif)) {
             if (nomEmpty(nombre)) {
                 if (esCifValido(cif)) {

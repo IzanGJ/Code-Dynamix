@@ -35,7 +35,7 @@ public class codeDynamixDAO {
         Connection c = conectar();
         PreparedStatement ps = c.prepareStatement("insert into company values (?,?);");
         ps.setString(1, p.getCif());
-        ps.setString(1, p.getNombre());
+        ps.setString(2, p.getNombre());
         ps.executeUpdate();
         ps.close();
         desconectar(c);
