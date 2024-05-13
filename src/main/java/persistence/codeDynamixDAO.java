@@ -31,7 +31,7 @@ public class codeDynamixDAO {
         return companies;
     }
     
-    public void insertarPropietario(CompanyObj p) throws SQLException {
+    public void insertCompany(CompanyObj p) throws SQLException {
         Connection c = conectar();
         PreparedStatement ps = c.prepareStatement("insert into company values (?,?);");
         ps.setString(1, p.getCif());

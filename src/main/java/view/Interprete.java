@@ -31,7 +31,7 @@ public class Interprete {
                     if (noExistCompany(cif.toUpperCase())) {
                         CompanyObj obj = new CompanyObj(nombre, cif.toUpperCase());
                         companies.put(cif, obj);
-                        dao.insertarPropietario(obj);
+                        dao.insertCompany(obj);
                     }
                 }
             }
