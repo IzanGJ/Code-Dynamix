@@ -24,7 +24,7 @@ public class CompanyException extends Exception {
         "*L'empresa ja estava registrada",
         "*El producte ja estava registrat",
         "*El nom de l'empresa no pot estar buit",
-        "*El cif de l'empresa no pot estar biut",
+        "*El cif de l'empresa no pot estar buit",
         "*El cif introduït no és vàlid",
         "*No s'ha trobat cap empresa amb aquest CIF",
         "*El nom del producte no pot estar buit",

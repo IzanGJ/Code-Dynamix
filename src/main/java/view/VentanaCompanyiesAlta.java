@@ -1,6 +1,7 @@
 package view;
 
 import exceptions.CompanyException;
+import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -123,7 +124,7 @@ public class VentanaCompanyiesAlta extends javax.swing.JDialog {
             interprete.registrarEmpresa(jTextFieldNombre.getText(), jTextFieldCif.getText());
             JOptionPane.showMessageDialog(this, "L'empresa s'ha donat d'alta correctament");
             this.dispose();
-        } catch (CompanyException ex) {
+        } catch (CompanyException | SQLException ex) {
             jLabelError.setText(ex.getMessage());
         }
         
