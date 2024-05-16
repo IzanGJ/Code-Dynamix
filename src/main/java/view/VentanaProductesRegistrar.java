@@ -24,10 +24,26 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
         jComboBox.addItem("Teclat");
         jComboBox.addItem("Ratolí");
         
+        jComboBoxR1.removeAllItems();
+        jComboBoxR1.addItem("Mecanic");
+        jComboBoxR1.addItem("Membrana");
+        jComboBoxR1.addItem("Chiclet");
+        
+        jComboBoxR2.removeAllItems();
+        jComboBoxR2.addItem("Espanyol");
+        jComboBoxR2.addItem("Català");
+        jComboBoxR2.addItem("Anglès");
+        jComboBoxR2.addItem("Portuguès");
+        jComboBoxR2.addItem("Francès");
+        jComboBoxR2.addItem("Alemany");
+        jComboBoxR2.addItem("Chinès");
+        jComboBoxR2.addItem("Japonès");
+        
         jCheckBoxR3.setVisible(false);
         jCheckBoxR4.setVisible(false);
-        jTextFieldR1.setVisible(false);
-        jTextFieldR3.setVisible(false);
+        jComboBoxR1.setVisible(false);
+        jComboBoxR2.setVisible(false);
+        jComboBoxR3.setVisible(false);
         jSpinnerR1.setVisible(false);
         jSpinnerR2.setVisible(false);
     }
@@ -60,11 +76,12 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
         jLabelR4 = new javax.swing.JLabel();
         jCheckBoxR3 = new javax.swing.JCheckBox();
         jCheckBoxR4 = new javax.swing.JCheckBox();
-        jTextFieldR1 = new javax.swing.JTextField();
-        jTextFieldR3 = new javax.swing.JTextField();
         jSpinnerR2 = new javax.swing.JSpinner();
         jSpinnerR1 = new javax.swing.JSpinner();
         jLabelAlertas = new javax.swing.JLabel();
+        jComboBoxR2 = new javax.swing.JComboBox<>();
+        jComboBoxR3 = new javax.swing.JComboBox<>();
+        jComboBoxR1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registrar Producte");
@@ -165,15 +182,15 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
             }
         });
 
-        jTextFieldR1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldR1ActionPerformed(evt);
-            }
-        });
-
         jLabelAlertas.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabelAlertas.setForeground(new java.awt.Color(204, 0, 0));
         jLabelAlertas.setText(" ");
+
+        jComboBoxR2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboBoxR3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboBoxR1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -181,7 +198,7 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(95, 95, 95)
@@ -195,11 +212,11 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
                                 .addComponent(jButtonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButtonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(4, 4, 4))
+                                .addGap(15, 15, 15))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -210,29 +227,29 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(jCheckBoxR3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextFieldR3))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addComponent(jSpinnerR1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextFieldR1))
+                                        .addComponent(jComboBoxR1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
+                                            .addComponent(jTextFieldNombre, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(jSpinnerPeso, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jPanelRGB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jButtonElegir, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jCheckBoxR4, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
-                                                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                                .addComponent(jSpinnerPeso, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(jPanelRGB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(jButtonElegir, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addComponent(jCheckBoxR4, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jSpinnerR2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 0, Short.MAX_VALUE)))))
-                        .addGap(92, 92, 92))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jSpinnerR2, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                                            .addComponent(jCheckBoxR3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jComboBoxR2, 0, 129, Short.MAX_VALUE)
+                                            .addComponent(jComboBoxR3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                        .addGap(81, 81, 81))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,34 +274,41 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
                     .addComponent(jSpinnerPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButtonElegir)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(jPanelRGB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(16, 16, 16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextFieldR1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSpinnerR1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelR1))))
-                .addGap(12, 12, 12)
+                            .addComponent(jLabelR1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButtonElegir)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBoxR1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelR2)
-                    .addComponent(jSpinnerR2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
+                    .addComponent(jSpinnerR2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxR2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldR3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
+                        .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBoxR3)
-                            .addComponent(jLabelR3))))
-                .addGap(12, 12, 12)
+                            .addComponent(jComboBoxR3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(jLabelR3)))
+                        .addGap(9, 9, 9))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBoxR3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelR4)
                     .addComponent(jCheckBoxR4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(jLabelAlertas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -306,7 +330,7 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
             try {
                 switch (jComboBox.getSelectedIndex()) {
                     case 0:
-                        new ergonomicTable(Integer.parseInt(jSpinnerR2.getValue().toString()), Integer.parseInt(jSpinnerR1.getValue().toString()), jCheckBoxR4.isSelected(), jTextFieldR3.getText(), jTextFieldNombre.getText(), 0, jTextAreaDescripcion.getText(), Integer.parseInt(jSpinnerPeso.getValue().toString()), newColor.getRGB());
+//                        new ergonomicTable(Integer.parseInt(jSpinnerR2.getValue().toString()), Integer.parseInt(jSpinnerR1.getValue().toString()), jCheckBoxR4.isSelected(), jTextFieldR3.getText(), jTextFieldNombre.getText(), 0, jTextAreaDescripcion.getText(), Integer.parseInt(jSpinnerPeso.getValue().toString()), newColor.getRGB());
                         break;
 
                     case 1:
@@ -364,10 +388,17 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
                 jLabelR4.setText("Alçada ajustable:"); //boolean
                 jCheckBoxR3.setVisible(false);
                 jCheckBoxR4.setVisible(true);
-                jTextFieldR1.setVisible(false);
-                jTextFieldR3.setVisible(true);
+                jComboBoxR1.setVisible(false);
+                jComboBoxR2.setVisible(false);
+                jComboBoxR3.setVisible(true);
                 jSpinnerR1.setVisible(true);
                 jSpinnerR2.setVisible(true);
+                
+                jComboBoxR3.removeAllItems();
+                jComboBoxR3.addItem("Fusta");
+                jComboBoxR3.addItem("Plástic");
+                jComboBoxR3.addItem("Alumini");
+                jComboBoxR3.addItem("Metall");
                 break;
             
             case 1:
@@ -377,8 +408,9 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
                 jLabelR4.setText("Reposabraços:"); //boolean
                 jCheckBoxR3.setVisible(true);
                 jCheckBoxR4.setVisible(true);
-                jTextFieldR1.setVisible(false);
-                jTextFieldR3.setVisible(false);
+                jComboBoxR1.setVisible(false);
+                jComboBoxR2.setVisible(false);
+                jComboBoxR3.setVisible(false);
                 jSpinnerR1.setVisible(false);
                 jSpinnerR2.setVisible(true);
                 break;
@@ -388,12 +420,21 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
                 jLabelR3.setText("Longitud:"); //int
                 jLabelR2.setText("Llengua:"); //String
                 jLabelR4.setText("Sense fil:"); //boolean
-                jTextFieldR1.setVisible(true);
+                jComboBoxR1.setVisible(true);
+                jComboBoxR2.setVisible(true);
+                jComboBoxR3.setVisible(true);
                 jCheckBoxR3.setVisible(false);
                 jCheckBoxR4.setVisible(true);
-                jTextFieldR3.setVisible(true);
                 jSpinnerR1.setVisible(false);
-                jSpinnerR2.setVisible(true);
+                jSpinnerR2.setVisible(false);
+                
+                jComboBoxR3.removeAllItems();
+                jComboBoxR3.addItem("100%");
+                jComboBoxR3.addItem("80%");
+                jComboBoxR3.addItem("75%");
+                jComboBoxR3.addItem("65%");
+                jComboBoxR3.addItem("60%");
+                jComboBoxR3.addItem("40%");
                 break;
             
             case 3:
@@ -403,8 +444,9 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
                 jLabelR4.setText("Sense fil:"); //boolean
                 jCheckBoxR3.setVisible(true);
                 jCheckBoxR4.setVisible(true);
-                jTextFieldR1.setVisible(false);
-                jTextFieldR3.setVisible(false);
+                jComboBoxR1.setVisible(false);
+                jComboBoxR2.setVisible(false);
+                jComboBoxR3.setVisible(false);
                 jSpinnerR1.setVisible(false);
                 jSpinnerR2.setVisible(true);
                 break;
@@ -417,10 +459,6 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
             jComboBox.removeItemAt(0);
         }
     }//GEN-LAST:event_jComboBoxPopupMenuWillBecomeVisible
-
-    private void jTextFieldR1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldR1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldR1ActionPerformed
 
     private void jCheckBoxR3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxR3ActionPerformed
         // TODO add your handling code here:
@@ -478,6 +516,9 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
     private javax.swing.JCheckBox jCheckBoxR3;
     private javax.swing.JCheckBox jCheckBoxR4;
     private javax.swing.JComboBox<String> jComboBox;
+    private javax.swing.JComboBox<String> jComboBoxR1;
+    private javax.swing.JComboBox<String> jComboBoxR2;
+    private javax.swing.JComboBox<String> jComboBoxR3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -497,7 +538,5 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
     private javax.swing.JSpinner jSpinnerR2;
     private javax.swing.JTextArea jTextAreaDescripcion;
     private javax.swing.JTextField jTextFieldNombre;
-    private javax.swing.JTextField jTextFieldR1;
-    private javax.swing.JTextField jTextFieldR3;
     // End of variables declaration//GEN-END:variables
 }
