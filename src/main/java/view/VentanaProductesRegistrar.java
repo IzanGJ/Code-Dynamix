@@ -5,7 +5,7 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
-import model.ergonomicChair;
+import model.*;
 
 public class VentanaProductesRegistrar extends javax.swing.JDialog {
     Interprete interprete;
@@ -306,7 +306,7 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
             try {
                 switch (jComboBox.getSelectedIndex()) {
                     case 0:
-                        
+                        new ergonomicTable(Integer.parseInt(jSpinnerR2.getValue().toString()), Integer.parseInt(jSpinnerR1.getValue().toString()), jCheckBoxR4.isSelected(), jTextFieldR3.getText(), jTextFieldNombre.getText(), 0, jTextAreaDescripcion.getText(), Integer.parseInt(jSpinnerPeso.getValue().toString()), newColor.getRGB());
                         break;
 
                     case 1:
@@ -314,7 +314,6 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
                         break;
 
                     case 2:
-
                         break;
 
                     case 3:
