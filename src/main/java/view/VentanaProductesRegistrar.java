@@ -6,14 +6,17 @@ import javax.swing.ImageIcon;
 import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
 import model.*;
+import persistence.codeDynamixDAO;
 
 public class VentanaProductesRegistrar extends javax.swing.JDialog {
     Interprete interprete;
+    codeDynamixDAO dao;
     Color newColor = new Color(Color.black.getRGB());
 
     public VentanaProductesRegistrar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         interprete = Interprete.obtenerInstancia();
+        dao = new codeDynamixDAO();
         initComponents();
         ImageIcon img = new ImageIcon("src\\main\\java\\images\\icon.png");
         setIconImage(img.getImage());
@@ -82,6 +85,8 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
         jComboBoxR2 = new javax.swing.JComboBox<>();
         jComboBoxR3 = new javax.swing.JComboBox<>();
         jComboBoxR1 = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        jSpinnerID = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registrar Producte");
@@ -192,6 +197,8 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
 
         jComboBoxR1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jLabel7.setText("Nº Identificador:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -205,7 +212,7 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelAlertas)
-                        .addContainerGap())
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -223,13 +230,11 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
                                     .addComponent(jLabelR2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabelR1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabelR4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabelR3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jLabelR3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(jSpinnerR1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBoxR1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jCheckBoxR4, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
@@ -240,15 +245,18 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
                                             .addComponent(jPanelRGB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(jButtonElegir, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(jCheckBoxR4, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jSpinnerR2, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
-                                            .addComponent(jCheckBoxR3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(jSpinnerR1)
+                                            .addComponent(jSpinnerR2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                                            .addComponent(jCheckBoxR3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jComboBoxR2, 0, 129, Short.MAX_VALUE)
-                                            .addComponent(jComboBoxR3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(jComboBoxR2, 0, 129, Short.MAX_VALUE)
+                                                .addComponent(jComboBoxR3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addComponent(jComboBoxR1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jSpinnerID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(81, 81, 81))))
         );
         layout.setVerticalGroup(
@@ -260,7 +268,11 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jSpinnerID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -308,9 +320,9 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelR4)
                     .addComponent(jCheckBoxR4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelAlertas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -330,11 +342,11 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
             try {
                 switch (jComboBox.getSelectedIndex()) {
                     case 0:
-//                        new ergonomicTable(Integer.parseInt(jSpinnerR2.getValue().toString()), Integer.parseInt(jSpinnerR1.getValue().toString()), jCheckBoxR4.isSelected(), jTextFieldR3.getText(), jTextFieldNombre.getText(), 0, jTextAreaDescripcion.getText(), Integer.parseInt(jSpinnerPeso.getValue().toString()), newColor.getRGB());
+                        dao.insertTable(new ErgonomicTable(Integer.parseInt(jSpinnerR2.getValue().toString()), Integer.parseInt(jSpinnerR1.getValue().toString()), jCheckBoxR4.isSelected(), jComboBoxR3.getItemAt(jComboBoxR3.getSelectedIndex()), jTextFieldNombre.getText(), Integer.parseInt(jSpinnerID.getValue().toString()), jTextAreaDescripcion.getText(), Integer.parseInt(jSpinnerPeso.getValue().toString()), newColor.getRGB()));
                         break;
 
                     case 1:
-                        new ergonomicChair(jCheckBoxR3.isSelected(), Integer.parseInt(jSpinnerR2.getValue().toString()), jCheckBoxR4.isSelected(), jTextFieldNombre.getText(), 0, jTextAreaDescripcion.getText(), Integer.parseInt(jSpinnerPeso.getValue().toString()), newColor.getRGB());
+                        new ErgonomicChair(jCheckBoxR3.isSelected(), Integer.parseInt(jSpinnerR2.getValue().toString()), jCheckBoxR4.isSelected(), jTextFieldNombre.getText(), Integer.parseInt(jSpinnerID.getValue().toString()), jTextAreaDescripcion.getText(), Integer.parseInt(jSpinnerPeso.getValue().toString()), newColor.getRGB());
                         break;
 
                     case 2:
@@ -525,6 +537,7 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelAlertas;
     private javax.swing.JLabel jLabelR1;
     private javax.swing.JLabel jLabelR2;
@@ -533,6 +546,7 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
     private javax.swing.JLabel jLabelRGB;
     private javax.swing.JPanel jPanelRGB;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSpinner jSpinnerID;
     private javax.swing.JSpinner jSpinnerPeso;
     private javax.swing.JSpinner jSpinnerR1;
     private javax.swing.JSpinner jSpinnerR2;

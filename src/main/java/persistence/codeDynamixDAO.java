@@ -10,6 +10,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import model.CompanyObj;
+import model.ErgonomicChair;
+import model.ErgonomicTable;
 
 
 public class codeDynamixDAO {
@@ -36,6 +38,66 @@ public class codeDynamixDAO {
         PreparedStatement ps = c.prepareStatement("insert into company values (?,?);");
         ps.setString(1, p.getCif());
         ps.setString(2, p.getNombre());
+        ps.executeUpdate();
+        ps.close();
+        desconectar(c);
+    }
+    
+    
+    public void insertTable(ErgonomicTable t) throws SQLException {
+        Connection c = conectar();
+        PreparedStatement ps = c.prepareStatement("insert into product (ID, name, description, price, weight, color, type) values (?,?,?,?,?,?,?);");
+        ps.setInt(1, t.getCode());
+        ps.setString(2, t.getName());
+        ps.setString(3, t.getDescription());
+        ps.setFloat(4, t.getPrice());
+        ps.setInt(5, t.getWeight());
+        ps.setString(6, String.valueOf(t.getColor()));
+        ps.setString(7, "table");
+        ps.executeUpdate();
+        ps.close();
+        
+        ps = c.prepareStatement("insert into taula (ID, wheels, legs, adjutableHeight, material) values (?,?,?,?,?);");
+        
+        ps.setInt(1, t.getCode());
+        ps.setInt(2, t.getWheels());
+        ps.setInt(3, t.getLegs());
+        if (t.isAdjustableHeight()) {
+            ps.setInt(4, 1);
+        } else {
+            ps.setInt(4, 0);
+        }
+        ps.setString(5, t.getMaterial());
+        ps.executeUpdate();
+        ps.close();
+        desconectar(c);
+    }
+    
+    
+    public void insertChair(ErgonomicChair ch) throws SQLException {
+        Connection c = conectar();
+        PreparedStatement ps = c.prepareStatement("insert into product (ID, name, description, price, weight, color, type) values (?,?,?,?,?,?,?);");
+        ps.setInt(1, ch.getCode());
+        ps.setString(2, ch.getName());
+        ps.setString(3, ch.getDescription());
+        ps.setFloat(4, ch.getPrice());
+        ps.setInt(5, ch.getWeight());
+        ps.setString(6, String.valueOf(ch.getColor()));
+        ps.setString(7, "CHAIR");
+        ps.executeUpdate();
+        ps.close();
+        
+        ps = c.prepareStatement("insert into chair (ID, wheels, legs, adjutableHeight, material) values (?,?,?,?,?);");
+        
+        ps.setInt(1, ch.getCode());
+        ps.setInt(2, ch.getWheels());
+        ps.setInt(3, ch.getLegs());
+        if (t.isAdjustableHeight()) {
+            ps.setInt(4, 1);
+        } else {
+            ps.setInt(4, 0);
+        }
+        ps.setString(5, ch.getMaterial());
         ps.executeUpdate();
         ps.close();
         desconectar(c);
