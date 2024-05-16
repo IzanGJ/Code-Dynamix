@@ -1,5 +1,7 @@
 package model;
 
+import exceptions.CompanyException;
+
 /**
  * @author loren
  */
@@ -9,7 +11,7 @@ public class ergonomicTable extends ProductObj{
     private boolean adjustableHeight;
     private String material;
 
-    public ergonomicTable(int wheels, int legs, boolean adjustableHeight, String material, String name, int code, String description, int weight, String color) {
+    public ergonomicTable(int wheels, int legs, boolean adjustableHeight, String material, String name, int code, String description, int weight, int color) throws CompanyException {
         super(name, code, description, weight, color);
         this.wheels = wheels;
         this.legs = legs;

@@ -1,14 +1,19 @@
 package model;
 
+import exceptions.*;
+
 public abstract class ProductObj {
     private String name;
     private int code;
     private String description;
     private float price;
     private int weight;
-    private String color;
+    private int color;
 
-    public ProductObj(String name, int code, String description, int weight, String color) {
+    public ProductObj(String name, int code, String description, int weight, int color) throws CompanyException {
+        if (weight <= 0) {
+            throw new CompanyException(CompanyException.WEIGHT_ERROR);
+        }
         this.name = name;
         this.code = code;
         this.description = description;
@@ -36,7 +41,7 @@ public abstract class ProductObj {
         this.weight = weight;
     }
 
-    public void setColor(String color) {
+    public void setColor(int color) {
         this.color = color;
     }
     
@@ -56,7 +61,7 @@ public abstract class ProductObj {
         return weight;
     }
 
-    public String getColor() {
+    public int getColor() {
         return color;
     }
     

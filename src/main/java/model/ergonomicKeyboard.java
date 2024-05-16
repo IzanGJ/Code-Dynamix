@@ -1,5 +1,7 @@
 package model;
 
+import exceptions.CompanyException;
+
 /**
  *
  * @author loren
@@ -10,7 +12,7 @@ public class ergonomicKeyboard extends ProductObj{
     private int lenght;
     private boolean wireless;
 
-    public ergonomicKeyboard(String type, String language, int lenght, boolean wireless, String name, int code, String description, int weight, String color) {
+    public ergonomicKeyboard(String type, String language, int lenght, boolean wireless, String name, int code, String description, int weight, int color) throws CompanyException {
         super(name, code, description, weight, color);
         this.type = type;
         this.language = language;

@@ -15,7 +15,7 @@ public class CompanyException extends Exception {
     public static final int DESCRIPTION_EMPTY = 7;
     public static final int WEIGHT_ERROR = 8;
     public static final int PRICE_NOT_NUM = 9;
-    public static final int WHEELS_NOT_NUM = 10;
+    public static final int WHEELS_ERROR = 10;
     public static final int KEYBOARD_TYPE_ERROR = 11;
     public static final int KEYBOARD_LENGTH_ERROR = 12;
     public static final int MOUSE_BUTTONS_ERROR = 13;
@@ -31,7 +31,7 @@ public class CompanyException extends Exception {
         "*La descripció del producte no pot estar buida",
         "*El pes del producte no és un enter",
         "*El preu del producte no és un número",
-        "*Les rodes del producte no és un número",
+        "*Les rodes del producte no és un número válid",
         "*El tipus de teclat no és correcte",
         "*La longitud del teclat no és correcte",
         "*El número de botons del ratolí no és un número");

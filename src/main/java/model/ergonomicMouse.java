@@ -1,5 +1,7 @@
 package model;
 
+import exceptions.CompanyException;
+
 /**
  *
  * @author loren
@@ -9,7 +11,7 @@ public class ergonomicMouse extends ProductObj {
     private int lateralButtons;
     private boolean wireless;
 
-    public ergonomicMouse(boolean handDexterity, int lateralButtons, boolean wireless, String name, int code, String description, int weight, String color) {
+    public ergonomicMouse(boolean handDexterity, int lateralButtons, boolean wireless, String name, int code, String description, int weight, int color) throws CompanyException {
         super(name, code, description, weight, color);
         this.handDexterity = handDexterity;
         this.lateralButtons = lateralButtons;
