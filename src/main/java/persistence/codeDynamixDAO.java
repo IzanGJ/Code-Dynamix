@@ -10,8 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import model.CompanyObj;
-import model.ErgonomicChair;
-import model.ErgonomicTable;
+import model.*;
 
 
 public class codeDynamixDAO {
@@ -25,7 +24,11 @@ public class codeDynamixDAO {
         while (rs.next()) {
             String cif = rs.getString("CIF");
             String nom = rs.getString("name");
-            companies.put(cif, new CompanyObj(nom, cif));
+            try {
+                companies.put(cif, new CompanyObj(nom, cif));
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+            }
         }
         rs.close();
         st.close();

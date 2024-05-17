@@ -4,18 +4,26 @@ import java.util.HashMap;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.*;
+import persistence.codeDynamixDAO;
 
 public class VentanaCompanyiesMostrar extends javax.swing.JDialog {
     Interprete interprete;
+    codeDynamixDAO dao;
     HashMap<String, CompanyObj> companies;
 
     public VentanaCompanyiesMostrar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         interprete = Interprete.obtenerInstancia();
-        companies = interprete.getCompanies();
+        dao = new codeDynamixDAO();
         initComponents();
         ImageIcon img = new ImageIcon("src\\main\\java\\images\\icon.png");
         setIconImage(img.getImage());
+        try {
+            companies = dao.allCompanies();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        
         jComboBox.removeAllItems();
         jComboBox.addItem("Selecciona una empresa...");
         for (String clave : companies.keySet()) {
