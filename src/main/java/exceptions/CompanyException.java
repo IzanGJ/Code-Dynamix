@@ -19,6 +19,7 @@ public class CompanyException extends Exception {
     public static final int KEYBOARD_TYPE_ERROR = 11;
     public static final int KEYBOARD_LENGTH_ERROR = 12;
     public static final int MOUSE_BUTTONS_ERROR = 13;
+    public static final int TABLE_LEGS_ERROR = 14;
 
     private final List<String> missatges = Arrays.asList(
         "*L'empresa ja estava registrada",
@@ -34,7 +35,8 @@ public class CompanyException extends Exception {
         "*Les rodes del producte no és un número válid",
         "*El tipus de teclat no és correcte",
         "*La longitud del teclat no és correcte",
-        "*El número de botons del ratolí no és un número");
+        "*El número de botons del ratolí no pot ser negatiu",
+        "*El número de potes de la taula ha de ser un enter major a 0");
     
     private final int code;
 

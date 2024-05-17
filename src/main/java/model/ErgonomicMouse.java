@@ -13,6 +13,9 @@ public class ErgonomicMouse extends ProductObj {
 
     public ErgonomicMouse(boolean handDexterity, int lateralButtons, boolean wireless, String name, int code, String description, int weight, int color) throws CompanyException {
         super(name, code, description, weight, color);
+        if (lateralButtons < 0) {
+            throw new CompanyException(CompanyException.MOUSE_BUTTONS_ERROR);
+        }
         this.handDexterity = handDexterity;
         this.lateralButtons = lateralButtons;
         this.wireless = wireless;
