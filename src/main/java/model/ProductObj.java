@@ -1,5 +1,6 @@
 package model;
 
+import view.Interprete;
 import exceptions.*;
 
 public abstract class ProductObj {
@@ -11,8 +12,14 @@ public abstract class ProductObj {
     private int color;
 
     public ProductObj(String name, int code, String description, int weight, int color) throws CompanyException {
+        Interprete interprete;
+        interprete = Interprete.obtenerInstancia();
         if (weight <= 0) {
             throw new CompanyException(CompanyException.WEIGHT_ERROR);
+        } else if (interprete.getProducts().containsKey(code)){
+            throw new CompanyException(CompanyException.PRODUCT_REPEAT);
+        } else if (code < 1){
+            throw new CompanyException(CompanyException.PRODUCT_ID_ERROR);
         }
         this.name = name;
         this.code = code;

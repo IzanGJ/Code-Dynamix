@@ -10,6 +10,7 @@ public class Interprete {
     private static Interprete instancia;
     private HashMap<String, CompanyObj> companies;
     private HashMap<String, ProductObj> order;
+    private HashMap<Integer, ProductObj> products;
     codeDynamixDAO dao;
     
     public static Interprete obtenerInstancia() {
@@ -94,4 +95,9 @@ public class Interprete {
         }
         return companies;
     }
+
+    public HashMap<Integer, ProductObj> getProducts() {
+        return products;
+    }
+    
 }
