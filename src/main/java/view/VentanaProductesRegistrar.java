@@ -346,10 +346,32 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
                         break;
 
                     case 1:
-                        new ErgonomicChair(jCheckBoxR3.isSelected(), Integer.parseInt(jSpinnerR2.getValue().toString()), jCheckBoxR4.isSelected(), jTextFieldNombre.getText(), Integer.parseInt(jSpinnerID.getValue().toString()), jTextAreaDescripcion.getText(), Integer.parseInt(jSpinnerPeso.getValue().toString()), newColor.getRGB());
+                        dao.insertChair(new ErgonomicChair(jCheckBoxR3.isSelected(), Integer.parseInt(jSpinnerR2.getValue().toString()), jCheckBoxR4.isSelected(), jTextFieldNombre.getText(), Integer.parseInt(jSpinnerID.getValue().toString()), jTextAreaDescripcion.getText(), Integer.parseInt(jSpinnerPeso.getValue().toString()), newColor.getRGB()));
                         break;
 
                     case 2:
+                        int longitud = 0;
+                        switch (jComboBoxR3.getSelectedIndex()) {
+                            case 0:
+                                longitud = 100;
+                                break;
+                            case 1:
+                                longitud = 80;
+                                break;
+                            case 2:
+                                longitud = 75;
+                                break;
+                            case 3:
+                                longitud = 65;
+                                break;
+                            case 4:
+                                longitud = 60;
+                                break;
+                            case 5:
+                                longitud = 40;
+                                break;
+                        }
+                        dao.insertKeyboard(new ErgonomicKeyboard(jComboBoxR1.getItemAt(jComboBoxR1.getSelectedIndex()), jComboBoxR2.getItemAt(jComboBoxR2.getSelectedIndex()), longitud, jCheckBoxR4.isSelected(), jTextFieldNombre.getText(), Integer.parseInt(jSpinnerID.getValue().toString()), jTextAreaDescripcion.getText(), Integer.parseInt(jSpinnerPeso.getValue().toString()), newColor.getRGB()));
                         break;
 
                     case 3:
@@ -374,7 +396,7 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
         newColor = JColorChooser.showDialog(this,"Selecciona un color",jLabelRGB.getBackground());
         if (newColor != null) {
             jPanelRGB.setBackground(newColor);
-            if (newColor.getRed() < 30 || newColor.getGreen() < 30 || newColor.getBlue() < 30) {
+            if (newColor.getRed() < 50 || newColor.getGreen() < 30 || newColor.getBlue() < 30) {
                 jLabelRGB.setForeground(Color.WHITE);
             } else {
                 jLabelRGB.setForeground(Color.BLACK);

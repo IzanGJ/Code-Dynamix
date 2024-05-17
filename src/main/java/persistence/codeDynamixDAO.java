@@ -208,12 +208,12 @@ public class codeDynamixDAO {
         ps.executeUpdate();
         ps.close();
         
-        ps = c.prepareStatement("insert into chair (ID, type, language, lenght, wireless) values (?,?,?,?,?);");
+        ps = c.prepareStatement("insert into keyboard (ID, type, language, lenght, wireless) values (?,?,?,?,?);");
         
         ps.setInt(1, ky.getCode());
         ps.setString(2, ky.getType());
         ps.setString(3, ky.getLanguage());
-        ps.setString(4, ky.getLanguage());
+        ps.setInt(4, ky.getLenght());
         if (ky.isWireless()) {
             ps.setInt(5, 1);
         } else {
