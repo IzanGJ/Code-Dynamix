@@ -6,12 +6,12 @@ import exceptions.CompanyException;
  *
  * @author loren
  */
-public class ergonomicMouse extends ProductObj {
+public class ErgonomicMouse extends ProductObj {
     private boolean handDexterity;
     private int lateralButtons;
     private boolean wireless;
 
-    public ergonomicMouse(boolean handDexterity, int lateralButtons, boolean wireless, String name, int code, String description, int weight, int color) throws CompanyException {
+    public ErgonomicMouse(boolean handDexterity, int lateralButtons, boolean wireless, String name, int code, String description, int weight, int color) throws CompanyException {
         super(name, code, description, weight, color);
         this.handDexterity = handDexterity;
         this.lateralButtons = lateralButtons;

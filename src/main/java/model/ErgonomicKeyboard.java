@@ -6,13 +6,13 @@ import exceptions.CompanyException;
  *
  * @author loren
  */
-public class ergonomicKeyboard extends ProductObj{
+public class ErgonomicKeyboard extends ProductObj{
     private String type;
     private String language;
     private int lenght;
     private boolean wireless;
 
-    public ergonomicKeyboard(String type, String language, int lenght, boolean wireless, String name, int code, String description, int weight, int color) throws CompanyException {
+    public ErgonomicKeyboard(String type, String language, int lenght, boolean wireless, String name, int code, String description, int weight, int color) throws CompanyException {
         super(name, code, description, weight, color);
         this.type = type;
         this.language = language;

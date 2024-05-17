@@ -5,13 +5,13 @@ import exceptions.CompanyException;
 /**
  * @author loren
  */
-public class ergonomicTable extends ProductObj{
+public class ErgonomicTable extends ProductObj{
     private int wheels;
     private int legs;
     private boolean adjustableHeight;
     private String material;
 
-    public ergonomicTable(int wheels, int legs, boolean adjustableHeight, String material, String name, int code, String description, int weight, int color) throws CompanyException {
+    public ErgonomicTable(int wheels, int legs, boolean adjustableHeight, String material, String name, int code, String description, int weight, int color) throws CompanyException {
         super(name, code, description, weight, color);
         this.wheels = wheels;
         this.legs = legs;
