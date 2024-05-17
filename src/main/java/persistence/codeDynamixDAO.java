@@ -194,6 +194,36 @@ public class codeDynamixDAO {
         desconectar(c);
     }
     
+    
+    public void insertKeyboard(ErgonomicKeyboard ky) throws SQLException {
+        Connection c = conectar();
+        PreparedStatement ps = c.prepareStatement("insert into product (ID, name, description, price, weight, color, type) values (?,?,?,?,?,?,?);");
+        ps.setInt(1, ky.getCode());
+        ps.setString(2, ky.getName());
+        ps.setString(3, ky.getDescription());
+        ps.setFloat(4, ky.getPrice());
+        ps.setInt(5, ky.getWeight());
+        ps.setString(6, String.valueOf(ky.getColor()));
+        ps.setString(7, "keyboard");
+        ps.executeUpdate();
+        ps.close();
+        
+        ps = c.prepareStatement("insert into chair (ID, type, language, lenght, wireless) values (?,?,?,?,?);");
+        
+        ps.setInt(1, ky.getCode());
+        ps.setString(2, ky.getType());
+        ps.setString(3, ky.getLanguage());
+        ps.setString(4, ky.getLanguage());
+        if (ky.isWireless()) {
+            ps.setInt(5, 1);
+        } else {
+            ps.setInt(5, 0);
+        }
+        ps.executeUpdate();
+        ps.close();
+        desconectar(c);
+    }
+    
     /*
     private boolean existCompany(String cif) throws SQLException {
         Connection c = conectar();
