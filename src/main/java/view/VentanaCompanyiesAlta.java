@@ -125,9 +125,7 @@ public class VentanaCompanyiesAlta extends javax.swing.JDialog {
     
     private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
         try {
-//            interprete.registrarEmpresa(jTextFieldNombre.getText(), jTextFieldCif.getText());
-            dao.insertCompany(new CompanyObj(jTextFieldNombre.getText(), jTextFieldCif.getText()));
-            
+            interprete.registrarEmpresa(jTextFieldNombre.getText(), jTextFieldCif.getText());
             JOptionPane.showMessageDialog(this, "L'empresa s'ha donat d'alta correctament");
             this.dispose();
         } catch (CompanyException | SQLException ex) {

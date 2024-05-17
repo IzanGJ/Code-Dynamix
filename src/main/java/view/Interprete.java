@@ -9,8 +9,8 @@ import persistence.codeDynamixDAO;
 public class Interprete {
     private static Interprete instancia;
     private HashMap<String, CompanyObj> companies;
-    private HashMap<String, ProductObj> Order;
-    codeDynamixDAO dao = new codeDynamixDAO();
+    private HashMap<String, ProductObj> order;
+    codeDynamixDAO dao;
     
     public static Interprete obtenerInstancia() {
         if (instancia == null) {
@@ -21,44 +21,32 @@ public class Interprete {
       
     public Interprete() {
         companies = new HashMap<String, CompanyObj>();
-        Order = new HashMap<String, ProductObj>();
+        order = new HashMap<String, ProductObj>();
+        dao = new codeDynamixDAO();
     }
-     
+    
     public void registrarEmpresa(String nombre, String cif) throws CompanyException, SQLException {
-        companies = dao.allCompanies();
-        if (cifEmpty(cif)) {
-            if (nomEmpty(nombre)) {
-                if (esCifValido(cif)) {
-                    if (noExistCompany(cif.toUpperCase())) {
-                        CompanyObj obj = new CompanyObj(nombre, cif.toUpperCase());
-                        companies.put(cif, obj);
-                        dao.insertCompany(obj);
-                    }
-                }
-            }
+        if (existCompany(cif.toUpperCase())) {
+            CompanyObj obj = new CompanyObj(nombre, cif.toUpperCase());
+            dao.insertCompany(obj);
         }
     }   
     
     public void modificarEmpresa(String nombre, String cif, String anterior) throws CompanyException {
-        if (cifEmpty(cif)) {
-            if (nomEmpty(nombre)) {
-                if (esCifValido(cif)) {
-                    if (noExistCompany(cif.toUpperCase())) {
-                        companies.remove(anterior);
-                        companies.put(cif, new CompanyObj(nombre, cif.toUpperCase()));
-                    }
-                }
+        if (esCifValido(cif)) {
+            if (noExistCompany(cif.toUpperCase())) {
+                companies.remove(anterior);
+                companies.put(cif, new CompanyObj(nombre, cif.toUpperCase()));
             }
         }
     }
      
     public void bajaEmpresa(String cif) throws CompanyException {
-        if (cifEmpty(cif)) {
-            if (existCompany(cif)) {
-                companies.remove(cif);
-            }
+        if (existCompany(cif)) {
+            companies.remove(cif);
         }
     }
+    
     
     public boolean esCifValido(String cif) throws CompanyException {
         boolean val = true;
@@ -80,35 +68,30 @@ public class Interprete {
         throw new CompanyException(CompanyException.WRONG_CIF);
     }
     
-    public boolean noExistCompany(String cif) throws CompanyException {
+    
+    public boolean existCompany(String cif) throws CompanyException {
         if (!companies.containsKey(cif)) {
             return true;
         }
         throw new CompanyException(CompanyException.EMPRESA_REPEAT);
     }
     
-    public boolean existCompany(String cif) throws CompanyException {
+    
+    public boolean noExistCompany(String cif) throws CompanyException {
+        companies = getCompanies();
         if (companies.containsKey(cif)) {
             return true;
         }
         throw new CompanyException(CompanyException.EMPRESA_NOT_FOUND);
     }
+         
     
-    public boolean cifEmpty(String cif) throws CompanyException {
-        if(!cif.isEmpty()) {
-            return true;
-        }
-        throw new CompanyException(CompanyException.CIF_EMPTY);
-    }
-    
-    public boolean nomEmpty(String nom) throws CompanyException {
-        if(!nom.isEmpty()) {
-            return true;
-        }
-        throw new CompanyException(CompanyException.NAME_EMPTY);
-    } 
-            
     public HashMap<String, CompanyObj> getCompanies() {
+        try {
+            companies = dao.allCompanies();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
         return companies;
     }
 }
