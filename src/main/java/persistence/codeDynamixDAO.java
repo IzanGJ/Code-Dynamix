@@ -194,6 +194,69 @@ public class codeDynamixDAO {
         desconectar(c);
     }
     
+    
+    public void insertKeyboard(ErgonomicKeyboard ky) throws SQLException {
+        Connection c = conectar();
+        PreparedStatement ps = c.prepareStatement("insert into product (ID, name, description, price, weight, color, type) values (?,?,?,?,?,?,?);");
+        ps.setInt(1, ky.getCode());
+        ps.setString(2, ky.getName());
+        ps.setString(3, ky.getDescription());
+        ps.setFloat(4, ky.getPrice());
+        ps.setInt(5, ky.getWeight());
+        ps.setString(6, String.valueOf(ky.getColor()));
+        ps.setString(7, "keyboard");
+        ps.executeUpdate();
+        ps.close();
+        
+        ps = c.prepareStatement("insert into chair (ID, type, language, lenght, wireless) values (?,?,?,?,?);");
+        
+        ps.setInt(1, ky.getCode());
+        ps.setString(2, ky.getType());
+        ps.setString(3, ky.getLanguage());
+        ps.setString(4, ky.getLanguage());
+        if (ky.isWireless()) {
+            ps.setInt(5, 1);
+        } else {
+            ps.setInt(5, 0);
+        }
+        ps.executeUpdate();
+        ps.close();
+        desconectar(c);
+    }
+    
+    
+    public void insertMouse(ErgonomicMouse ms) throws SQLException {
+        Connection c = conectar();
+        PreparedStatement ps = c.prepareStatement("insert into product (ID, name, description, price, weight, color, type) values (?,?,?,?,?,?,?);");
+        ps.setInt(1, ms.getCode());
+        ps.setString(2, ms.getName());
+        ps.setString(3, ms.getDescription());
+        ps.setFloat(4, ms.getPrice());
+        ps.setInt(5, ms.getWeight());
+        ps.setString(6, String.valueOf(ms.getColor()));
+        ps.setString(7, "mouse");
+        ps.executeUpdate();
+        ps.close();
+        
+        ps = c.prepareStatement("insert into mouse (ID, handDexterity, lateralButtons, wireless) values (?,?,?,?);");
+        
+        ps.setInt(1, ms.getCode());
+        if (ms.isHandDexterity()) {
+            ps.setInt(2, 1);
+        } else {
+            ps.setInt(2, 0);
+        }
+        ps.setInt(3, ms.getLateralButtons());
+        if (ms.isWireless()) {
+            ps.setInt(4, 1);
+        } else {
+            ps.setInt(4, 0);
+        }
+        ps.executeUpdate();
+        ps.close();
+        desconectar(c);
+    }
+    
     /*
     private boolean existCompany(String cif) throws SQLException {
         Connection c = conectar();
