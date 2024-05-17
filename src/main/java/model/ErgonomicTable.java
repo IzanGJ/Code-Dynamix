@@ -13,6 +13,11 @@ public class ErgonomicTable extends ProductObj{
 
     public ErgonomicTable(int wheels, int legs, boolean adjustableHeight, String material, String name, int code, String description, int weight, int color) throws CompanyException {
         super(name, code, description, weight, color);
+        if (wheels < 0) {
+            throw new CompanyException(CompanyException.WHEELS_ERROR);
+        } else if (legs < 0) {
+            throw new CompanyException(CompanyException.TABLE_LEGS_ERROR);
+        }
         this.wheels = wheels;
         this.legs = legs;
         this.adjustableHeight = adjustableHeight;
