@@ -87,17 +87,20 @@ public class codeDynamixDAO {
         ps.executeUpdate();
         ps.close();
         
-        ps = c.prepareStatement("insert into chair (ID, wheels, legs, adjutableHeight, material) values (?,?,?,?,?);");
+        ps = c.prepareStatement("insert into chair (ID, backrest, wheels, armrest) values (?,?,?,?);");
         
         ps.setInt(1, ch.getCode());
-        ps.setInt(2, ch.getWheels());
-        ps.setInt(3, ch.getLegs());
-        if (t.isAdjustableHeight()) {
+        if (ch.isBackrest()) {
+            ps.setInt(2, 1);
+        } else {
+            ps.setInt(2, 0);
+        }
+        ps.setInt(3, ch.getWheels());
+        if (ch.isArmrest()) {
             ps.setInt(4, 1);
         } else {
             ps.setInt(4, 0);
         }
-        ps.setString(5, ch.getMaterial());
         ps.executeUpdate();
         ps.close();
         desconectar(c);
