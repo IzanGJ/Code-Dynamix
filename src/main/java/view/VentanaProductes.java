@@ -201,7 +201,7 @@ public class VentanaProductes extends javax.swing.JDialog {
             VentanaCompanyiesModificar dialog = new VentanaCompanyiesModificar(new javax.swing.JFrame(), true); 
             dialog.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(this, "Encara no hi han empreses registrades");
+            JOptionPane.showMessageDialog(this, "Encara no hi ha productes registrats");
         }
     }//GEN-LAST:event_jButtonModificarActionPerformed
 
