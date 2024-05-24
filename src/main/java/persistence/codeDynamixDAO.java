@@ -11,10 +11,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import model.*;
 
-
 public class codeDynamixDAO {
     
-    public HashMap<String, CompanyObj> allCompanies() throws SQLException {
+    public HashMap<String, CompanyObj> allCompanies() throws SQLException, CompanyException {
         Connection c = conectar();
         HashMap<String, CompanyObj> companies = new HashMap<>();
         String query = "select * from company;";
@@ -35,24 +34,23 @@ public class codeDynamixDAO {
         return companies;
     }
     
-    
-    public void insertCompany(CompanyObj p) throws SQLException {
+    public void insertCompany(CompanyObj co) throws SQLException, CompanyException {
+        if (existCompany(co.getCif())) {
+            throw new CompanyException(CompanyException.EMPRESA_REPEAT);
+        }
         Connection c = conectar();
         PreparedStatement ps = c.prepareStatement("insert into company values (?,?);");
-        ps.setString(1, p.getCif());
-        ps.setString(2, p.getNombre());
+        ps.setString(1, co.getCif());
+        ps.setString(2, co.getNombre());
         ps.executeUpdate();
         ps.close();
         desconectar(c);
     }
     
-    
-    
-    
     public HashMap<Integer, ProductObj> allProducts() throws SQLException {
         Connection c = conectar();
         HashMap<Integer, ProductObj> products = new HashMap<>();
-        String query = "SELECT product.*, keyboard.type AS kb_type, keyboard.language AS kb_language, keyboard.lenght AS kb_lenght, keyboard.wireless AS kb_wireless, chair.backrest AS ch_backrest, chair.	wheels AS ch_wheels, chair.armrest AS ch_armrest, mouse.handDexterity AS ms_handDexterity, mouse.lateralButtons AS ms_lateralButtons, mouse.wireless AS ms_wireless, taula.wheels AS tb_wheels, taula.legs AS tb_legs, taula.adjutableHeight AS tb_djutableHeight, taula.material AS tb_material from product\n" +
+        String query = "SELECT product.*, keyboard.type AS kb_type, keyboard.language AS kb_language, keyboard.lenght AS kb_lenght, keyboard.wireless AS kb_wireless, chair.backrest AS ch_backrest, chair.wheels AS ch_wheels, chair.armrest AS ch_armrest, mouse.handDexterity AS ms_handDexterity, mouse.lateralButtons AS ms_lateralButtons, mouse.wireless AS ms_wireless, taula.wheels AS tb_wheels, taula.legs AS tb_legs, taula.adjutableHeight AS tb_djutableHeight, taula.material AS tb_material from product\n" +
                         "JOIN keyboard ON keyboard.ID = product.ID\n" +
                         "JOIN chair ON chair.ID = product.ID\n" +
                         "JOIN mouse ON mouse.ID = product.ID\n" +
@@ -128,9 +126,6 @@ public class codeDynamixDAO {
         desconectar(c);
         return products;
     }
-    
-    
-    
     
     public void insertTable(ErgonomicTable t) throws SQLException {
         Connection c = conectar();
@@ -257,7 +252,7 @@ public class codeDynamixDAO {
         desconectar(c);
     }
     
-    /*
+    
     private boolean existCompany(String cif) throws SQLException {
         Connection c = conectar();
         Statement st = c.createStatement();
@@ -270,11 +265,9 @@ public class codeDynamixDAO {
         rs.close();
         st.close();
         desconectar(c);
-        return existe;
-        
+        return existe;  
     }
-*/
-    
+
     private Connection conectar() throws SQLException {
     String url = "jdbc:mysql://localhost:3306/erp-compras";
     String user = "root";

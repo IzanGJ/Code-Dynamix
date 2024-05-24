@@ -47,8 +47,7 @@ public class Interprete {
             companies.remove(cif);
         }
     }
-    
-    
+     
     public boolean esCifValido(String cif) throws CompanyException {
         boolean val = true;
         if (cif != null && cif.length() == 9) {
