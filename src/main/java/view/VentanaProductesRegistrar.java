@@ -337,7 +337,7 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
     
     private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
         if (jComboBox.getItemAt(0).equals("Selecciona un tipus...")) {
-            jLabelAlertas.setText("*Has de seleccionar un tipus de producte");
+            jLabelAlertas.setText("*Has de seleccionar un tipus de producte*");
         } else {
             try {
                 switch (jComboBox.getSelectedIndex()) {
@@ -430,7 +430,7 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
                 
                 jComboBoxR3.removeAllItems();
                 jComboBoxR3.addItem("Fusta");
-                jComboBoxR3.addItem("Plástic");
+                jComboBoxR3.addItem("Plàstic");
                 jComboBoxR3.addItem("Alumini");
                 jComboBoxR3.addItem("Metall");
                 break;

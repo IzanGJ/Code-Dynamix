@@ -198,7 +198,7 @@ public class VentanaCompanyies extends javax.swing.JDialog {
             VentanaCompanyiesMostrar dialog = new VentanaCompanyiesMostrar(new javax.swing.JFrame(), true); 
             dialog.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(this, "Encara no hi han empreses registrades");
+            JOptionPane.showMessageDialog(this, "Encara no hi ha empreses registrades");
         }
         
     }//GEN-LAST:event_jButtonMostrarActionPerformed
@@ -208,7 +208,7 @@ public class VentanaCompanyies extends javax.swing.JDialog {
             VentanaCompanyiesModificar dialog = new VentanaCompanyiesModificar(new javax.swing.JFrame(), true); 
             dialog.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(this, "Encara no hi han empreses registrades");
+            JOptionPane.showMessageDialog(this, "Encara no hi ha empreses registrades");
         }
     }//GEN-LAST:event_jButtonModificarActionPerformed
 
