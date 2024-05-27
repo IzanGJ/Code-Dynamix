@@ -1,5 +1,7 @@
 package view;
 
+import exceptions.CompanyException;
+import java.sql.SQLException;
 import java.util.HashMap;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -20,7 +22,7 @@ public class VentanaCompanyiesMostrar extends javax.swing.JDialog {
         setIconImage(img.getImage());
         try {
             companies = dao.allCompanies();
-        } catch (Exception ex) {
+        } catch (CompanyException | SQLException ex) {
             System.out.println(ex.getMessage());
         }
         

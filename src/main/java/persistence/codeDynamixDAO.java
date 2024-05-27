@@ -24,7 +24,7 @@ public class codeDynamixDAO {
             String nom = rs.getString("name");
             try {
                 companies.put(cif, new CompanyObj(nom, cif));
-            } catch (Exception ex) {
+            } catch (CompanyException ex) {
                 System.out.println(ex.getMessage());
             }
         }
@@ -58,7 +58,7 @@ public class codeDynamixDAO {
         desconectar(c);
     }
     
-    public void updateTasca(String cif, String name) throws SQLException, CompanyException {
+    public void updateCompany(String cif, String name) throws SQLException, CompanyException {
         if (!existCompany(cif)) {
             throw new CompanyException(CompanyException.EMPRESA_NOT_FOUND);
         }

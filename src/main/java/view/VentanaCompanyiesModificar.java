@@ -3,6 +3,8 @@ package view;
 import exceptions.CompanyException;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.CompanyObj;
@@ -10,21 +12,22 @@ import persistence.codeDynamixDAO;
 
 public class VentanaCompanyiesModificar extends javax.swing.JDialog {
     Interprete interprete;
-    HashMap<String, CompanyObj> companies;
     codeDynamixDAO dao = new codeDynamixDAO();
 
-    public VentanaCompanyiesModificar(java.awt.Frame parent, boolean modal) throws CompanyException, SQLException {
+    public VentanaCompanyiesModificar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         interprete = Interprete.obtenerInstancia();
-        companies = dao.allCompanies();
         initComponents();
         ImageIcon img = new ImageIcon("src\\main\\java\\images\\icon.png");
         setIconImage(img.getImage());
         jComboBox.removeAllItems();
         jComboBox.addItem("Selecciona una empresa...");
-        
-        for (String clave : companies.keySet()) {
-            jComboBox.addItem(clave);
+        try {
+            for (String clave : dao.allCompanies().keySet()) {
+                jComboBox.addItem(clave);
+            }
+        } catch (CompanyException | SQLException ex) {
+            System.out.println(ex.getMessage());
         }
     }
 
@@ -202,8 +205,12 @@ public class VentanaCompanyiesModificar extends javax.swing.JDialog {
     }//GEN-LAST:event_jComboBoxActionPerformed
 
     private void jComboBoxPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxPopupMenuWillBecomeInvisible
-        jTextFieldNombre.setText(companies.get(jComboBox.getSelectedItem()).getNombre());
-        jLabelCif.setText(companies.get(jComboBox.getSelectedItem()).getCif());
+        try {
+            jTextFieldNombre.setText(dao.allCompanies().get(jComboBox.getSelectedItem()).getNombre());
+            jLabelCif.setText(dao.allCompanies().get(jComboBox.getSelectedItem()).getCif());
+        } catch (CompanyException | SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }//GEN-LAST:event_jComboBoxPopupMenuWillBecomeInvisible
 
     private void jComboBoxPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxPopupMenuWillBecomeVisible
@@ -215,10 +222,10 @@ public class VentanaCompanyiesModificar extends javax.swing.JDialog {
 
     private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
         try {
-            interprete.modificarEmpresa(jTextFieldNombre.getText(), jLabelCif.getText(), companies.get(jComboBox.getSelectedItem()).getCif());
+            dao.updateCompany(dao.allCompanies().get(jComboBox.getSelectedItem()).getCif(), jTextFieldNombre.getText());
             JOptionPane.showMessageDialog(this, "L'empresa s'ha modificat correctament");
             this.dispose();
-        } catch (CompanyException ex) {
+        } catch (CompanyException | SQLException ex) {
             jLabelError.setText(ex.getMessage());
         }
     }//GEN-LAST:event_jButtonConfirmarActionPerformed

@@ -1,5 +1,7 @@
 package view;
 
+import exceptions.CompanyException;
+import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import persistence.codeDynamixDAO;
@@ -195,22 +197,29 @@ public class VentanaCompanyies extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonVolverActionPerformed
 
     private void jButtonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMostrarActionPerformed
-        
-        if (!dao.allCompanies().isEmpty()) {
-            VentanaCompanyiesMostrar dialog = new VentanaCompanyiesMostrar(new javax.swing.JFrame(), true); 
-            dialog.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(this, "Encara no hi ha empreses registrades");
+        try {
+            if (!dao.allCompanies().isEmpty()) {
+                VentanaCompanyiesMostrar dialog = new VentanaCompanyiesMostrar(new javax.swing.JFrame(), true); 
+                dialog.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Encara no hi ha empreses registrades");
+            }
+        } catch (CompanyException | SQLException ex) {
+            System.out.println(ex.getMessage());
         }
         
     }//GEN-LAST:event_jButtonMostrarActionPerformed
 
     private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
-        if (!dao.allCompanies().isEmpty()) {
-            VentanaCompanyiesModificar dialog = new VentanaCompanyiesModificar(new javax.swing.JFrame(), true); 
-            dialog.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(this, "Encara no hi ha empreses registrades");
+        try {
+            if (!dao.allCompanies().isEmpty()) {
+                VentanaCompanyiesModificar dialog = new VentanaCompanyiesModificar(new javax.swing.JFrame(), true); 
+                dialog.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Encara no hi ha empreses registrades");
+            }
+        } catch (CompanyException | SQLException ex) {
+            System.out.println(ex.getMessage());
         }
     }//GEN-LAST:event_jButtonModificarActionPerformed
 
