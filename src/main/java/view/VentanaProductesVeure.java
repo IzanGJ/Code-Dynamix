@@ -1,26 +1,37 @@
 package view;
 
+import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.*;
+import persistence.codeDynamixDAO;
 
 public class VentanaProductesVeure extends javax.swing.JDialog {
     Interprete interprete;
-    HashMap<String, CompanyObj> companies;
+    codeDynamixDAO dao;
+    HashMap<Integer, ProductObj> products;
 
     public VentanaProductesVeure(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         interprete = Interprete.obtenerInstancia();
-        companies = interprete.getCompanies();
+        dao = new codeDynamixDAO();
+        try {
+            products = dao.allProducts();
+        } catch (SQLException ex) {
+            Logger.getLogger(VentanaProductesVeure.class.getName()).log(Level.SEVERE, null, ex);
+        }
         initComponents();
         ImageIcon img = new ImageIcon("src\\main\\java\\images\\icon.png");
         setIconImage(img.getImage());
         jComboBox.removeAllItems();
-        jComboBox.addItem("Selecciona una empresa...");
-        for (String clave : companies.keySet()) {
-            jComboBox.addItem(clave);
+        jComboBox.addItem("Selecciona un producte...");
+        for (int clave : products.keySet()) {
+            jComboBox.addItem(String.valueOf(clave));
         }
+        
     }
 
     
@@ -268,9 +279,7 @@ public class VentanaProductesVeure extends javax.swing.JDialog {
 
     private void jComboBoxPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxPopupMenuWillBecomeInvisible
         if (jComboBox.getSelectedItem() != null) {
-            jLabelNombre.setText(companies.get(jComboBox.getSelectedItem()).getNombre());
-            jLabelCodi.setText(companies.get(jComboBox.getSelectedItem()).getCif());
-            jLabelDescripcio.setText("0");
+            
         }
     }//GEN-LAST:event_jComboBoxPopupMenuWillBecomeInvisible
 
