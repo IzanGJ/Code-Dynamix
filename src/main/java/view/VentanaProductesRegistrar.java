@@ -474,7 +474,7 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
             case 3:
                 jLabelR1.setText("");
                 jLabelR2.setText("Botons laterals:"); //int
-                jLabelR3.setText("Mà:"); //boolean
+                jLabelR3.setText("Dretà:"); //boolean
                 jLabelR4.setText("Sense fil:"); //boolean
                 jCheckBoxR3.setVisible(true);
                 jCheckBoxR4.setVisible(true);
