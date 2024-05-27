@@ -24,7 +24,7 @@ public class codeDynamixDAO {
             String nom = rs.getString("name");
             try {
                 companies.put(cif, new CompanyObj(nom, cif));
-            } catch (Exception ex) {
+            } catch (CompanyException ex) {
                 System.out.println(ex.getMessage());
             }
         }
@@ -53,6 +53,17 @@ public class codeDynamixDAO {
         }
         Connection c = conectar();
         PreparedStatement ps = c.prepareStatement("DELETE FROM user WHERE username = '" + company.getCif() + "';");
+        ps.executeUpdate();
+        ps.close();
+        desconectar(c);
+    }
+    
+    public void updateCompany(String cif, String name) throws SQLException, CompanyException {
+        if (!existCompany(cif)) {
+            throw new CompanyException(CompanyException.EMPRESA_NOT_FOUND);
+        }
+        Connection c = conectar();
+        PreparedStatement ps = c.prepareStatement("update company set name = '" + name + "' WHERE CIF = '" + cif + "';");
         ps.executeUpdate();
         ps.close();
         desconectar(c);
