@@ -1,14 +1,18 @@
 package view;
 
+import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import persistence.codeDynamixDAO;
 
 public class VentanaProductes extends javax.swing.JDialog {
     Interprete interprete;
+    codeDynamixDAO dao;
 
     public VentanaProductes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         interprete = Interprete.obtenerInstancia();
+        dao = new codeDynamixDAO();
         initComponents();
         ImageIcon img = new ImageIcon("src\\main\\java\\images\\icon.png");
         setIconImage(img.getImage());
@@ -179,8 +183,19 @@ public class VentanaProductes extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonVolverActionPerformed
 
     private void jButtonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMostrarActionPerformed
-        VentanaProductesVeure dialog = new VentanaProductesVeure(new javax.swing.JFrame(), true);
-        dialog.setVisible(true);
+        try {
+            if (!dao.allProducts().isEmpty()) {
+                VentanaProductesVeure dialog = new VentanaProductesVeure(new javax.swing.JFrame(), true);
+            dialog.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Encara no hi han productes registrats");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        
+        
     }//GEN-LAST:event_jButtonMostrarActionPerformed
 
     /**
