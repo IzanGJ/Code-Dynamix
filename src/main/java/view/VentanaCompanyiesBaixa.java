@@ -4,13 +4,14 @@ import exceptions.CompanyException;
 import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import model.CompanyObj;
+import persistence.codeDynamixDAO;
 
 public class VentanaCompanyiesBaixa extends javax.swing.JDialog {
-    Interprete interprete;
+    codeDynamixDAO dao = new codeDynamixDAO();
 
     public VentanaCompanyiesBaixa(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        interprete = Interprete.obtenerInstancia();
         initComponents();
         ImageIcon img = new ImageIcon("src\\main\\java\\images\\icon.png");
         setIconImage(img.getImage());
@@ -104,10 +105,9 @@ public class VentanaCompanyiesBaixa extends javax.swing.JDialog {
     
     private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
         try {
-            
             int confirm = JOptionPane.showConfirmDialog(this, "Segur que vols donar aquesta empresa de baixa?", "Confirmació", JOptionPane.YES_NO_OPTION);
             if (confirm == JOptionPane.YES_OPTION) {
-                interprete.bajaEmpresa(jTextFieldCif.getText());
+                dao.remCompany(new CompanyObj(jTextFieldCif.getText()));
                 JOptionPane.showMessageDialog(this, "L'empresa s'ha donat de baixa correctament!", "", 1);
                 this.dispose();
             }

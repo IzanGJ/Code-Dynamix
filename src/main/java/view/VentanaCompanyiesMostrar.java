@@ -10,13 +10,12 @@ import persistence.codeDynamixDAO;
 
 public class VentanaCompanyiesMostrar extends javax.swing.JDialog {
     Interprete interprete;
-    codeDynamixDAO dao;
+    codeDynamixDAO dao = new codeDynamixDAO();;
     HashMap<String, CompanyObj> companies;
 
     public VentanaCompanyiesMostrar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         interprete = Interprete.obtenerInstancia();
-        dao = new codeDynamixDAO();
         initComponents();
         ImageIcon img = new ImageIcon("src\\main\\java\\images\\icon.png");
         setIconImage(img.getImage());

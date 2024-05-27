@@ -1,13 +1,11 @@
 package model;
 
 import exceptions.CompanyException;
-import view.Interprete;
 
 public class CompanyObj {
     private String name;
     private String cif;
-    private Interprete interprete = new Interprete();
-
+    
     public CompanyObj(String name, String cif) throws CompanyException {
         if(esCifValido(cif)) {
             this.name = name;

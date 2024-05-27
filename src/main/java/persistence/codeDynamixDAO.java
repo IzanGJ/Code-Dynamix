@@ -34,25 +34,28 @@ public class codeDynamixDAO {
         return companies;
     }
     
-    public void insertCompany(CompanyObj co) throws SQLException, CompanyException {
-        if (existCompany(co.getCif())) {
+    public void insertCompany(CompanyObj comp) throws SQLException, CompanyException {
+        if (existCompany(comp.getCif())) {
             throw new CompanyException(CompanyException.EMPRESA_REPEAT);
         }
         Connection c = conectar();
         PreparedStatement ps = c.prepareStatement("insert into company values (?,?);");
-        ps.setString(1, co.getCif());
-        ps.setString(2, co.getNombre());
+        ps.setString(1, comp.getCif());
+        ps.setString(2, comp.getNombre());
         ps.executeUpdate();
         ps.close();
         desconectar(c);
     }
     
-    public void remCompany(CompanyObj company) throws SQLException, CompanyException {
-        if(!getCompanyReceipt(company).isEmpty()) {
+    public void remCompany(CompanyObj comp) throws SQLException, CompanyException {
+        if (!existCompany(comp.getCif())) {
+            throw new CompanyException(CompanyException.EMPRESA_NOT_FOUND);
+        }
+        if(!getCompanyReceipt(comp).isEmpty()) {
             throw new CompanyException(CompanyException.COMPANY_RECEIPT);
         }
         Connection c = conectar();
-        PreparedStatement ps = c.prepareStatement("DELETE FROM user WHERE username = '" + company.getCif() + "';");
+        PreparedStatement ps = c.prepareStatement("DELETE FROM company WHERE CIF LIKE 'B34648909';");
         ps.executeUpdate();
         ps.close();
         desconectar(c);
@@ -295,7 +298,7 @@ public class codeDynamixDAO {
     private boolean existCompany(String cif) throws SQLException {
         Connection c = conectar();
         Statement st = c.createStatement();
-        String query = "select * from company where CIF = '" + cif + "';";
+        String query = "select * from company where CIF LIKE 'B34648909';";
         ResultSet rs = st.executeQuery(query);
         boolean existe = false;
         if (rs.next()) {
