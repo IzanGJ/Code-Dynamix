@@ -5,15 +5,17 @@ import java.util.HashMap;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.CompanyObj;
+import persistence.codeDynamixDAO;
 
 public class VentanaCompanyiesModificar extends javax.swing.JDialog {
     Interprete interprete;
     HashMap<String, CompanyObj> companies;
+    codeDynamixDAO dao = new codeDynamixDAO();
 
     public VentanaCompanyiesModificar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         interprete = Interprete.obtenerInstancia();
-        companies = interprete.getCompanies();
+        companies = dao.allCompanies();
         initComponents();
         ImageIcon img = new ImageIcon("src\\main\\java\\images\\icon.png");
         setIconImage(img.getImage());

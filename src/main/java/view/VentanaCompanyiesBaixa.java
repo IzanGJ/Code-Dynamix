@@ -1,6 +1,7 @@
 package view;
 
 import exceptions.CompanyException;
+import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -112,6 +113,8 @@ public class VentanaCompanyiesBaixa extends javax.swing.JDialog {
             }
         } catch (CompanyException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
         }
 
         

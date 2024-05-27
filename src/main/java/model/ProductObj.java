@@ -2,7 +2,6 @@ package model;
 
 import view.Interprete;
 import exceptions.*;
-import java.sql.SQLException;
 import persistence.codeDynamixDAO;
 
 public abstract class ProductObj {
@@ -12,21 +11,17 @@ public abstract class ProductObj {
     private float price;
     private int weight;
     private int color;
+    
+    codeDynamixDAO dao;
 
     public ProductObj(String name, int code, String description, int weight, int color) throws CompanyException {
         Interprete interprete;
         interprete = Interprete.obtenerInstancia();
-        codeDynamixDAO dao = new codeDynamixDAO();
-        try {
-            if (weight <= 0) {
-                throw new CompanyException(CompanyException.WEIGHT_ERROR);
-            } else if (dao.allProducts().containsKey(code)){
-                throw new CompanyException(CompanyException.PRODUCT_REPEAT);
-            } else if (code < 1){
-                throw new CompanyException(CompanyException.PRODUCT_ID_ERROR);
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex);
+        if (weight <= 0) {
+            throw new CompanyException(CompanyException.WEIGHT_ERROR);
+        } 
+        if (code < 1){
+            throw new CompanyException(CompanyException.PRODUCT_ID_ERROR);
         }
         
         this.name = name;

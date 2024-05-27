@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import model.*;
 
-
 public class codeDynamixDAO {
     
     public HashMap<String, CompanyObj> allCompanies() throws SQLException {
@@ -35,24 +34,55 @@ public class codeDynamixDAO {
         return companies;
     }
     
-    
-    public void insertCompany(CompanyObj p) throws SQLException {
+    public void insertCompany(CompanyObj co) throws SQLException, CompanyException {
+        if (existCompany(co.getCif())) {
+            throw new CompanyException(CompanyException.EMPRESA_REPEAT);
+        }
         Connection c = conectar();
         PreparedStatement ps = c.prepareStatement("insert into company values (?,?);");
-        ps.setString(1, p.getCif());
-        ps.setString(2, p.getNombre());
+        ps.setString(1, co.getCif());
+        ps.setString(2, co.getNombre());
         ps.executeUpdate();
         ps.close();
         desconectar(c);
     }
     
+    public void remCompany(CompanyObj company) throws SQLException, CompanyException {
+        if(!getCompanyReceipt(company).isEmpty()) {
+            throw new CompanyException(CompanyException.COMPANY_RECEIPT);
+        }
+        Connection c = conectar();
+        PreparedStatement ps = c.prepareStatement("DELETE FROM user WHERE username = '" + company.getCif() + "';");
+        ps.executeUpdate();
+        ps.close();
+        desconectar(c);
+    }
     
-    
+    private HashMap<String,OrderObj> getCompanyReceipt(CompanyObj comp) throws SQLException, CompanyException {
+        Connection c = conectar();
+        Statement st = c.createStatement();
+        String query = "SELECT * FROM company AS a JOIN delivery_note AS b ON a.CIF = b.company_ID JOIN delivery_note_prod AS c ON b.delivery_ID = c.delivery_ID WHERE  = '" + comp.getCif() + "';";
+        ResultSet rs = st.executeQuery(query);
+        HashMap<String,OrderObj> receipt = new HashMap<String,OrderObj>();
+        while (rs.next()) {
+            ArrayList<ProductObj> productes = new ArrayList<ProductObj>();
+            String id = rs.getString("delivery_ID");
+            String cif = rs.getString("username");
+            String compName = rs.getString("title");
+            String content = rs.getString("content");
+            Boolean done = rs.getBoolean("done");
+            receipt.put(id, new OrderObj(new CompanyObj(cif, compName), productes));
+        }
+        rs.close();
+        st.close();
+        desconectar(c);
+        return receipt;
+    }
     
     public HashMap<Integer, ProductObj> allProducts() throws SQLException {
         Connection c = conectar();
         HashMap<Integer, ProductObj> products = new HashMap<>();
-        String query = "SELECT product.*, keyboard.type AS kb_type, keyboard.language AS kb_language, keyboard.lenght AS kb_lenght, keyboard.wireless AS kb_wireless, chair.backrest AS ch_backrest, chair.	wheels AS ch_wheels, chair.armrest AS ch_armrest, mouse.handDexterity AS ms_handDexterity, mouse.lateralButtons AS ms_lateralButtons, mouse.wireless AS ms_wireless, taula.wheels AS tb_wheels, taula.legs AS tb_legs, taula.adjutableHeight AS tb_djutableHeight, taula.material AS tb_material from product\n" +
+        String query = "SELECT product.*, keyboard.type AS kb_type, keyboard.language AS kb_language, keyboard.lenght AS kb_lenght, keyboard.wireless AS kb_wireless, chair.backrest AS ch_backrest, chair.wheels AS ch_wheels, chair.armrest AS ch_armrest, mouse.handDexterity AS ms_handDexterity, mouse.lateralButtons AS ms_lateralButtons, mouse.wireless AS ms_wireless, taula.wheels AS tb_wheels, taula.legs AS tb_legs, taula.adjutableHeight AS tb_djutableHeight, taula.material AS tb_material from product\n" +
                         "JOIN keyboard ON keyboard.ID = product.ID\n" +
                         "JOIN chair ON chair.ID = product.ID\n" +
                         "JOIN mouse ON mouse.ID = product.ID\n" +
@@ -129,9 +159,6 @@ public class codeDynamixDAO {
         return products;
     }
     
-    
-    
-    
     public void insertTable(ErgonomicTable t) throws SQLException {
         Connection c = conectar();
         PreparedStatement ps = c.prepareStatement("insert into product (ID, name, description, price, weight, color, type) values (?,?,?,?,?,?,?);");
@@ -160,7 +187,6 @@ public class codeDynamixDAO {
         ps.close();
         desconectar(c);
     }
-    
     
     public void insertChair(ErgonomicChair ch) throws SQLException {
         Connection c = conectar();
@@ -194,7 +220,6 @@ public class codeDynamixDAO {
         desconectar(c);
     }
     
-    
     public void insertKeyboard(ErgonomicKeyboard ky) throws SQLException {
         Connection c = conectar();
         PreparedStatement ps = c.prepareStatement("insert into product (ID, name, description, price, weight, color, type) values (?,?,?,?,?,?,?);");
@@ -223,7 +248,6 @@ public class codeDynamixDAO {
         ps.close();
         desconectar(c);
     }
-    
     
     public void insertMouse(ErgonomicMouse ms) throws SQLException {
         Connection c = conectar();
@@ -257,7 +281,6 @@ public class codeDynamixDAO {
         desconectar(c);
     }
     
-    /*
     private boolean existCompany(String cif) throws SQLException {
         Connection c = conectar();
         Statement st = c.createStatement();
@@ -270,11 +293,24 @@ public class codeDynamixDAO {
         rs.close();
         st.close();
         desconectar(c);
-        return existe;
-        
+        return existe;  
     }
-*/
     
+    private boolean existProduct(int id) throws SQLException {
+        Connection c = conectar();
+        Statement st = c.createStatement();
+        String query = "select * from product where ID = '" + id + "';";
+        ResultSet rs = st.executeQuery(query);
+        boolean existe = false;
+        if (rs.next()) {
+            existe = true;
+        }
+        rs.close();
+        st.close();
+        desconectar(c);
+        return existe;  
+    }
+
     private Connection conectar() throws SQLException {
     String url = "jdbc:mysql://localhost:3306/erp-compras";
     String user = "root";

@@ -2,9 +2,11 @@ package view;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import persistence.codeDynamixDAO;
 
 public class VentanaCompanyies extends javax.swing.JDialog {
     Interprete interprete;
+    codeDynamixDAO dao;
 
     public VentanaCompanyies(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -194,7 +196,7 @@ public class VentanaCompanyies extends javax.swing.JDialog {
 
     private void jButtonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMostrarActionPerformed
         
-        if (!interprete.getCompanies().isEmpty()) {
+        if (!dao.allCompanies().isEmpty()) {
             VentanaCompanyiesMostrar dialog = new VentanaCompanyiesMostrar(new javax.swing.JFrame(), true); 
             dialog.setVisible(true);
         } else {
@@ -204,7 +206,7 @@ public class VentanaCompanyies extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonMostrarActionPerformed
 
     private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
-        if (!interprete.getCompanies().isEmpty()) {
+        if (!dao.allCompanies().isEmpty()) {
             VentanaCompanyiesModificar dialog = new VentanaCompanyiesModificar(new javax.swing.JFrame(), true); 
             dialog.setVisible(true);
         } else {
