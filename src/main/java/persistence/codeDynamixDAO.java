@@ -13,7 +13,7 @@ import model.*;
 
 public class codeDynamixDAO {
     
-    public HashMap<String, CompanyObj> allCompanies() throws SQLException {
+    public HashMap<String, CompanyObj> allCompanies() throws SQLException, CompanyException {
         Connection c = conectar();
         HashMap<String, CompanyObj> companies = new HashMap<>();
         String query = "select * from company;";
