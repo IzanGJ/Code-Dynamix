@@ -202,7 +202,7 @@ public class VentanaCompanyiesModificar extends javax.swing.JDialog {
 
     private void jComboBoxPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxPopupMenuWillBecomeInvisible
         jTextFieldNombre.setText(companies.get(jComboBox.getSelectedItem()).getNombre());
-        jTextFieldCif.setText(companies.get(jComboBox.getSelectedItem()).getCif());
+        jLabelCif.setText(companies.get(jComboBox.getSelectedItem()).getCif());
     }//GEN-LAST:event_jComboBoxPopupMenuWillBecomeInvisible
 
     private void jComboBoxPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxPopupMenuWillBecomeVisible
