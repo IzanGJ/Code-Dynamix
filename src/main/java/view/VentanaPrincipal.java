@@ -170,7 +170,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCompaniaActionPerformed
 
     private void jButtonComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonComprarActionPerformed
-        VentanaCompras dialog = new VentanaCompras(new javax.swing.JFrame(), true);
+        VentanaComprar dialog = new VentanaComprar(new javax.swing.JFrame(), true);
         dialog.setVisible(true);
     }//GEN-LAST:event_jButtonComprarActionPerformed
 

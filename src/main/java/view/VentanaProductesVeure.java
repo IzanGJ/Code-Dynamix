@@ -21,7 +21,7 @@ public class VentanaProductesVeure extends javax.swing.JDialog {
         try {
             products = dao.allProducts();
         } catch (SQLException ex) {
-            Logger.getLogger(VentanaProductesVeure.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
         initComponents();
         ImageIcon img = new ImageIcon("src\\main\\java\\images\\icon.png");

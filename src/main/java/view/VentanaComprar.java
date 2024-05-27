@@ -21,7 +21,7 @@ public class VentanaComprar extends javax.swing.JDialog {
         try {
             products = dao.allProducts();
         } catch (SQLException ex) {
-            Logger.getLogger(VentanaComprar.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
         initComponents();
         ImageIcon img = new ImageIcon("src\\main\\java\\images\\icon.png");
@@ -40,7 +40,7 @@ public class VentanaComprar extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
+        jLabelTitulo = new javax.swing.JLabel();
         jLabelProducto = new javax.swing.JLabel();
         jButtonVolver = new javax.swing.JButton();
         jComboBoxProducto = new javax.swing.JComboBox<>();
@@ -54,13 +54,15 @@ public class VentanaComprar extends javax.swing.JDialog {
         jLabelPrecio = new javax.swing.JLabel();
         jSpinnerPrecio = new javax.swing.JSpinner();
         jLabel6 = new javax.swing.JLabel();
+        jLabelTotal = new javax.swing.JLabel();
+        jLabelPrecioTotal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Comprar Producte");
+        setTitle("Comprar Productes");
 
-        jLabel2.setFont(new java.awt.Font("Courier New", 1, 30)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Comprar Producte");
+        jLabelTitulo.setFont(new java.awt.Font("Courier New", 1, 30)); // NOI18N
+        jLabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTitulo.setText("Comprar Producte");
 
         jLabelProducto.setText("Producte:");
 
@@ -117,13 +119,19 @@ public class VentanaComprar extends javax.swing.JDialog {
 
         jLabel6.setText("€");
 
+        jLabelTotal.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
+        jLabelTotal.setText("        Total:");
+
+        jLabelPrecioTotal.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
+        jLabelPrecioTotal.setText("0€");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
@@ -148,12 +156,17 @@ public class VentanaComprar extends javax.swing.JDialog {
                                         .addComponent(jLabelProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jSpinnerPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(1, 1, 1)
-                                            .addComponent(jLabel6))
                                         .addComponent(jComboBoxProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jSpinnerCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(jSpinnerCantidad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                                                .addComponent(jSpinnerPrecio))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabelTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(jLabelPrecioTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addComponent(jButtonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -165,7 +178,7 @@ public class VentanaComprar extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(jLabelTitulo)
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelProducto)
@@ -187,11 +200,15 @@ public class VentanaComprar extends javax.swing.JDialog {
                     .addComponent(jSpinnerPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonVolver)
-                    .addComponent(jToggleButton1))
-                .addContainerGap())
+                    .addComponent(jLabelTotal)
+                    .addComponent(jLabelPrecioTotal))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26))
         );
 
         pack();
@@ -207,6 +224,8 @@ public class VentanaComprar extends javax.swing.JDialog {
     private void jComboBoxProductoPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxProductoPopupMenuWillBecomeInvisible
         if (jComboBoxProducto.getSelectedItem() != null) {
             
+        } else {
+            jComboBoxProducto.addItem("Selecciona un producte...");
         }
     }//GEN-LAST:event_jComboBoxProductoPopupMenuWillBecomeInvisible
 
@@ -283,12 +302,14 @@ public class VentanaComprar extends javax.swing.JDialog {
     private javax.swing.JButton jButtonVolver;
     private javax.swing.JComboBox<String> jComboBoxProducto;
     private javax.swing.JComboBox<String> jComboBoxProveedor;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabelCantidad;
     private javax.swing.JLabel jLabelPrecio;
+    private javax.swing.JLabel jLabelPrecioTotal;
     private javax.swing.JLabel jLabelProducto;
     private javax.swing.JLabel jLabelProveedor;
+    private javax.swing.JLabel jLabelTitulo;
+    private javax.swing.JLabel jLabelTotal;
     private javax.swing.JSpinner jSpinnerCantidad;
     private javax.swing.JSpinner jSpinnerPrecio;
     private javax.swing.JToggleButton jToggleButton1;
