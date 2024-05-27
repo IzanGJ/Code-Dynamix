@@ -58,6 +58,17 @@ public class codeDynamixDAO {
         desconectar(c);
     }
     
+    public void updateTasca(String cif, String name) throws SQLException, CompanyException {
+        if (!existCompany(cif)) {
+            throw new CompanyException(CompanyException.EMPRESA_NOT_FOUND);
+        }
+        Connection c = conectar();
+        PreparedStatement ps = c.prepareStatement("update company set name = '" + name + "' WHERE CIF = '" + cif + "';");
+        ps.executeUpdate();
+        ps.close();
+        desconectar(c);
+    }
+    
     private HashMap<String,OrderObj> getCompanyReceipt(CompanyObj comp) throws SQLException, CompanyException {
         Connection c = conectar();
         Statement st = c.createStatement();

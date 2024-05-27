@@ -1,6 +1,7 @@
 package view;
 
 import exceptions.CompanyException;
+import java.sql.SQLException;
 import java.util.HashMap;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -12,7 +13,7 @@ public class VentanaCompanyiesModificar extends javax.swing.JDialog {
     HashMap<String, CompanyObj> companies;
     codeDynamixDAO dao = new codeDynamixDAO();
 
-    public VentanaCompanyiesModificar(java.awt.Frame parent, boolean modal) {
+    public VentanaCompanyiesModificar(java.awt.Frame parent, boolean modal) throws CompanyException, SQLException {
         super(parent, modal);
         interprete = Interprete.obtenerInstancia();
         companies = dao.allCompanies();
