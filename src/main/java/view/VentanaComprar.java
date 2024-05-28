@@ -1,5 +1,6 @@
 package view;
 
+import exceptions.CompanyException;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -13,6 +14,7 @@ public class VentanaComprar extends javax.swing.JDialog {
     Interprete interprete;
     codeDynamixDAO dao;
     HashMap<Integer, ProductObj> products;
+    HashMap<String, CompanyObj> companies;
 
     public VentanaComprar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -20,7 +22,8 @@ public class VentanaComprar extends javax.swing.JDialog {
         dao = new codeDynamixDAO();
         try {
             products = dao.allProducts();
-        } catch (SQLException ex) {
+            companies = dao.allCompanies();
+        } catch (SQLException | CompanyException ex) {
             System.out.println(ex.getMessage());
         }
         initComponents();
@@ -29,7 +32,13 @@ public class VentanaComprar extends javax.swing.JDialog {
         jComboBoxProducto.removeAllItems();
         jComboBoxProducto.addItem("Selecciona un producte...");
         for (int clave : products.keySet()) {
-            jComboBoxProducto.addItem(String.valueOf(clave));
+            jComboBoxProducto.addItem(String.valueOf(clave) + " |  " + products.get(clave).getName());
+        }
+        
+        jComboBoxProveedor.removeAllItems();
+        jComboBoxProveedor.addItem("Selecciona un proveïdor...");
+        for (String clave : companies.keySet()) {
+            jComboBoxProveedor.addItem(clave + " |  " + companies.get(clave).getNombre());
         }
         
     }
@@ -108,15 +117,35 @@ public class VentanaComprar extends javax.swing.JDialog {
 
         jComboBoxProveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBoxProveedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jComboBoxProveedor.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                jComboBoxProveedorPopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jComboBoxProveedorPopupMenuWillBecomeVisible(evt);
+            }
+        });
 
         jLabelCantidad.setText("Quantitat:");
 
         jSpinnerCantidad.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        jSpinnerCantidad.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSpinnerCantidadStateChanged(evt);
+            }
+        });
 
         jLabelPrecio.setText("Preu:");
 
         jSpinnerPrecio.setModel(new javax.swing.SpinnerNumberModel(1.0f, 0.01f, null, 1.0f));
         jSpinnerPrecio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jSpinnerPrecio.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSpinnerPrecioStateChanged(evt);
+            }
+        });
 
         jLabel6.setText("€");
 
@@ -224,9 +253,7 @@ public class VentanaComprar extends javax.swing.JDialog {
     }//GEN-LAST:event_jComboBoxProductoActionPerformed
 
     private void jComboBoxProductoPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxProductoPopupMenuWillBecomeInvisible
-        if (jComboBoxProducto.getSelectedItem() != null) {
-            
-        } else {
+        if (jComboBoxProducto.getSelectedItem() == null) {
             jComboBoxProducto.addItem("Selecciona un producte...");
         }
     }//GEN-LAST:event_jComboBoxProductoPopupMenuWillBecomeInvisible
@@ -242,6 +269,29 @@ public class VentanaComprar extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jComboBoxProveedorPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxProveedorPopupMenuWillBecomeVisible
+        //Sirve para poder tener un "placeholder" en el combobox
+        if (jComboBoxProveedor.getItemAt(0).equals("Selecciona un proveïdor...")) {
+            jComboBoxProveedor.removeItemAt(0);
+        }
+    }//GEN-LAST:event_jComboBoxProveedorPopupMenuWillBecomeVisible
+
+    private void jComboBoxProveedorPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxProveedorPopupMenuWillBecomeInvisible
+        if (jComboBoxProveedor.getSelectedItem() == null) {
+            jComboBoxProveedor.addItem("Selecciona un proveïdor...");
+        }
+        
+    }//GEN-LAST:event_jComboBoxProveedorPopupMenuWillBecomeInvisible
+
+    private void jSpinnerCantidadStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinnerCantidadStateChanged
+        jLabelPrecioTotal.setText(Math.round(Integer.parseInt(String.valueOf(jSpinnerCantidad.getValue())) * Float.parseFloat(String.valueOf(jSpinnerPrecio.getValue())) * 100.0) / 100.0 + "€");
+    }//GEN-LAST:event_jSpinnerCantidadStateChanged
+
+    private void jSpinnerPrecioStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinnerPrecioStateChanged
+        jLabelPrecioTotal.setText(Math.round(Integer.parseInt(String.valueOf(jSpinnerCantidad.getValue())) * Float.parseFloat(String.valueOf(jSpinnerPrecio.getValue())) * 100.0) / 100.0 + "€");
+    }//GEN-LAST:event_jSpinnerPrecioStateChanged
+
+    
     /**
      * @param args the command line arguments
      */
