@@ -50,13 +50,13 @@ public class VentanaComprar extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabelTitulo = new javax.swing.JLabel();
-        jLabelProducto = new javax.swing.JLabel();
+        jLabelProveedor = new javax.swing.JLabel();
         jButtonVolver = new javax.swing.JButton();
-        jComboBoxProducto = new javax.swing.JComboBox<>();
+        jComboBoxProveedor = new javax.swing.JComboBox<>();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         linea = new javax.swing.JPanel();
-        jLabelProveedor = new javax.swing.JLabel();
-        jComboBoxProveedor = new javax.swing.JComboBox<>();
+        jLabelProducto = new javax.swing.JLabel();
+        jComboBoxProducto = new javax.swing.JComboBox<>();
         jLabelCantidad = new javax.swing.JLabel();
         jSpinnerCantidad = new javax.swing.JSpinner();
         jLabelPrecio = new javax.swing.JLabel();
@@ -73,7 +73,7 @@ public class VentanaComprar extends javax.swing.JDialog {
         jLabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitulo.setText("Comprar Producte");
 
-        jLabelProducto.setText("Producte:");
+        jLabelProveedor.setText("Proveïdor:");
 
         jButtonVolver.setText("Tornar");
         jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -82,20 +82,20 @@ public class VentanaComprar extends javax.swing.JDialog {
             }
         });
 
-        jComboBoxProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBoxProducto.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+        jComboBoxProveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxProveedor.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
             public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
-                jComboBoxProductoPopupMenuWillBecomeInvisible(evt);
+                jComboBoxProveedorPopupMenuWillBecomeInvisible(evt);
             }
             public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
-                jComboBoxProductoPopupMenuWillBecomeVisible(evt);
+                jComboBoxProveedorPopupMenuWillBecomeVisible(evt);
             }
         });
-        jComboBoxProducto.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxProductoActionPerformed(evt);
+                jComboBoxProveedorActionPerformed(evt);
             }
         });
 
@@ -113,18 +113,18 @@ public class VentanaComprar extends javax.swing.JDialog {
             .addGap(0, 2, Short.MAX_VALUE)
         );
 
-        jLabelProveedor.setText("Proveïdor:");
+        jLabelProducto.setText("Producte:");
 
-        jComboBoxProveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBoxProveedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jComboBoxProveedor.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+        jComboBoxProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jComboBoxProducto.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
             public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
-                jComboBoxProveedorPopupMenuWillBecomeInvisible(evt);
+                jComboBoxProductoPopupMenuWillBecomeInvisible(evt);
             }
             public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
-                jComboBoxProveedorPopupMenuWillBecomeVisible(evt);
+                jComboBoxProductoPopupMenuWillBecomeVisible(evt);
             }
         });
 
@@ -178,17 +178,17 @@ public class VentanaComprar extends javax.swing.JDialog {
                                 .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabelProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jComboBoxProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jComboBoxProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(jLabelPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabelCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabelProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jLabelProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jComboBoxProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jComboBoxProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(layout.createSequentialGroup()
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                 .addComponent(jSpinnerCantidad, javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,16 +212,16 @@ public class VentanaComprar extends javax.swing.JDialog {
                 .addComponent(jLabelTitulo)
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelProducto)
-                    .addComponent(jComboBoxProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelProveedor)
+                    .addComponent(jComboBoxProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(linea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelProveedor)
-                    .addComponent(jComboBoxProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelProducto)
+                    .addComponent(jComboBoxProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSpinnerCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -248,15 +248,26 @@ public class VentanaComprar extends javax.swing.JDialog {
 
     
     
-    private void jComboBoxProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxProductoActionPerformed
+    private void jComboBoxProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxProveedorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxProductoActionPerformed
+    }//GEN-LAST:event_jComboBoxProveedorActionPerformed
 
-    private void jComboBoxProductoPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxProductoPopupMenuWillBecomeInvisible
-        if (jComboBoxProducto.getSelectedItem() == null) {
-            jComboBoxProducto.addItem("Selecciona un producte...");
+    private void jComboBoxProveedorPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxProveedorPopupMenuWillBecomeInvisible
+                if (jComboBoxProveedor.getSelectedItem() == null) {
+            jComboBoxProveedor.addItem("Selecciona un proveïdor...");
         }
-    }//GEN-LAST:event_jComboBoxProductoPopupMenuWillBecomeInvisible
+    }//GEN-LAST:event_jComboBoxProveedorPopupMenuWillBecomeInvisible
+
+    private void jComboBoxProveedorPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxProveedorPopupMenuWillBecomeVisible
+        //Sirve para poder tener un "placeholder" en el combobox
+                if (jComboBoxProveedor.getItemAt(0).equals("Selecciona un proveïdor...")) {
+            jComboBoxProveedor.removeItemAt(0);
+        }
+    }//GEN-LAST:event_jComboBoxProveedorPopupMenuWillBecomeVisible
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBoxProductoPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxProductoPopupMenuWillBecomeVisible
         //Sirve para poder tener un "placeholder" en el combobox
@@ -265,23 +276,11 @@ public class VentanaComprar extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jComboBoxProductoPopupMenuWillBecomeVisible
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jComboBoxProveedorPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxProveedorPopupMenuWillBecomeVisible
-        //Sirve para poder tener un "placeholder" en el combobox
-        if (jComboBoxProveedor.getItemAt(0).equals("Selecciona un proveïdor...")) {
-            jComboBoxProveedor.removeItemAt(0);
+    private void jComboBoxProductoPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxProductoPopupMenuWillBecomeInvisible
+        if (jComboBoxProducto.getSelectedItem() == null) {
+            jComboBoxProducto.addItem("Selecciona un producte...");
         }
-    }//GEN-LAST:event_jComboBoxProveedorPopupMenuWillBecomeVisible
-
-    private void jComboBoxProveedorPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxProveedorPopupMenuWillBecomeInvisible
-        if (jComboBoxProveedor.getSelectedItem() == null) {
-            jComboBoxProveedor.addItem("Selecciona un proveïdor...");
-        }
-        
-    }//GEN-LAST:event_jComboBoxProveedorPopupMenuWillBecomeInvisible
+    }//GEN-LAST:event_jComboBoxProductoPopupMenuWillBecomeInvisible
 
     private void jSpinnerCantidadStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinnerCantidadStateChanged
         jLabelPrecioTotal.setText(Math.round(Integer.parseInt(String.valueOf(jSpinnerCantidad.getValue())) * Float.parseFloat(String.valueOf(jSpinnerPrecio.getValue())) * 100.0) / 100.0 + "€");
