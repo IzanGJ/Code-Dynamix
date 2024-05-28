@@ -68,7 +68,7 @@ public class codeDynamixDAO {
         desconectar(c);
     }
     
-    private HashMap<String,OrderObj> getCompanyReceipt(CompanyObj comp) throws SQLException, CompanyException {
+    public HashMap<String,OrderObj> getCompanyReceipt(CompanyObj comp) throws SQLException, CompanyException {
         Connection c = conectar();
         Statement st = c.createStatement();
         String query = "SELECT * FROM company AS a JOIN delivery_note AS b ON a.CIF = b.company_ID JOIN delivery_note_prod AS c ON b.delivery_ID = c.delivery_ID WHERE a.CIF = '" + comp.getCif() + "';";

@@ -191,9 +191,10 @@ public class VentanaCompanyiesMostrar extends javax.swing.JDialog {
     private void jComboBoxPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxPopupMenuWillBecomeInvisible
         if (jComboBox.getSelectedItem() != null) {
             try {
-                jLabelNombre.setText(dao.allCompanies().get(jComboBox.getSelectedItem()).getNombre());
-                jLabelCif.setText(dao.allCompanies().get(jComboBox.getSelectedItem()).getCif());
-                jLabelRecibos.setText("0");
+                HashMap<String, CompanyObj> companies = dao.allCompanies();
+                jLabelNombre.setText(companies.get(jComboBox.getSelectedItem()).getNombre());
+                jLabelCif.setText(companies.get(jComboBox.getSelectedItem()).getCif());
+                jLabelRecibos.setText(String.valueOf(dao.getCompanyReceipt(companies.get(jComboBox.getSelectedItem())).size()));
             } catch (CompanyException | SQLException ex) {
                 System.out.println(ex.getMessage());
             }
