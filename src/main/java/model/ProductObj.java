@@ -15,8 +15,6 @@ public abstract class ProductObj {
     codeDynamixDAO dao;
 
     public ProductObj(String name, int code, String description, int weight, int color) throws CompanyException {
-        Interprete interprete;
-        interprete = Interprete.obtenerInstancia();
         if (weight <= 0) {
             throw new CompanyException(CompanyException.WEIGHT_ERROR);
         } 

@@ -93,10 +93,10 @@ public class codeDynamixDAO {
         Connection c = conectar();
         HashMap<Integer, ProductObj> products = new HashMap<>();
         String query = "SELECT product.*, keyboard.type AS kb_type, keyboard.language AS kb_language, keyboard.lenght AS kb_lenght, keyboard.wireless AS kb_wireless, chair.backrest AS ch_backrest, chair.wheels AS ch_wheels, chair.armrest AS ch_armrest, mouse.handDexterity AS ms_handDexterity, mouse.lateralButtons AS ms_lateralButtons, mouse.wireless AS ms_wireless, taula.wheels AS tb_wheels, taula.legs AS tb_legs, taula.adjutableHeight AS tb_djutableHeight, taula.material AS tb_material from product\n" +
-                        "JOIN keyboard ON keyboard.ID = product.ID\n" +
-                        "JOIN chair ON chair.ID = product.ID\n" +
-                        "JOIN mouse ON mouse.ID = product.ID\n" +
-                        "JOIN taula ON taula.ID = product.ID\n" +
+                        "LEFT JOIN keyboard ON keyboard.ID = product.ID\n" +
+                        "LEFT JOIN chair ON chair.ID = product.ID\n" +
+                        "LEFT JOIN mouse ON mouse.ID = product.ID\n" +
+                        "LEFT JOIN taula ON taula.ID = product.ID\n" +
                         "GROUP BY product.ID;";
         Statement st = c.createStatement();
         ResultSet rs = st.executeQuery(query);
@@ -114,7 +114,6 @@ public class codeDynamixDAO {
                         }
                         products.put(id, new ErgonomicTable(rs.getInt("tb_wheels"), rs.getInt("tb_legs"), alturaAjustable, rs.getString("tb_material"), rs.getString("name"), id, rs.getString("description"), rs.getInt("weight"), rs.getInt("color")));
                         break;
-                        
                     case "chair":
                         boolean respaldo;
                         boolean reposabrazos;
@@ -169,21 +168,28 @@ public class codeDynamixDAO {
         return products;
     }
     
-    public void insertTable(ErgonomicTable t) throws SQLException {
+    public void insertProduct(ProductObj pr, String type) throws SQLException, CompanyException {
+        if (existProduct(pr.getCode())) {
+            throw new CompanyException(CompanyException.PRODUCT_REPEAT);
+        }
         Connection c = conectar();
         PreparedStatement ps = c.prepareStatement("insert into product (ID, name, description, price, weight, color, type) values (?,?,?,?,?,?,?);");
-        ps.setInt(1, t.getCode());
-        ps.setString(2, t.getName());
-        ps.setString(3, t.getDescription());
-        ps.setFloat(4, t.getPrice());
-        ps.setInt(5, t.getWeight());
-        ps.setString(6, String.valueOf(t.getColor()));
-        ps.setString(7, "table");
+        ps.setInt(1, pr.getCode());
+        ps.setString(2, pr.getName());
+        ps.setString(3, pr.getDescription());
+        ps.setFloat(4, pr.getPrice());
+        ps.setInt(5, pr.getWeight());
+        ps.setString(6, String.valueOf(pr.getColor()));
+        ps.setString(7, type);
         ps.executeUpdate();
         ps.close();
-        
-        ps = c.prepareStatement("insert into taula (ID, wheels, legs, adjutableHeight, material) values (?,?,?,?,?);");
-        
+        desconectar(c);
+    }
+    
+    public void insertTable(ErgonomicTable t) throws SQLException, CompanyException {
+        insertProduct(t, "table");
+        Connection c = conectar();
+        PreparedStatement ps = c.prepareStatement("insert into taula (ID, wheels, legs, adjutableHeight, material) values (?,?,?,?,?);");
         ps.setInt(1, t.getCode());
         ps.setInt(2, t.getWheels());
         ps.setInt(3, t.getLegs());
@@ -198,21 +204,10 @@ public class codeDynamixDAO {
         desconectar(c);
     }
     
-    public void insertChair(ErgonomicChair ch) throws SQLException {
+    public void insertChair(ErgonomicChair ch) throws SQLException, CompanyException {
+        insertProduct(ch, "chair");
         Connection c = conectar();
-        PreparedStatement ps = c.prepareStatement("insert into product (ID, name, description, price, weight, color, type) values (?,?,?,?,?,?,?);");
-        ps.setInt(1, ch.getCode());
-        ps.setString(2, ch.getName());
-        ps.setString(3, ch.getDescription());
-        ps.setFloat(4, ch.getPrice());
-        ps.setInt(5, ch.getWeight());
-        ps.setString(6, String.valueOf(ch.getColor()));
-        ps.setString(7, "chair");
-        ps.executeUpdate();
-        ps.close();
-        
-        ps = c.prepareStatement("insert into chair (ID, backrest, wheels, armrest) values (?,?,?,?);");
-        
+        PreparedStatement ps = c.prepareStatement("insert into chair (ID, backrest, wheels, armrest) values (?,?,?,?);");
         ps.setInt(1, ch.getCode());
         if (ch.isBackrest()) {
             ps.setInt(2, 1);
@@ -230,21 +225,10 @@ public class codeDynamixDAO {
         desconectar(c);
     }
     
-    public void insertKeyboard(ErgonomicKeyboard ky) throws SQLException {
+    public void insertKeyboard(ErgonomicKeyboard ky) throws SQLException, CompanyException {
+        insertProduct(ky, "keyboard");
         Connection c = conectar();
-        PreparedStatement ps = c.prepareStatement("insert into product (ID, name, description, price, weight, color, type) values (?,?,?,?,?,?,?);");
-        ps.setInt(1, ky.getCode());
-        ps.setString(2, ky.getName());
-        ps.setString(3, ky.getDescription());
-        ps.setFloat(4, ky.getPrice());
-        ps.setInt(5, ky.getWeight());
-        ps.setString(6, String.valueOf(ky.getColor()));
-        ps.setString(7, "keyboard");
-        ps.executeUpdate();
-        ps.close();
-        
-        ps = c.prepareStatement("insert into keyboard (ID, type, language, lenght, wireless) values (?,?,?,?,?);");
-        
+        PreparedStatement ps =  c.prepareStatement("insert into keyboard (ID, type, language, lenght, wireless) values (?,?,?,?,?);");  
         ps.setInt(1, ky.getCode());
         ps.setString(2, ky.getType());
         ps.setString(3, ky.getLanguage());
@@ -259,21 +243,10 @@ public class codeDynamixDAO {
         desconectar(c);
     }
     
-    public void insertMouse(ErgonomicMouse ms) throws SQLException {
+    public void insertMouse(ErgonomicMouse ms) throws SQLException, CompanyException {
+        insertProduct(ms, "mouse");
         Connection c = conectar();
-        PreparedStatement ps = c.prepareStatement("insert into product (ID, name, description, price, weight, color, type) values (?,?,?,?,?,?,?);");
-        ps.setInt(1, ms.getCode());
-        ps.setString(2, ms.getName());
-        ps.setString(3, ms.getDescription());
-        ps.setFloat(4, ms.getPrice());
-        ps.setInt(5, ms.getWeight());
-        ps.setString(6, String.valueOf(ms.getColor()));
-        ps.setString(7, "mouse");
-        ps.executeUpdate();
-        ps.close();
-        
-        ps = c.prepareStatement("insert into mouse (ID, handDexterity, lateralButtons, wireless) values (?,?,?,?);");
-        
+        PreparedStatement ps = c.prepareStatement("insert into mouse (ID, handDexterity, lateralButtons, wireless) values (?,?,?,?);");
         ps.setInt(1, ms.getCode());
         if (ms.isHandDexterity()) {
             ps.setInt(2, 1);
