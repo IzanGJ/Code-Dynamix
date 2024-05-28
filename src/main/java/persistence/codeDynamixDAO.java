@@ -92,12 +92,12 @@ public class codeDynamixDAO {
     public HashMap<Integer, ProductObj> allProducts() throws SQLException {
         Connection c = conectar();
         HashMap<Integer, ProductObj> products = new HashMap<>();
-        String query = "SELECT product.*, keyboard.type AS kb_type, keyboard.language AS kb_language, keyboard.lenght AS kb_lenght, keyboard.wireless AS kb_wireless, chair.backrest AS ch_backrest, chair.wheels AS ch_wheels, chair.armrest AS ch_armrest, mouse.handDexterity AS ms_handDexterity, mouse.lateralButtons AS ms_lateralButtons, mouse.wireless AS ms_wireless, taula.wheels AS tb_wheels, taula.legs AS tb_legs, taula.adjutableHeight AS tb_djutableHeight, taula.material AS tb_material from product\n" +
-                        "LEFT JOIN keyboard ON keyboard.ID = product.ID\n" +
-                        "LEFT JOIN chair ON chair.ID = product.ID\n" +
-                        "LEFT JOIN mouse ON mouse.ID = product.ID\n" +
-                        "LEFT JOIN taula ON taula.ID = product.ID\n" +
-                        "GROUP BY product.ID;";
+        String query = "SELECT product.*, keyboard.type AS kb_type, keyboard.language AS kb_language, keyboard.lenght AS kb_lenght, keyboard.wireless AS kb_wireless, chair.backrest AS ch_backrest, chair.wheels AS ch_wheels, chair.armrest AS ch_armrest, mouse.handDexterity AS ms_handDexterity, mouse.lateralButtons AS ms_lateralButtons, mouse.wireless AS ms_wireless, taula.wheels AS tb_wheels, taula.legs AS tb_legs, taula.adjutableHeight AS tb_adjustableHeight, taula.material AS tb_material from product\n" +
+                        " LEFT JOIN keyboard ON keyboard.ID = product.ID" +
+                        " LEFT JOIN chair ON chair.ID = product.ID" +
+                        " LEFT JOIN mouse ON mouse.ID = product.ID" +
+                        " LEFT JOIN taula ON taula.ID = product.ID" +
+                        " GROUP BY product.ID;";
         Statement st = c.createStatement();
         ResultSet rs = st.executeQuery(query);
         while (rs.next()) {
@@ -114,6 +114,7 @@ public class codeDynamixDAO {
                         }
                         products.put(id, new ErgonomicTable(rs.getInt("tb_wheels"), rs.getInt("tb_legs"), alturaAjustable, rs.getString("tb_material"), rs.getString("name"), id, rs.getString("description"), rs.getInt("weight"), rs.getInt("color")));
                         break;
+                        
                     case "chair":
                         boolean respaldo;
                         boolean reposabrazos;
@@ -138,7 +139,7 @@ public class codeDynamixDAO {
                         } else {
                             wireless = false;
                         }
-                        products.put(id, new ErgonomicKeyboard(rs.getString("tb_type"), rs.getString("tb_language"), rs.getInt("tb_lenght"), wireless, rs.getString("name"), id, rs.getString("description"), rs.getInt("weight"), rs.getInt("color")));
+                        products.put(id, new ErgonomicKeyboard(rs.getString("kb_type"), rs.getString("kb_language"), rs.getInt("kb_lenght"), wireless, rs.getString("name"), id, rs.getString("description"), rs.getInt("weight"), rs.getInt("color")));
                         break;
                         
                     case "mouse":
