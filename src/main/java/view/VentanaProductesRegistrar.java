@@ -91,6 +91,7 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registrar Producte");
+        setResizable(false);
 
         jLabel2.setFont(new java.awt.Font("Courier New", 1, 30)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

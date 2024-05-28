@@ -37,6 +37,7 @@ public class VentanaCompanyiesAlta extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Donar d'alta");
+        setResizable(false);
 
         jLabel2.setFont(new java.awt.Font("Courier New", 1, 30)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
