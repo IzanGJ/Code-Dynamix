@@ -2,6 +2,7 @@ package view;
 
 import exceptions.CompanyException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,6 +15,7 @@ import persistence.codeDynamixDAO;
 public class VentanaComprar extends javax.swing.JDialog {
     Interprete interprete;
     codeDynamixDAO dao;
+    DefaultTableModel model;
     HashMap<Integer, ProductObj> products;
     HashMap<String, CompanyObj> companies;
 
@@ -32,16 +34,28 @@ public class VentanaComprar extends javax.swing.JDialog {
         setIconImage(img.getImage());
         jComboBoxProducto.removeAllItems();
         jComboBoxProducto.addItem("Selecciona un producte...");
+        
+        String tipo = "?";
         for (int clave : products.keySet()) {
-            jComboBoxProducto.addItem(String.valueOf(clave) + "  |  " + products.get(clave).getName());
+            if (products.get(clave) instanceof ErgonomicChair) {
+                tipo = "Ch";
+            } else if (products.get(clave) instanceof ErgonomicKeyboard) {
+                tipo = "Kb";
+            } else if (products.get(clave) instanceof ErgonomicMouse) {
+                tipo = "Ms";
+            } else if (products.get(clave) instanceof ErgonomicTable) {
+                tipo = "Tb";
+            }
+            jComboBoxProducto.addItem(tipo + " | " + String.valueOf(clave) + " | " + products.get(clave).getName());
         }
         
         jComboBoxProveedor.removeAllItems();
         jComboBoxProveedor.addItem("Selecciona un proveïdor...");
         for (String clave : companies.keySet()) {
-            jComboBoxProveedor.addItem(clave + " |  " + companies.get(clave).getNombre());
+            jComboBoxProveedor.addItem(clave + " | " + companies.get(clave).getNombre());
         }
         
+        model = (DefaultTableModel)jTable1.getModel();
     }
 
     
@@ -210,7 +224,7 @@ public class VentanaComprar extends javax.swing.JDialog {
                                 .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabelProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jComboBoxProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButtonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -332,10 +346,33 @@ public class VentanaComprar extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jComboBoxProductoPopupMenuWillBecomeInvisible
 
+    
+    
     private void jButtonComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonComprarActionPerformed
-        JOptionPane.showMessageDialog(this, "El rebut s'ha registrat correctament!", " ", 1);
-        
-        this.dispose();
+        ArrayList<ProductObj> productos;
+        if (model.getRowCount() > 0) {
+            productos = new ArrayList<>();
+            String[] list;
+            
+            for (int i = 0; i < model.getRowCount(); i++){
+                list = String.valueOf(model.getValueAt(i, 0)).split(" | ");
+                products.get(Integer.parseInt(list[2])).setQty(Integer.parseInt(String.valueOf(model.getValueAt(i, 1))));
+                products.get(Integer.parseInt(list[2])).setPrice(Float.parseFloat(String.valueOf(model.getValueAt(i, 2))));
+                productos.add(products.get(Integer.parseInt(list[2])));
+            }
+            list = jComboBoxProveedor.getItemAt(jComboBoxProveedor.getSelectedIndex()).split(" | ");
+            try {
+                dao.insertNote(new OrderObj(companies.get(list[0]), productos));
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            
+            JOptionPane.showMessageDialog(this, "El rebut s'ha registrat correctament!", " ", 1);
+            this.dispose();
+        } else {
+            jLabelError.setText("*Has d'agregar almenys un producte");
+        }
+
     }//GEN-LAST:event_jButtonComprarActionPerformed
 
     private void jButtonInsertarActionPerformed1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertarActionPerformed1
@@ -345,7 +382,6 @@ public class VentanaComprar extends javax.swing.JDialog {
             if (!jComboBoxProducto.getItemAt(jComboBoxProducto.getSelectedIndex()).equals("Selecciona un producte...")) {
                 jLabelError.setText(" ");
                 jComboBoxProveedor.setEnabled(false);
-                DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
                 model.addRow(new Object[]{jComboBoxProducto.getItemAt(jComboBoxProducto.getSelectedIndex()),
                                                                            jSpinnerCantidad.getValue(),
                                                                            jSpinnerPrecio.getValue(),
@@ -356,11 +392,20 @@ public class VentanaComprar extends javax.swing.JDialog {
                     total += Float.parseFloat(String.valueOf(model.getValueAt(i, 3)));
                 }
                 jLabelPrecioTotal.setText(String.valueOf(total) + "€");
+                
+                jComboBoxProducto.removeItemAt(jComboBoxProducto.getSelectedIndex());
+                if (jComboBoxProducto.getItemCount() < 1) {
+                    jComboBoxProducto.setEnabled(false);
+                    jButtonInsertar.setEnabled(false);
+                    jSpinnerCantidad.setEnabled(false);
+                    jSpinnerPrecio.setEnabled(false);
+                }
+                
             } else {
-                jLabelError.setText("*Debes seleccionar un producto");
+                jLabelError.setText("*Has de seleccionar un producte");
             }
         } else {
-            jLabelError.setText("*Debes seleccionar un proveedor");
+            jLabelError.setText("*Has de seleccionar un proveïdor");
         }
         
         

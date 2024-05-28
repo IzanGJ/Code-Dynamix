@@ -289,6 +289,16 @@ public class codeDynamixDAO {
     }
     
     
+    public void insertNote(OrderObj order) throws SQLException, CompanyException {
+        Connection c = conectar();
+        PreparedStatement ps = c.prepareStatement("INSERT INTO delivery_note VALUES(null, '" + order.getCompany().getCif() + "')");
+        
+        ps.executeUpdate();
+        ps.close();
+        desconectar(c);
+    }
+    
+    
     private boolean existCompany(String cif) throws SQLException {
         Connection c = conectar();
         Statement st = c.createStatement();

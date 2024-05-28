@@ -401,7 +401,7 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
         newColor = JColorChooser.showDialog(this,"Selecciona un color",jLabelRGB.getBackground());
         if (newColor != null) {
             jPanelRGB.setBackground(newColor);
-            if (newColor.getRed() < 50 || newColor.getGreen() < 30 || newColor.getBlue() < 30) {
+            if (newColor.getRed() < 60 || newColor.getGreen() < 60 || newColor.getBlue() < 60) {
                 jLabelRGB.setForeground(Color.WHITE);
             } else {
                 jLabelRGB.setForeground(Color.BLACK);

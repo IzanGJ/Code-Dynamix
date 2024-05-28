@@ -11,6 +11,16 @@ public class OrderObj {
         this.products = products;
     }
 
+    public CompanyObj getCompany() {
+        return company;
+    }
+
+    public ArrayList<ProductObj> getProducts() {
+        return products;
+    }
+    
+    
+    
     public void setProducts(ArrayList<ProductObj> products) {
         this.products = products;
     }
