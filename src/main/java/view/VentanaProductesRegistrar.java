@@ -140,6 +140,8 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
 
         jLabel5.setText("Pes (g):");
 
+        jSpinnerPeso.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
         jLabel6.setText("Color:");
 
         jButtonElegir.setText("Elegir");
@@ -187,6 +189,10 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
                 jCheckBoxR3ActionPerformed(evt);
             }
         });
+
+        jSpinnerR2.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+
+        jSpinnerR1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
         jLabelAlertas.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabelAlertas.setForeground(new java.awt.Color(204, 0, 0));
