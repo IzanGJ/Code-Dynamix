@@ -46,7 +46,6 @@ public class VentanaComprar extends javax.swing.JDialog {
         jComboBoxProducto = new javax.swing.JComboBox<>();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         linea = new javax.swing.JPanel();
-        jToggleButton1 = new javax.swing.JToggleButton();
         jLabelProveedor = new javax.swing.JLabel();
         jComboBoxProveedor = new javax.swing.JComboBox<>();
         jLabelCantidad = new javax.swing.JLabel();
@@ -56,6 +55,7 @@ public class VentanaComprar extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         jLabelTotal = new javax.swing.JLabel();
         jLabelPrecioTotal = new javax.swing.JLabel();
+        jButtonComprar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Comprar Productes");
@@ -104,8 +104,6 @@ public class VentanaComprar extends javax.swing.JDialog {
             .addGap(0, 2, Short.MAX_VALUE)
         );
 
-        jToggleButton1.setText("Comprar");
-
         jLabelProveedor.setText("Proveïdor:");
 
         jComboBoxProveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -113,8 +111,11 @@ public class VentanaComprar extends javax.swing.JDialog {
 
         jLabelCantidad.setText("Quantitat:");
 
+        jSpinnerCantidad.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
         jLabelPrecio.setText("Preu:");
 
+        jSpinnerPrecio.setModel(new javax.swing.SpinnerNumberModel(1.0f, 0.01f, null, 1.0f));
         jSpinnerPrecio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel6.setText("€");
@@ -124,6 +125,8 @@ public class VentanaComprar extends javax.swing.JDialog {
 
         jLabelPrecioTotal.setFont(new java.awt.Font("sansserif", 0, 15)); // NOI18N
         jLabelPrecioTotal.setText("0€");
+
+        jButtonComprar.setText("Comprar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -144,7 +147,7 @@ public class VentanaComprar extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(106, 106, 106)
                                 .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabelProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -159,7 +162,7 @@ public class VentanaComprar extends javax.swing.JDialog {
                                         .addComponent(jComboBoxProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(layout.createSequentialGroup()
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(jSpinnerCantidad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                                                .addComponent(jSpinnerCantidad, javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(jSpinnerPrecio))
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -169,9 +172,8 @@ public class VentanaComprar extends javax.swing.JDialog {
                                             .addComponent(jLabelPrecioTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addComponent(jButtonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(8, 8, 8))))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jButtonComprar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addContainerGap(48, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -207,7 +209,7 @@ public class VentanaComprar extends javax.swing.JDialog {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonComprar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26))
         );
 
@@ -299,6 +301,7 @@ public class VentanaComprar extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.Box.Filler filler1;
+    private javax.swing.JButton jButtonComprar;
     private javax.swing.JButton jButtonVolver;
     private javax.swing.JComboBox<String> jComboBoxProducto;
     private javax.swing.JComboBox<String> jComboBoxProveedor;
@@ -312,7 +315,6 @@ public class VentanaComprar extends javax.swing.JDialog {
     private javax.swing.JLabel jLabelTotal;
     private javax.swing.JSpinner jSpinnerCantidad;
     private javax.swing.JSpinner jSpinnerPrecio;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JPanel linea;
     // End of variables declaration//GEN-END:variables
 }
