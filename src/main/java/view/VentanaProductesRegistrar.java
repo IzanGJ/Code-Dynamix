@@ -351,9 +351,11 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
                     case 0:
                         dao.insertTable(new ErgonomicTable(Integer.parseInt(jSpinnerR2.getValue().toString()), Integer.parseInt(jSpinnerR1.getValue().toString()), jCheckBoxR4.isSelected(), jComboBoxR3.getItemAt(jComboBoxR3.getSelectedIndex()), jTextFieldNombre.getText(), Integer.parseInt(jSpinnerID.getValue().toString()), jTextAreaDescripcion.getText(), Integer.parseInt(jSpinnerPeso.getValue().toString()), newColor.getRGB()));
                         break;
+                        
                     case 1:
                         dao.insertChair(new ErgonomicChair(jCheckBoxR3.isSelected(), Integer.parseInt(jSpinnerR2.getValue().toString()), jCheckBoxR4.isSelected(), jTextFieldNombre.getText(), Integer.parseInt(jSpinnerID.getValue().toString()), jTextAreaDescripcion.getText(), Integer.parseInt(jSpinnerPeso.getValue().toString()), newColor.getRGB()));
                         break;
+                        
                     case 2:
                         int longitud = 0;
                         switch (jComboBoxR3.getSelectedIndex()) {
@@ -378,8 +380,9 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
                         }
                         dao.insertKeyboard(new ErgonomicKeyboard(jComboBoxR1.getItemAt(jComboBoxR1.getSelectedIndex()), jComboBoxR2.getItemAt(jComboBoxR2.getSelectedIndex()), longitud, jCheckBoxR4.isSelected(), jTextFieldNombre.getText(), Integer.parseInt(jSpinnerID.getValue().toString()), jTextAreaDescripcion.getText(), Integer.parseInt(jSpinnerPeso.getValue().toString()), newColor.getRGB()));
                         break;
+                        
                     case 3:
-                        //dao.insertMouse(new ErgonomicMouse(jComboBoxR1.getItemAt(jComboBoxR1.getSelectedIndex()), jComboBoxR2.getItemAt(jComboBoxR2.getSelectedIndex()), longitud, jCheckBoxR4.isSelected(), jTextFieldNombre.getText(), Integer.parseInt(jSpinnerID.getValue().toString()), jTextAreaDescripcion.getText(), Integer.parseInt(jSpinnerPeso.getValue().toString()), newColor.getRGB()));
+                        dao.insertMouse(new ErgonomicMouse(jCheckBoxR3.isSelected(), Integer.parseInt(String.valueOf(jSpinnerR1.getValue())), jCheckBoxR4.isSelected(), jTextFieldNombre.getText(), Integer.parseInt(jSpinnerID.getValue().toString()), jTextAreaDescripcion.getText(), Integer.parseInt(jSpinnerPeso.getValue().toString()), newColor.getRGB()));
                         break;
                 }
                 JOptionPane.showMessageDialog(this, "El producte s'ha registrat correctament");

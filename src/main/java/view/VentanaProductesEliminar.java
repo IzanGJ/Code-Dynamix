@@ -115,10 +115,10 @@ public class VentanaProductesEliminar extends javax.swing.JDialog {
     
     private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
         try {
-            int confirm = JOptionPane.showConfirmDialog(this, "Segur que vols donar aquesta empresa de baixa?", "Confirmació", JOptionPane.YES_NO_OPTION);
+            int confirm = JOptionPane.showConfirmDialog(this, "Segur que vols donar eliminar aquest producte?", "Confirmació", JOptionPane.YES_NO_OPTION);
             if (confirm == JOptionPane.YES_OPTION) {
-                dao.remCompany(new CompanyObj(jTextFieldId.getText()));
-                JOptionPane.showMessageDialog(this, "L'empresa s'ha donat de baixa correctament!", "", 1);
+                dao.remProduct(dao.allProducts().get(Integer.parseInt(jTextFieldId.getText())));
+                JOptionPane.showMessageDialog(this, "El producte s'ha eliminat correctament!", "", 1);
                 this.dispose();
             }
         } catch (CompanyException ex) {

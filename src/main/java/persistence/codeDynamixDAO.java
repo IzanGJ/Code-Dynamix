@@ -265,6 +265,30 @@ public class codeDynamixDAO {
         desconectar(c);
     }
     
+    
+    public void remProduct(ProductObj product) throws SQLException, CompanyException {
+        if (product == null) {
+            throw new CompanyException(CompanyException.PRODUCT_NOT_FOUND);
+        }
+        //Puede que falte comprobar si están en alguna factura
+        Connection c = conectar();
+        PreparedStatement ps = c.prepareStatement("DELETE FROM product WHERE ID = " + product.getCode() + ";");
+        ps.executeUpdate();
+        if (product instanceof ErgonomicChair) {
+            ps = c.prepareStatement("DELETE FROM chair WHERE ID = " + product.getCode() + ";");
+        } else if (product instanceof ErgonomicKeyboard) {
+            ps = c.prepareStatement("DELETE FROM keyboard WHERE ID = " + product.getCode() + ";");
+        } else if (product instanceof ErgonomicMouse) {
+            ps = c.prepareStatement("DELETE FROM mouse WHERE ID = " + product.getCode() + ";");
+        } else if (product instanceof ErgonomicTable) {
+            ps = c.prepareStatement("DELETE FROM taula WHERE ID = " + product.getCode() + ";");
+        }
+        ps.executeUpdate();
+        ps.close();
+        desconectar(c);
+    }
+    
+    
     private boolean existCompany(String cif) throws SQLException {
         Connection c = conectar();
         Statement st = c.createStatement();
