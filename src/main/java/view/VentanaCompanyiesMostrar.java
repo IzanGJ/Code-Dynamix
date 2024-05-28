@@ -11,7 +11,6 @@ import persistence.codeDynamixDAO;
 public class VentanaCompanyiesMostrar extends javax.swing.JDialog {
     Interprete interprete;
     codeDynamixDAO dao = new codeDynamixDAO();;
-    HashMap<String, CompanyObj> companies;
 
     public VentanaCompanyiesMostrar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -19,16 +18,14 @@ public class VentanaCompanyiesMostrar extends javax.swing.JDialog {
         initComponents();
         ImageIcon img = new ImageIcon("src\\main\\java\\images\\icon.png");
         setIconImage(img.getImage());
-        try {
-            companies = dao.allCompanies();
-        } catch (CompanyException | SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        
         jComboBox.removeAllItems();
         jComboBox.addItem("Selecciona una empresa...");
-        for (String clave : companies.keySet()) {
-            jComboBox.addItem(clave);
+        try {
+            for (String clave : dao.allCompanies().keySet()) {
+                jComboBox.addItem(clave);
+            }
+        } catch (CompanyException | SQLException ex) {
+            System.out.println(ex.getMessage());
         }
     }
 
@@ -193,9 +190,13 @@ public class VentanaCompanyiesMostrar extends javax.swing.JDialog {
 
     private void jComboBoxPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxPopupMenuWillBecomeInvisible
         if (jComboBox.getSelectedItem() != null) {
-            jLabelNombre.setText(companies.get(jComboBox.getSelectedItem()).getNombre());
-            jLabelCif.setText(companies.get(jComboBox.getSelectedItem()).getCif());
-            jLabelRecibos.setText("0");
+            try {
+                jLabelNombre.setText(dao.allCompanies().get(jComboBox.getSelectedItem()).getNombre());
+                jLabelCif.setText(dao.allCompanies().get(jComboBox.getSelectedItem()).getCif());
+                jLabelRecibos.setText("0");
+            } catch (CompanyException | SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
         }
     }//GEN-LAST:event_jComboBoxPopupMenuWillBecomeInvisible
 

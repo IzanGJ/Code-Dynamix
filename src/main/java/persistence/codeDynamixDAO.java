@@ -22,11 +22,7 @@ public class codeDynamixDAO {
         while (rs.next()) {
             String cif = rs.getString("CIF");
             String nom = rs.getString("name");
-            try {
-                companies.put(cif, new CompanyObj(nom, cif));
-            } catch (CompanyException ex) {
-                System.out.println(ex.getMessage());
-            }
+            companies.put(cif, new CompanyObj(nom, cif));
         }
         rs.close();
         st.close();
@@ -55,7 +51,7 @@ public class codeDynamixDAO {
             throw new CompanyException(CompanyException.COMPANY_RECEIPT);
         }
         Connection c = conectar();
-        PreparedStatement ps = c.prepareStatement("DELETE FROM company WHERE CIF LIKE 'B34648909';");
+        PreparedStatement ps = c.prepareStatement("DELETE FROM company WHERE CIF = '" + comp.getCif() + "';");
         ps.executeUpdate();
         ps.close();
         desconectar(c);
@@ -75,7 +71,7 @@ public class codeDynamixDAO {
     private HashMap<String,OrderObj> getCompanyReceipt(CompanyObj comp) throws SQLException, CompanyException {
         Connection c = conectar();
         Statement st = c.createStatement();
-        String query = "SELECT * FROM company AS a JOIN delivery_note AS b ON a.CIF = b.company_ID JOIN delivery_note_prod AS c ON b.delivery_ID = c.delivery_ID WHERE  = '" + comp.getCif() + "';";
+        String query = "SELECT * FROM company AS a JOIN delivery_note AS b ON a.CIF = b.company_ID JOIN delivery_note_prod AS c ON b.delivery_ID = c.delivery_ID WHERE a.CIF = '" + comp.getCif() + "';";
         ResultSet rs = st.executeQuery(query);
         HashMap<String,OrderObj> receipt = new HashMap<String,OrderObj>();
         while (rs.next()) {
@@ -298,7 +294,7 @@ public class codeDynamixDAO {
     private boolean existCompany(String cif) throws SQLException {
         Connection c = conectar();
         Statement st = c.createStatement();
-        String query = "select * from company where CIF LIKE 'B34648909';";
+        String query = "select * from company where CIF = '" + cif + "';";
         ResultSet rs = st.executeQuery(query);
         boolean existe = false;
         if (rs.next()) {

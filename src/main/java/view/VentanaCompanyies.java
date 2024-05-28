@@ -7,12 +7,10 @@ import javax.swing.JOptionPane;
 import persistence.codeDynamixDAO;
 
 public class VentanaCompanyies extends javax.swing.JDialog {
-    Interprete interprete;
-    codeDynamixDAO dao;
+    codeDynamixDAO dao = new codeDynamixDAO();
 
     public VentanaCompanyies(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        interprete = Interprete.obtenerInstancia();
         initComponents();
         ImageIcon img = new ImageIcon("src\\main\\java\\images\\icon.png");
         setIconImage(img.getImage());
@@ -188,8 +186,16 @@ public class VentanaCompanyies extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonAltaActionPerformed
 
     private void jButtonBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBajaActionPerformed
-        VentanaCompanyiesBaixa dialog = new VentanaCompanyiesBaixa(new javax.swing.JFrame(), true); 
-        dialog.setVisible(true);
+        try {
+            if (!dao.allCompanies().isEmpty()) {
+                VentanaCompanyiesBaixa dialog = new VentanaCompanyiesBaixa(new javax.swing.JFrame(), true); 
+                dialog.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Encara no hi ha empreses registrades");
+            }
+        } catch (CompanyException | SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }//GEN-LAST:event_jButtonBajaActionPerformed
 
     private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
