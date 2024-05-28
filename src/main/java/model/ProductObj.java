@@ -9,6 +9,7 @@ public abstract class ProductObj {
     private int code;
     private String description;
     private float price;
+    private int qty;
     private int weight;
     private int color;
     
@@ -52,6 +53,10 @@ public abstract class ProductObj {
     public void setColor(int color) {
         this.color = color;
     }
+
+    public void setQty(int qty) {
+        this.qty = qty;
+    }
     
     public int getCode() {
         return code;
@@ -76,5 +81,10 @@ public abstract class ProductObj {
     public String getName() {
         return name;
     }
+
+    public int getQty() {
+        return qty;
+    }
     
+
 }

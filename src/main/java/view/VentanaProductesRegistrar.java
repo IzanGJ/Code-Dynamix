@@ -190,7 +190,7 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
             }
         });
 
-        jSpinnerR2.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jSpinnerR2.setModel(new javax.swing.SpinnerNumberModel());
 
         jSpinnerR1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
@@ -385,7 +385,7 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
                         dao.insertMouse(new ErgonomicMouse(jCheckBoxR3.isSelected(), Integer.parseInt(String.valueOf(jSpinnerR1.getValue())), jCheckBoxR4.isSelected(), jTextFieldNombre.getText(), Integer.parseInt(jSpinnerID.getValue().toString()), jTextAreaDescripcion.getText(), Integer.parseInt(jSpinnerPeso.getValue().toString()), newColor.getRGB()));
                         break;
                 }
-                JOptionPane.showMessageDialog(this, "El producte s'ha registrat correctament");
+                JOptionPane.showMessageDialog(this, "El producte s'ha registrat correctament" , " ", 1);
                 this.dispose();
             } catch (CompanyException | SQLException ex) {
                 jLabelAlertas.setText(ex.getMessage());
