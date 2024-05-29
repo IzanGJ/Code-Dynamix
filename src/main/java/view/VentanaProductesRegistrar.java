@@ -148,7 +148,7 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
 
         jLabel6.setText("Color:");
 
-        jButtonElegir.setText("Elegir");
+        jButtonElegir.setText("Escollir");
         jButtonElegir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonElegir.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
