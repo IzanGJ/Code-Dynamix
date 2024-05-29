@@ -181,7 +181,7 @@ public class VentanaComprar extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Producto", "Cantidad", "Precio", "Total"
+                "Producte", "Quantitat", "Preu", "Total"
             }
         ) {
             Class[] types = new Class [] {
@@ -323,14 +323,14 @@ public class VentanaComprar extends javax.swing.JDialog {
     }//GEN-LAST:event_jComboBoxProveedorActionPerformed
 
     private void jComboBoxProveedorPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxProveedorPopupMenuWillBecomeInvisible
-                if (jComboBoxProveedor.getSelectedItem() == null) {
+        if (jComboBoxProveedor.getSelectedItem() == null) {
             jComboBoxProveedor.addItem("Selecciona un proveïdor...");
         }
     }//GEN-LAST:event_jComboBoxProveedorPopupMenuWillBecomeInvisible
 
     private void jComboBoxProveedorPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxProveedorPopupMenuWillBecomeVisible
         //Sirve para poder tener un "placeholder" en el combobox
-                if (jComboBoxProveedor.getItemAt(0).equals("Selecciona un proveïdor...")) {
+        if (jComboBoxProveedor.getItemAt(0).equals("Selecciona un proveïdor...")) {
             jComboBoxProveedor.removeItemAt(0);
         }
     }//GEN-LAST:event_jComboBoxProveedorPopupMenuWillBecomeVisible
