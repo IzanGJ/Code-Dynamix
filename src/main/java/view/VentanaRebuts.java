@@ -76,7 +76,7 @@ public class VentanaRebuts extends javax.swing.JDialog {
         jLabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitulo.setText("Veure Rebuts");
 
-        jLabelProveedor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabelProveedor.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelProveedor.setText("Proveïdor:");
 
         jButtonVolver.setText("Tornar");
@@ -144,11 +144,12 @@ public class VentanaRebuts extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jLabelProveedor1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabelProveedor1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelProveedor1.setText("Rebut:");
 
         jComboBoxRecibo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBoxRecibo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jComboBoxRecibo.setEnabled(false);
         jComboBoxRecibo.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -165,13 +166,13 @@ public class VentanaRebuts extends javax.swing.JDialog {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Preu total: ");
 
         jLabelPrecioTotal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabelPrecioTotal.setText("0€");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Nº identificador: ");
 
         jLabelID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -272,6 +273,11 @@ public class VentanaRebuts extends javax.swing.JDialog {
                 System.out.println(ex.getMessage()); //No la debe ver el usuario
             }
             
+            if (receipts.isEmpty()) {
+                jComboBoxRecibo.setEnabled(false);
+            } else {
+                jComboBoxRecibo.setEnabled(true);
+            }
             
             
         } else {
@@ -291,8 +297,9 @@ public class VentanaRebuts extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBoxReciboPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxReciboPopupMenuWillBecomeInvisible
+        list = jComboBoxRecibo.getItemAt(jComboBoxRecibo.getSelectedIndex()).split(" ");
         if (jComboBoxRecibo.getSelectedItem() == null) {
-            //Aquí irá algo
+            jLabelID.setText(list[1]);
         } else {
             jComboBoxRecibo.addItem("Selecciona un rebut...");
         }
@@ -304,7 +311,7 @@ public class VentanaRebuts extends javax.swing.JDialog {
             jComboBoxRecibo.removeItemAt(0);
         }
         
-        if (!jComboBoxProveedor.getItemAt(0).equals("Selecciona un proveïdor...")) {
+        if (!jComboBoxProveedor.getItemAt(jComboBoxProveedor.getSelectedIndex()).equals("Selecciona un proveïdor...")) {
             for (String clave : receipts.keySet()) {
                 jComboBoxRecibo.addItem("ID: " + clave);
             }
