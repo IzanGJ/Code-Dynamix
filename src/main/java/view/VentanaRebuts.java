@@ -12,14 +12,14 @@ import javax.swing.table.DefaultTableModel;
 import model.*;
 import persistence.codeDynamixDAO;
 
-public class VentanaComprar extends javax.swing.JDialog {
+public class VentanaRebuts extends javax.swing.JDialog {
     Interprete interprete;
     codeDynamixDAO dao;
     DefaultTableModel model;
     HashMap<Integer, ProductObj> products;
     HashMap<String, CompanyObj> companies;
 
-    public VentanaComprar(java.awt.Frame parent, boolean modal) {
+    public VentanaRebuts(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         interprete = Interprete.obtenerInstancia();
         dao = new codeDynamixDAO();
@@ -86,8 +86,7 @@ public class VentanaComprar extends javax.swing.JDialog {
         jLabelError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Comprar Productes");
-        setAutoRequestFocus(false);
+        setTitle("Veure rebuts");
         setResizable(false);
 
         jLabelTitulo.setFont(new java.awt.Font("Courier New", 1, 30)); // NOI18N
@@ -435,14 +434,30 @@ public class VentanaComprar extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaComprar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaRebuts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaComprar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaRebuts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaComprar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaRebuts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaComprar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaRebuts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -463,7 +478,7 @@ public class VentanaComprar extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VentanaComprar dialog = new VentanaComprar(new javax.swing.JFrame(), true);
+                VentanaRebuts dialog = new VentanaRebuts(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

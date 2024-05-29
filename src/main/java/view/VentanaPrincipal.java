@@ -179,7 +179,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonComprarActionPerformed
 
     private void jButtonRecibosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRecibosActionPerformed
-        // TODO add your handling code here:
+        VentanaRebuts dialog = new VentanaRebuts(new javax.swing.JFrame(), true);
+        dialog.setVisible(true);
     }//GEN-LAST:event_jButtonRecibosActionPerformed
 
     /**

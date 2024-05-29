@@ -72,6 +72,7 @@ public class VentanaProductes extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Administrar productes");
+        setAutoRequestFocus(false);
         setResizable(false);
 
         jButtonRegistrar.setText("Registrar");

@@ -68,6 +68,7 @@ public class VentanaProductesVeure extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Mostrar Producte");
+        setAutoRequestFocus(false);
         setResizable(false);
 
         jLabelTitulo.setFont(new java.awt.Font("Courier New", 1, 30)); // NOI18N

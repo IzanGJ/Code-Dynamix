@@ -50,6 +50,7 @@ public class VentanaCompanyiesMostrar extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Mostrar companyia");
+        setAutoRequestFocus(false);
         setResizable(false);
 
         jLabel2.setFont(new java.awt.Font("Courier New", 1, 30)); // NOI18N

@@ -71,6 +71,7 @@ public class VentanaCompanyies extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Administrar companyies");
+        setAutoRequestFocus(false);
         setResizable(false);
 
         jButtonAlta.setText("Donar d'alta");
