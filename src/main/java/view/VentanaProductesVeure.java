@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -12,14 +13,14 @@ import persistence.codeDynamixDAO;
 public class VentanaProductesVeure extends javax.swing.JDialog {
     Interprete interprete;
     codeDynamixDAO dao;
-    HashMap<Integer, ProductObj> productos;
+    HashMap<Integer, ProductObj> products;
 
     public VentanaProductesVeure(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         interprete = Interprete.obtenerInstancia();
         dao = new codeDynamixDAO();
         try {
-            productos = dao.allProducts();
+            products = dao.allProducts();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -28,8 +29,8 @@ public class VentanaProductesVeure extends javax.swing.JDialog {
         setIconImage(img.getImage());
         jComboBox.removeAllItems();
         jComboBox.addItem("Selecciona un producte...");
-        for (int clave : productos.keySet()) {
-            jComboBox.addItem(String.valueOf(clave) + " |  " + productos.get(clave).getName());
+        for (int clave : products.keySet()) {
+            jComboBox.addItem(String.valueOf(clave) + " |  " + products.get(clave).getName());
         }
         
     }
@@ -52,8 +53,6 @@ public class VentanaProductesVeure extends javax.swing.JDialog {
         jLabelCodigo = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabelDescripcion = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabelPrecio = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabelPeso = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -115,37 +114,42 @@ public class VentanaProductesVeure extends javax.swing.JDialog {
             .addGap(0, 2, Short.MAX_VALUE)
         );
 
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel13.setText("Nom:");
 
         jLabelNombre.setText(" ");
 
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Codi:");
 
         jLabelCodigo.setText(" ");
 
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Descripció:");
 
         jLabelDescripcion.setText(" ");
 
-        jLabel7.setText("Preu:");
-
-        jLabelPrecio.setText(" ");
-
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("Pes:");
 
         jLabelPeso.setText(" ");
 
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("Color:");
 
         jLabelColor.setText(" ");
 
-        jLabel1.setText("Nada1:");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel1.setText(" ");
 
-        jLabel2.setText("Nada2:");
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText(" ");
 
-        jLabel3.setText("Nada3:");
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel3.setText(" ");
 
-        jLabel4.setText("Nada4:");
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel4.setText(" ");
 
         jLabelNada1.setText(" ");
 
@@ -168,43 +172,40 @@ public class VentanaProductesVeure extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(106, 106, 106)
-                                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabelCodigo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabelNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabelPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabelPeso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabelColor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabelNada1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabelNada2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabelNada3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabelNada4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(linea, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
+                            .addComponent(linea, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabelProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox, 0, 481, Short.MAX_VALUE)))
-                        .addGap(50, 50, 50))))
+                                .addComponent(jComboBox, 0, 372, Short.MAX_VALUE)))
+                        .addGap(50, 50, 50))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabelNada3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
+                                    .addComponent(jLabelNada2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabelNada1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabelColor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabelPeso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabelDescripcion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabelCodigo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabelNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabelNada4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(106, 106, 106)
+                                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -223,7 +224,7 @@ public class VentanaProductesVeure extends javax.swing.JDialog {
                 .addComponent(linea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19)
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(jLabelNombre))
@@ -235,35 +236,31 @@ public class VentanaProductesVeure extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jLabelDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabelPrecio))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jLabelPeso))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jLabelColor))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabelNada1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabelNada2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabelNada3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabelNada4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(jButtonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
@@ -279,8 +276,102 @@ public class VentanaProductesVeure extends javax.swing.JDialog {
     }//GEN-LAST:event_jComboBoxActionPerformed
 
     private void jComboBoxPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxPopupMenuWillBecomeInvisible
+        String[] list;
         if (jComboBox.getSelectedItem() != null) {
+            list = String.valueOf(jComboBox.getSelectedItem()).split(" |  ");
+            ProductObj product = products.get(Integer.parseInt(list[0]));
             
+            jLabelNombre.setText(product.getName());
+            jLabelCodigo.setText(String.valueOf(product.getCode()));
+            jLabelDescripcion.setText(product.getDescription());
+            jLabelPeso.setText(String.valueOf(product.getWeight()) + "g");
+            Color newColor = new Color(product.getColor());
+            jLabelColor.setText(String.valueOf(newColor.getRed()) + ", " + String.valueOf(newColor.getGreen()) + ", " + String.valueOf(newColor.getBlue()));
+            
+            if (product instanceof ErgonomicChair) {
+                ErgonomicChair chair = (ErgonomicChair) product;
+                jLabel1.setText("Rodes:");
+                jLabelNada1.setText(String.valueOf(chair.getWheels()));
+                
+                jLabel2.setText("Respatller?:");
+                if (chair.isBackrest()) {
+                    jLabelNada2.setText("Sí");
+                } else {
+                    jLabelNada2.setText("No");
+                }
+                
+                jLabel3.setText("Reposabraços?:");
+                if (chair.isArmrest()) {
+                    jLabelNada3.setText("Sí");
+                } else {
+                    jLabelNada3.setText("No");
+                }
+                
+                jLabel4.setText("");
+                jLabelNada4.setText("");
+                
+            } else if (product instanceof ErgonomicKeyboard) {
+                ErgonomicKeyboard keyboard = (ErgonomicKeyboard) product;
+                jLabel1.setText("Tipus:");
+                jLabelNada1.setText(keyboard.getType());
+                
+                jLabel2.setText("Llengua:");
+                jLabelNada2.setText(keyboard.getLanguage());
+                
+                jLabel3.setText("Longitud:");
+                jLabelNada3.setText(String.valueOf(keyboard.getLenght()) + "%");
+                
+                jLabel4.setText("Sense fil?");
+                if (keyboard.isWireless()) {
+                    jLabelNada4.setText("Sí");
+                } else {
+                    jLabelNada4.setText("No");
+                }
+                
+            } else if (product instanceof ErgonomicMouse) {
+                ErgonomicMouse mouse = (ErgonomicMouse) product;
+                jLabel1.setText("Botons laterals:");
+                jLabelNada1.setText(String.valueOf(mouse.getLateralButtons()));
+                
+                jLabel2.setText("Dretá?:");
+                if (mouse.isHandDexterity()) {
+                    jLabelNada2.setText("Sí");
+                } else {
+                    jLabelNada2.setText("No");
+                }
+                
+                jLabel3.setText("Sense fil?:");
+                if (mouse.isWireless()) {
+                    jLabelNada3.setText("Sí");
+                } else {
+                    jLabelNada3.setText("No");
+                }
+                
+                jLabel4.setText("");
+                jLabelNada4.setText("");
+                
+            } else if (product instanceof ErgonomicTable) {
+                ErgonomicTable table = (ErgonomicTable) product;
+                jLabel1.setText("Material:");
+                jLabelNada1.setText(table.getMaterial());
+                
+                jLabel2.setText("Rodes:");
+                jLabelNada2.setText(String.valueOf(table.getWheels()));
+                
+                jLabel3.setText("Potes:");
+                jLabelNada3.setText(String.valueOf(table.getLegs()));
+                
+                jLabel4.setText("Altura adjustable?");
+                if (table.isAdjustableHeight()) {
+                    jLabelNada4.setText("Sí");
+                } else {
+                    jLabelNada4.setText("No");
+                }
+                
+            }
+            
+        } else {
+            jComboBox.addItem("Selecciona un producte...");
         }
     }//GEN-LAST:event_jComboBoxPopupMenuWillBecomeInvisible
 
@@ -355,7 +446,6 @@ public class VentanaProductesVeure extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelCodigo;
@@ -367,7 +457,6 @@ public class VentanaProductesVeure extends javax.swing.JDialog {
     private javax.swing.JLabel jLabelNada4;
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JLabel jLabelPeso;
-    private javax.swing.JLabel jLabelPrecio;
     private javax.swing.JLabel jLabelProducto;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JPanel linea;
