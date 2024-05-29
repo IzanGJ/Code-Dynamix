@@ -128,7 +128,7 @@
           <Font name="Courier New" size="30" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Vuere Rebuts"/>
+        <Property name="text" type="java.lang.String" value="Veure Rebuts"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelProveedor">

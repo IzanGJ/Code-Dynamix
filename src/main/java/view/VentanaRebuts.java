@@ -18,6 +18,8 @@ public class VentanaRebuts extends javax.swing.JDialog {
     DefaultTableModel model;
     HashMap<Integer, ProductObj> products;
     HashMap<String, CompanyObj> companies;
+    HashMap<String,OrderObj> receipts;
+    String[] list;
 
     public VentanaRebuts(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -72,7 +74,7 @@ public class VentanaRebuts extends javax.swing.JDialog {
 
         jLabelTitulo.setFont(new java.awt.Font("Courier New", 1, 30)); // NOI18N
         jLabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelTitulo.setText("Vuere Rebuts");
+        jLabelTitulo.setText("Veure Rebuts");
 
         jLabelProveedor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabelProveedor.setText("Proveïdor:");
@@ -262,7 +264,17 @@ public class VentanaRebuts extends javax.swing.JDialog {
     }//GEN-LAST:event_jComboBoxProveedorActionPerformed
 
     private void jComboBoxProveedorPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxProveedorPopupMenuWillBecomeInvisible
-        if (jComboBoxProveedor.getSelectedItem() == null) {
+        if (jComboBoxProveedor.getSelectedItem() != null) {
+            list = jComboBoxProveedor.getItemAt(jComboBoxProveedor.getSelectedIndex()).split(" | ");
+            try {
+                receipts = dao.getCompanyReceipt(companies.get(list[0]));
+            } catch (SQLException | CompanyException ex) {
+                System.out.println(ex.getMessage()); //No la debe ver el usuario
+            }
+            
+            
+            
+        } else {
             jComboBoxProveedor.addItem("Selecciona un proveïdor...");
         }
     }//GEN-LAST:event_jComboBoxProveedorPopupMenuWillBecomeInvisible
@@ -279,8 +291,8 @@ public class VentanaRebuts extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBoxReciboPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxReciboPopupMenuWillBecomeInvisible
-        if (jComboBoxRecibo.getSelectedItem() != null) {
-            
+        if (jComboBoxRecibo.getSelectedItem() == null) {
+            //Aquí irá algo
         } else {
             jComboBoxRecibo.addItem("Selecciona un rebut...");
         }
@@ -291,6 +303,14 @@ public class VentanaRebuts extends javax.swing.JDialog {
         if (jComboBoxRecibo.getItemAt(0).equals("Selecciona un rebut...")) {
             jComboBoxRecibo.removeItemAt(0);
         }
+        
+        if (!jComboBoxProveedor.getItemAt(0).equals("Selecciona un proveïdor...")) {
+            for (String clave : receipts.keySet()) {
+                jComboBoxRecibo.addItem("ID: " + clave);
+            }
+        }
+        
+
     }//GEN-LAST:event_jComboBoxReciboPopupMenuWillBecomeVisible
 
     private void jComboBoxReciboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxReciboActionPerformed
