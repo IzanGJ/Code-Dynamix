@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-05-2024 a las 19:12:42
+-- Tiempo de generación: 30-05-2024 a las 00:48:22
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -113,7 +113,6 @@ CREATE TABLE `product` (
   `ID` int(11) NOT NULL,
   `name` varchar(45) NOT NULL,
   `description` varchar(200) NOT NULL,
-  `price` float NOT NULL,
   `weight` float NOT NULL,
   `color` varchar(45) NOT NULL,
   `type` varchar(8) NOT NULL
@@ -122,10 +121,10 @@ CREATE TABLE `product` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `table`
+-- Estructura de tabla para la tabla `taula`
 --
 
-CREATE TABLE `table` (
+CREATE TABLE `taula` (
   `ID` int(11) NOT NULL,
   `wheels` int(11) NOT NULL,
   `legs` int(11) NOT NULL,
@@ -160,7 +159,7 @@ ALTER TABLE `delivery_note`
 -- Indices de la tabla `delivery_note_prod`
 --
 ALTER TABLE `delivery_note_prod`
-  ADD PRIMARY KEY (`delivery_ID`),
+  ADD KEY `FK_delivery_ID_idx` (`delivery_ID`),
   ADD KEY `FK_product_ID_idx` (`prod_ID`);
 
 --
@@ -182,9 +181,9 @@ ALTER TABLE `product`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indices de la tabla `table`
+-- Indices de la tabla `taula`
 --
-ALTER TABLE `table`
+ALTER TABLE `taula`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -233,9 +232,9 @@ ALTER TABLE `mouse`
   ADD CONSTRAINT `FK_IDm` FOREIGN KEY (`ID`) REFERENCES `product` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `table`
+-- Filtros para la tabla `taula`
 --
-ALTER TABLE `table`
+ALTER TABLE `taula`
   ADD CONSTRAINT `FK_IDt` FOREIGN KEY (`ID`) REFERENCES `product` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
