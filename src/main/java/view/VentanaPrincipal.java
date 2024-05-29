@@ -1,8 +1,13 @@
 package view;
 
+import exceptions.CompanyException;
+import java.sql.SQLException;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import persistence.codeDynamixDAO;
 
 public class VentanaPrincipal extends javax.swing.JFrame {
+    codeDynamixDAO dao = new codeDynamixDAO();
     public VentanaPrincipal() {
         initComponents();
         ImageIcon img = new ImageIcon("src\\main\\java\\images\\icon.png");
@@ -174,8 +179,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCompaniaActionPerformed
 
     private void jButtonComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonComprarActionPerformed
-        VentanaComprar dialog = new VentanaComprar(new javax.swing.JFrame(), true);
-        dialog.setVisible(true);
+        try {
+            if (!dao.allCompanies().isEmpty()) {
+                if (!dao.allProducts().isEmpty()) {
+                    VentanaComprar dialog = new VentanaComprar(new javax.swing.JFrame(), true);
+                    dialog.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "No hi han productes registrats");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "No hi han companyies registrades");
+            }
+        } catch (SQLException | CompanyException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+
     }//GEN-LAST:event_jButtonComprarActionPerformed
 
     private void jButtonRecibosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRecibosActionPerformed

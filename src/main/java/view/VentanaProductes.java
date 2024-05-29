@@ -180,7 +180,6 @@ public class VentanaProductes extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonRegistrarActionPerformed
 
     private void EsborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EsborrarActionPerformed
-        
         try {
             if (!dao.allProducts().isEmpty()) {
                 VentanaProductesEliminar dialog = new VentanaProductesEliminar(new javax.swing.JFrame(), true); 
@@ -191,7 +190,6 @@ public class VentanaProductes extends javax.swing.JDialog {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        
     }//GEN-LAST:event_EsborrarActionPerformed
 
     private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
