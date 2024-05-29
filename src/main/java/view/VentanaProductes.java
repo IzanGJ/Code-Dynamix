@@ -75,6 +75,7 @@ public class VentanaProductes extends javax.swing.JDialog {
         setResizable(false);
 
         jButtonRegistrar.setText("Registrar");
+        jButtonRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRegistrarActionPerformed(evt);
@@ -82,6 +83,7 @@ public class VentanaProductes extends javax.swing.JDialog {
         });
 
         Esborrar.setText("Esborrar");
+        Esborrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Esborrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EsborrarActionPerformed(evt);
@@ -89,6 +91,7 @@ public class VentanaProductes extends javax.swing.JDialog {
         });
 
         jButtonVolver.setText("Tornar");
+        jButtonVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonVolverActionPerformed(evt);
@@ -96,6 +99,7 @@ public class VentanaProductes extends javax.swing.JDialog {
         });
 
         jButtonMostrar.setText("Veure producte");
+        jButtonMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonMostrarActionPerformed(evt);

@@ -74,6 +74,7 @@ public class VentanaCompanyies extends javax.swing.JDialog {
         setResizable(false);
 
         jButtonAlta.setText("Donar d'alta");
+        jButtonAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonAlta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAltaActionPerformed(evt);
@@ -81,6 +82,7 @@ public class VentanaCompanyies extends javax.swing.JDialog {
         });
 
         jButtonBaja.setText("Donar de baixa");
+        jButtonBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonBaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBajaActionPerformed(evt);
@@ -88,6 +90,7 @@ public class VentanaCompanyies extends javax.swing.JDialog {
         });
 
         jButtonModificar.setText("Modificar");
+        jButtonModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonModificarActionPerformed(evt);
@@ -95,6 +98,7 @@ public class VentanaCompanyies extends javax.swing.JDialog {
         });
 
         jButtonVolver.setText("Tornar");
+        jButtonVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonVolverActionPerformed(evt);
@@ -102,6 +106,7 @@ public class VentanaCompanyies extends javax.swing.JDialog {
         });
 
         jButtonMostrar.setText("Mostrar Empreses");
+        jButtonMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonMostrarActionPerformed(evt);

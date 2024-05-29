@@ -112,6 +112,9 @@
     <Component class="javax.swing.JButton" name="jButtonRegistrar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Registrar"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRegistrarActionPerformed"/>
@@ -120,6 +123,9 @@
     <Component class="javax.swing.JButton" name="Esborrar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Esborrar"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EsborrarActionPerformed"/>
@@ -128,6 +134,9 @@
     <Component class="javax.swing.JButton" name="jButtonVolver">
       <Properties>
         <Property name="text" type="java.lang.String" value="Tornar"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonVolverActionPerformed"/>
@@ -136,6 +145,9 @@
     <Component class="javax.swing.JButton" name="jButtonMostrar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Veure producte"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonMostrarActionPerformed"/>

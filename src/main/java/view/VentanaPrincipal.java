@@ -58,6 +58,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jButtonCompania.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonCompania.setText("Companyies");
+        jButtonCompania.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonCompania.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCompaniaActionPerformed(evt);
@@ -66,6 +67,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jButtonProductos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonProductos.setText("Productes");
+        jButtonProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonProductosActionPerformed(evt);
@@ -94,6 +96,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jButtonComprar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonComprar.setText("Comprar");
+        jButtonComprar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonComprar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonComprarActionPerformed(evt);
@@ -102,6 +105,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jButtonRecibos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonRecibos.setText("Rebuts");
+        jButtonRecibos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonRecibos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRecibosActionPerformed(evt);

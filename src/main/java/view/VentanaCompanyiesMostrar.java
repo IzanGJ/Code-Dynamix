@@ -59,6 +59,7 @@ public class VentanaCompanyiesMostrar extends javax.swing.JDialog {
         jLabel1.setText("Companyia:");
 
         jButtonVolver.setText("Tornar");
+        jButtonVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -66,6 +67,7 @@ public class VentanaCompanyiesMostrar extends javax.swing.JDialog {
         });
 
         jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jComboBox.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }

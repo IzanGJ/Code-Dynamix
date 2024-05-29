@@ -96,6 +96,7 @@ public class VentanaComprar extends javax.swing.JDialog {
         jLabelProveedor.setText("Proveïdor:");
 
         jButtonVolver.setText("Tornar");
+        jButtonVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -103,6 +104,7 @@ public class VentanaComprar extends javax.swing.JDialog {
         });
 
         jComboBoxProveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxProveedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jComboBoxProveedor.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -166,6 +168,7 @@ public class VentanaComprar extends javax.swing.JDialog {
         jLabelPrecioTotal.setText("0€");
 
         jButtonComprar.setText("Confirmar");
+        jButtonComprar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonComprar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonComprarActionPerformed(evt);
@@ -198,6 +201,7 @@ public class VentanaComprar extends javax.swing.JDialog {
         jScrollPane1.setViewportView(jTable1);
 
         jButtonInsertar.setText("Insertar");
+        jButtonInsertar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonInsertar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonInsertarActionPerformed1(evt);

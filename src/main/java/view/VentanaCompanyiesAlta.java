@@ -48,6 +48,7 @@ public class VentanaCompanyiesAlta extends javax.swing.JDialog {
         jLabel3.setText("CIF:");
 
         jButtonVolver.setText("Tornar");
+        jButtonVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonVolverActionPerformed(evt);
@@ -55,6 +56,7 @@ public class VentanaCompanyiesAlta extends javax.swing.JDialog {
         });
 
         jButtonRegistrar.setText("Registrar");
+        jButtonRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRegistrarActionPerformed(evt);

@@ -41,6 +41,7 @@ public class VentanaCompanyiesBaixa extends javax.swing.JDialog {
         jLabel1.setText("CIF de l'empresa:");
 
         jButtonVolver.setText("Tornar");
+        jButtonVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonVolverActionPerformed(evt);
@@ -48,6 +49,7 @@ public class VentanaCompanyiesBaixa extends javax.swing.JDialog {
         });
 
         jButtonConfirmar.setText("Confirmar");
+        jButtonConfirmar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonConfirmarActionPerformed(evt);
