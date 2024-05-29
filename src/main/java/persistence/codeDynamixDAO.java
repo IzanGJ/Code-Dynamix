@@ -75,12 +75,10 @@ public class codeDynamixDAO {
         ResultSet rs = st.executeQuery(query);
         HashMap<String,OrderObj> receipt = new HashMap<String,OrderObj>();
         while (rs.next()) {
-            ArrayList<ProductObj> productes = new ArrayList<ProductObj>();
+            ArrayList<ProductObj> productes = new ArrayList<>();
             String id = rs.getString("delivery_ID");
             String cif = rs.getString("username");
             String compName = rs.getString("title");
-            String content = rs.getString("content");
-            Boolean done = rs.getBoolean("done");
             receipt.put(id, new OrderObj(new CompanyObj(cif, compName), productes));
         }
         rs.close();
@@ -264,8 +262,7 @@ public class codeDynamixDAO {
         ps.close();
         desconectar(c);
     }
-    
-    
+       
     public void remProduct(ProductObj product) throws SQLException, CompanyException {
         if (product == null) {
             throw new CompanyException(CompanyException.PRODUCT_NOT_FOUND);
@@ -288,17 +285,26 @@ public class codeDynamixDAO {
         desconectar(c);
     }
     
-    
     public void insertNote(OrderObj order) throws SQLException, CompanyException {
         Connection c = conectar();
-        PreparedStatement ps = c.prepareStatement("INSERT INTO delivery_note VALUES(null, '" + order.getCompany().getCif() + "')");
+        PreparedStatement ps = c.prepareStatement("INSERT INTO delivery_note VALUES(null, '" + order.getCompany().getCif() + "');");
         
         ps.executeUpdate();
         ps.close();
         desconectar(c);
     }
     
-    
+    public void insertNoteProd(OrderObj order) throws SQLException, CompanyException {
+        Connection c = conectar();
+        int col = getNoteNum();
+        for(ProductObj product : order.getProducts()) {
+            PreparedStatement ps = c.prepareStatement("INSERT INTO delivery_note_prod VALUES("+col+", " + product.getCode() + ", "+ product.getQty() + ", "+ product.getPrice() + ");");
+            ps.executeUpdate();
+            ps.close();
+        }
+        desconectar(c);
+    }
+      
     private boolean existCompany(String cif) throws SQLException {
         Connection c = conectar();
         Statement st = c.createStatement();
@@ -327,6 +333,20 @@ public class codeDynamixDAO {
         st.close();
         desconectar(c);
         return existe;  
+    }
+    
+    private int getNoteNum() throws SQLException {
+        Connection c = conectar();
+        Statement st = c.createStatement();
+        String query = "select COUNT(*) from delivery_note;";
+        ResultSet rs = st.executeQuery(query);
+        int col = 0;
+        rs.next();
+        col = rs.getInt("COUNT(*)");
+        rs.close();
+        st.close();
+        desconectar(c);
+        return col;  
     }
 
     private Connection conectar() throws SQLException {

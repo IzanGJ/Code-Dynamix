@@ -30,6 +30,12 @@ public abstract class ProductObj {
         this.color = color;
     }
 
+    public ProductObj(int code, float price, int qty) {
+        this.code = code;
+        this.price = price;
+        this.qty = qty;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
