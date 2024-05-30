@@ -6,12 +6,10 @@ import javax.swing.JOptionPane;
 import persistence.codeDynamixDAO;
 
 public class VentanaProductes extends javax.swing.JDialog {
-    Interprete interprete;
     codeDynamixDAO dao;
 
     public VentanaProductes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        interprete = Interprete.obtenerInstancia();
         dao = new codeDynamixDAO();
         initComponents();
         ImageIcon img = new ImageIcon("src\\main\\java\\images\\icon.png");

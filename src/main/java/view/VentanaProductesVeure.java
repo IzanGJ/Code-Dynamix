@@ -11,13 +11,11 @@ import model.*;
 import persistence.codeDynamixDAO;
 
 public class VentanaProductesVeure extends javax.swing.JDialog {
-    Interprete interprete;
     codeDynamixDAO dao;
     HashMap<Integer, ProductObj> products;
 
     public VentanaProductesVeure(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        interprete = Interprete.obtenerInstancia();
         dao = new codeDynamixDAO();
         try {
             products = dao.allProducts();

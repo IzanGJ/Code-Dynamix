@@ -13,7 +13,6 @@ import model.*;
 import persistence.codeDynamixDAO;
 
 public class VentanaComprar extends javax.swing.JDialog {
-    Interprete interprete;
     codeDynamixDAO dao;
     DefaultTableModel model;
     HashMap<Integer, ProductObj> products;
@@ -21,7 +20,6 @@ public class VentanaComprar extends javax.swing.JDialog {
 
     public VentanaComprar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        interprete = Interprete.obtenerInstancia();
         dao = new codeDynamixDAO();
         try {
             products = dao.allProducts();
@@ -371,10 +369,9 @@ public class VentanaComprar extends javax.swing.JDialog {
                 list = jComboBoxProveedor.getItemAt(jComboBoxProveedor.getSelectedIndex()).split(" | ");
                 try {
                     dao.insertOrder(new OrderObj(companies.get(list[0]), productos));
-                } catch (Exception ex) {
+                } catch (CompanyException | SQLException ex) {
                     JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
-
                 JOptionPane.showMessageDialog(this, "El rebut s'ha registrat correctament!", " ", 1);
                 this.dispose();
             }

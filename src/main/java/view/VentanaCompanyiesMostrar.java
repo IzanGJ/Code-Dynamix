@@ -9,12 +9,10 @@ import model.*;
 import persistence.codeDynamixDAO;
 
 public class VentanaCompanyiesMostrar extends javax.swing.JDialog {
-    Interprete interprete;
     codeDynamixDAO dao = new codeDynamixDAO();;
 
     public VentanaCompanyiesMostrar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        interprete = Interprete.obtenerInstancia();
         initComponents();
         ImageIcon img = new ImageIcon("src\\main\\java\\images\\icon.png");
         setIconImage(img.getImage());

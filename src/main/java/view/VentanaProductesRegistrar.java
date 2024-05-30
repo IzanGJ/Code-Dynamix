@@ -10,13 +10,11 @@ import model.*;
 import persistence.codeDynamixDAO;
 
 public class VentanaProductesRegistrar extends javax.swing.JDialog {
-    Interprete interprete;
     codeDynamixDAO dao;
     Color newColor = new Color(Color.black.getRGB());
 
     public VentanaProductesRegistrar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        interprete = Interprete.obtenerInstancia();
         dao = new codeDynamixDAO();
         initComponents();
         ImageIcon img = new ImageIcon("src\\main\\java\\images\\icon.png");
