@@ -368,8 +368,7 @@ public class VentanaComprar extends javax.swing.JDialog {
             }
             list = jComboBoxProveedor.getItemAt(jComboBoxProveedor.getSelectedIndex()).split(" | ");
             try {
-                dao.insertNote(new OrderObj(companies.get(list[0]), productos));
-                dao.insertNoteProd(new OrderObj(companies.get(list[0]), productos));
+                dao.insertOrder(new OrderObj(companies.get(list[0]), productos));
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }

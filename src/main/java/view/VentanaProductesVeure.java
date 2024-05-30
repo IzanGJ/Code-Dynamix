@@ -32,7 +32,6 @@ public class VentanaProductesVeure extends javax.swing.JDialog {
         for (int clave : products.keySet()) {
             jComboBox.addItem(String.valueOf(clave) + " |  " + products.get(clave).getName());
         }
-        
     }
 
     
@@ -299,7 +298,6 @@ public class VentanaProductesVeure extends javax.swing.JDialog {
         if (jComboBox.getSelectedItem() != null) {
             list = String.valueOf(jComboBox.getSelectedItem()).split(" |  ");
             ProductObj product = products.get(Integer.parseInt(list[0]));
-            
             jLabelNombre.setText(product.getName());
             jLabelCodigo.setText(String.valueOf(product.getCode()));
             jLabelDescripcion.setText(product.getDescription());

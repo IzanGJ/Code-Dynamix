@@ -196,9 +196,10 @@ public class VentanaCompanyiesMostrar extends javax.swing.JDialog {
         if (jComboBox.getSelectedItem() != null) {
             try {
                 HashMap<String, CompanyObj> companies = dao.allCompanies();
-                jLabelNombre.setText(companies.get(jComboBox.getSelectedItem()).getNombre());
-                jLabelCif.setText(companies.get(jComboBox.getSelectedItem()).getCif());
-                jLabelRecibos.setText(String.valueOf(dao.getCompanyReceipt(companies.get(jComboBox.getSelectedItem())).size()));
+                CompanyOrderTO obj = dao.getCompanyOrder(companies.get(jComboBox.getSelectedItem()));
+                jLabelNombre.setText(obj.getComp().getNombre());
+                jLabelCif.setText(obj.getComp().getCif());
+                jLabelRecibos.setText(String.valueOf(obj.getOrder()));
             } catch (CompanyException | SQLException ex) {
                 System.out.println(ex.getMessage());
             }
