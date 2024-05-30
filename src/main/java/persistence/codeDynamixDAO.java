@@ -154,13 +154,13 @@ public class codeDynamixDAO {
                         
                     case "mouse":
                         boolean handDexterity;
-                        if (rs.getInt("ch_backrest") == 1) {
+                        if (rs.getInt("ms_handDexterity") == 1) {
                             handDexterity = true;
                         } else {
                             handDexterity = false;
                         }
                         
-                        if (rs.getInt("ch_armrest") == 1) {
+                        if (rs.getInt("ms_wireless") == 1) {
                             wireless = true;
                         } else {
                             wireless = false;
