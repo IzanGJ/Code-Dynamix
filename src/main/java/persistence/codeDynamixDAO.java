@@ -68,35 +68,41 @@ public class codeDynamixDAO {
         desconectar(c);
     }
     
-    public HashMap<Integer, OrderObj> getCompanyReceipt(CompanyObj comp) throws SQLException, CompanyException {
+    public ArrayList<Integer> getCompanyReceiptID(CompanyObj comp) throws SQLException, CompanyException {
         Connection c = conectar();
         Statement st = c.createStatement();
-        String query = "SELECT b.delivery_ID, c.prod_ID, c.quantity, c.price FROM company AS a JOIN delivery_note AS b ON a.CIF = b.company_ID JOIN delivery_note_prod AS c ON b.delivery_ID = c.delivery_ID WHERE a.CIF = '" + comp.getCif() + "';";
+        String query = "SELECT delivery_ID FROM delivery_note WHERE company_ID = '" + comp.getCif() + "';";
         ResultSet rs = st.executeQuery(query);
-        HashMap<Integer, OrderObj> receipt = new HashMap<>();
-        ArrayList<ProductObj> productes = new ArrayList<>();
-        int placeHolder = 0;
+        ArrayList<Integer> orders = new ArrayList<>();
+        while (rs.next()) {
+            int del_id = rs.getInt("delivery_ID");
+            orders.add(del_id);
+        }
+        rs.close();
+        st.close();
+        desconectar(c);
+        return orders;
+    }
+    
+    public OrderObj getCompanyReceiptProd(int id) throws SQLException, CompanyException {
+        Connection c = conectar();
+        Statement st = c.createStatement();
+        String query = "SELECT prod_ID, quantity, price FROM delivery_note_prod WHERE delivery_ID = '" + id + "';";
+        ResultSet rs = st.executeQuery(query);
+        ArrayList<ProductObj> prod = new ArrayList<>();
+        OrderObj obj = new OrderObj(prod);
         while (rs.next()) {
             int del_id = rs.getInt("delivery_ID");
             int prod_id = rs.getInt("prod_ID");
             Float price = rs.getFloat("price");
             int qty = rs.getInt("quantity");
-            if(placeHolder == 0) {
-               placeHolder = del_id;
-            }
-            productes.add(new ProductObj(prod_id, price, qty));
-            if(del_id != placeHolder) {
-                receipt.put(placeHolder, new OrderObj(comp, productes));
-                productes.clear();
-                placeHolder = del_id;
-            } else if(rs.isLast()) {
-                receipt.put(del_id, new OrderObj(comp, productes));
-            }
+            prod.add(new ProductObj(prod_id, price, qty));
         }
         rs.close();
         st.close();
         desconectar(c);
-        return receipt;
+        obj.setProducts(prod);
+        return obj;
     }
     
     public HashMap<Integer, ProductObj> allProducts() throws SQLException {

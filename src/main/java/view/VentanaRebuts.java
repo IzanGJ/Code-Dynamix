@@ -18,7 +18,7 @@ public class VentanaRebuts extends javax.swing.JDialog {
     DefaultTableModel model;
     HashMap<Integer, ProductObj> products;
     HashMap<String, CompanyObj> companies;
-    HashMap<Integer,OrderObj> receipts;
+    ArrayList<Integer> receiptsID;
     String[] list;
 
     public VentanaRebuts(java.awt.Frame parent, boolean modal) {
@@ -268,12 +268,12 @@ public class VentanaRebuts extends javax.swing.JDialog {
         if (jComboBoxProveedor.getSelectedItem() != null) {
             list = jComboBoxProveedor.getItemAt(jComboBoxProveedor.getSelectedIndex()).split(" | ");
             try {
-                receipts = dao.getCompanyReceipt(companies.get(list[0]));
+                receiptsID = dao.getCompanyReceiptID(companies.get(list[0]));
             } catch (SQLException | CompanyException ex) {
                 System.out.println(ex.getMessage()); //No la debe ver el usuario
             }
             
-            if (receipts.isEmpty()) {
+            if (receiptsID.isEmpty()) {
                 jComboBoxRecibo.setEnabled(false);
             } else {
                 jComboBoxRecibo.setEnabled(true);
@@ -303,7 +303,6 @@ public class VentanaRebuts extends javax.swing.JDialog {
         list = jComboBoxProveedor.getItemAt(jComboBoxProveedor.getSelectedIndex()).split(" | ");
         if (jComboBoxRecibo.getSelectedItem() != null) {
             jLabelID.setText(String.valueOf(id_receipt));
-            
             OrderObj order = null;
             try {
                 order = dao.getCompanyReceipt(companies.get(list[0])).get(id_receipt);

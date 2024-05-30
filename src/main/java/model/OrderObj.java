@@ -23,8 +23,6 @@ public class OrderObj {
         return products;
     }
     
-    
-    
     public void setProducts(ArrayList<ProductObj> products) {
         this.products = products;
     }
