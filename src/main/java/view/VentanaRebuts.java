@@ -19,7 +19,6 @@ import model.*;
 import persistence.codeDynamixDAO;
 
 public class VentanaRebuts extends javax.swing.JDialog {
-    Interprete interprete;
     codeDynamixDAO dao;
     DefaultTableModel model;
     HashMap<Integer, ProductObj> products;
@@ -29,7 +28,6 @@ public class VentanaRebuts extends javax.swing.JDialog {
 
     public VentanaRebuts(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        interprete = Interprete.obtenerInstancia();
         dao = new codeDynamixDAO();
         try {
             products = dao.allProducts();
