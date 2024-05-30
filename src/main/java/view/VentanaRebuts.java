@@ -1,6 +1,12 @@
 package view;
 
 import exceptions.CompanyException;
+import java.awt.Desktop;
+import java.awt.print.PrinterException;
+import java.io.IOException;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,7 +61,7 @@ public class VentanaRebuts extends javax.swing.JDialog {
 
         jLabelTitulo = new javax.swing.JLabel();
         jLabelProveedor = new javax.swing.JLabel();
-        jButtonVolver = new javax.swing.JButton();
+        jButtonImprimir = new javax.swing.JButton();
         jComboBoxProveedor = new javax.swing.JComboBox<>();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         linea = new javax.swing.JPanel();
@@ -67,6 +73,7 @@ public class VentanaRebuts extends javax.swing.JDialog {
         jLabelPrecioTotal = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabelID = new javax.swing.JLabel();
+        jButtonVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Veure rebuts");
@@ -79,9 +86,10 @@ public class VentanaRebuts extends javax.swing.JDialog {
         jLabelProveedor.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelProveedor.setText("Proveïdor:");
 
-        jButtonVolver.setText("Tornar");
-        jButtonVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
+        jButtonImprimir.setText("Imprimir");
+        jButtonImprimir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonImprimir.setEnabled(false);
+        jButtonImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
@@ -178,6 +186,14 @@ public class VentanaRebuts extends javax.swing.JDialog {
         jLabelID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabelID.setText(" ");
 
+        jButtonVolver.setText("Tornar");
+        jButtonVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVolverjButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -197,16 +213,6 @@ public class VentanaRebuts extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(50, 50, 50)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(jLabelProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jComboBoxProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jButtonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jComboBoxRecibo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(linea, javax.swing.GroupLayout.DEFAULT_SIZE, 828, Short.MAX_VALUE)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 828, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -214,7 +220,20 @@ public class VentanaRebuts extends javax.swing.JDialog {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabelID, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabelPrecioTotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addComponent(jLabelPrecioTotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jButtonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jButtonImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(jLabelProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jComboBoxProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jComboBoxRecibo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(linea, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 828, Short.MAX_VALUE)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 828, Short.MAX_VALUE)))))
                         .addGap(50, 50, 50)))
                 .addContainerGap())
         );
@@ -249,9 +268,11 @@ public class VentanaRebuts extends javax.swing.JDialog {
                     .addComponent(jLabelPrecioTotal))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-                .addComponent(jButtonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -265,6 +286,7 @@ public class VentanaRebuts extends javax.swing.JDialog {
     }//GEN-LAST:event_jComboBoxProveedorActionPerformed
 
     private void jComboBoxProveedorPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxProveedorPopupMenuWillBecomeInvisible
+        jButtonImprimir.setEnabled(false);
         model.setNumRows(0);
         jComboBoxRecibo.removeAllItems();
         jComboBoxRecibo.addItem("Selecciona un rebut...");
@@ -301,7 +323,12 @@ public class VentanaRebuts extends javax.swing.JDialog {
     }//GEN-LAST:event_jComboBoxProveedorPopupMenuWillBecomeVisible
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
+        try {
+            jTable1.print();
+        } catch (PrinterException ex) {
+            JOptionPane.showMessageDialog(this, "Ho sentim, no ha sigut possible imprimir la taula", "Error", JOptionPane.ERROR_MESSAGE);
+            jButtonImprimir.setEnabled(false);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBoxReciboPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxReciboPopupMenuWillBecomeInvisible
@@ -316,12 +343,11 @@ public class VentanaRebuts extends javax.swing.JDialog {
                 order = dao.getCompanyReceiptProd(id_receipt);
                 Float total = 0f;
                 for (ProductObj product : order.getProducts()) {
-                    System.out.println("Order: " + id_receipt);
-                    System.out.println("Products: " + order.getProducts().size() + "\n");
                     total += product.getQty() * product.getPrice();
                     model.addRow(new Object[]{products.get(product.getCode()).getName(), product.getQty(), product.getPrice() + "€", Math.round(product.getQty() * product.getPrice() * 100.0) / 100.0 + "€"});
                 }
-            jLabelPrecioTotal.setText(String.valueOf(total) + "€");
+                jLabelPrecioTotal.setText(String.valueOf(total) + "€");
+                jButtonImprimir.setEnabled(true);
             } catch (SQLException | CompanyException ex) {
                 System.out.println(ex.getMessage());
             }
@@ -356,6 +382,10 @@ public class VentanaRebuts extends javax.swing.JDialog {
     private void jComboBoxReciboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxReciboActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxReciboActionPerformed
+
+    private void jButtonVolverjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverjButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonVolverjButton1ActionPerformed
 
     
     
@@ -435,6 +465,7 @@ public class VentanaRebuts extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.Box.Filler filler1;
+    private javax.swing.JButton jButtonImprimir;
     private javax.swing.JButton jButtonVolver;
     private javax.swing.JComboBox<String> jComboBoxProveedor;
     private javax.swing.JComboBox<String> jComboBoxRecibo;
