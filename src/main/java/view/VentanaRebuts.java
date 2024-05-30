@@ -265,6 +265,7 @@ public class VentanaRebuts extends javax.swing.JDialog {
     }//GEN-LAST:event_jComboBoxProveedorActionPerformed
 
     private void jComboBoxProveedorPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxProveedorPopupMenuWillBecomeInvisible
+        model.setNumRows(0);
         if (jComboBoxProveedor.getSelectedItem() != null) {
             list = jComboBoxProveedor.getItemAt(jComboBoxProveedor.getSelectedIndex()).split(" | ");
             try {
