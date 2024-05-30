@@ -357,24 +357,27 @@ public class VentanaComprar extends javax.swing.JDialog {
     private void jButtonComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonComprarActionPerformed
         ArrayList<ProductObj> productos;
         if (model.getRowCount() > 0) {
-            productos = new ArrayList<>();
-            String[] list;
-            
-            for (int i = 0; i < model.getRowCount(); i++){
-                list = String.valueOf(model.getValueAt(i, 0)).split(" | ");
-                products.get(Integer.parseInt(list[2])).setQty(Integer.parseInt(String.valueOf(model.getValueAt(i, 1))));
-                products.get(Integer.parseInt(list[2])).setPrice(Float.parseFloat(String.valueOf(model.getValueAt(i, 2))));
-                productos.add(products.get(Integer.parseInt(list[2])));
+            int confirm = JOptionPane.showConfirmDialog(this, "Segur que registrar aquesta compra?", "Confirmació", JOptionPane.YES_NO_OPTION);
+            if (confirm == JOptionPane.YES_OPTION) {
+                productos = new ArrayList<>();
+                String[] list;
+
+                for (int i = 0; i < model.getRowCount(); i++){
+                    list = String.valueOf(model.getValueAt(i, 0)).split(" | ");
+                    products.get(Integer.parseInt(list[2])).setQty(Integer.parseInt(String.valueOf(model.getValueAt(i, 1))));
+                    products.get(Integer.parseInt(list[2])).setPrice(Float.parseFloat(String.valueOf(model.getValueAt(i, 2))));
+                    productos.add(products.get(Integer.parseInt(list[2])));
+                }
+                list = jComboBoxProveedor.getItemAt(jComboBoxProveedor.getSelectedIndex()).split(" | ");
+                try {
+                    dao.insertOrder(new OrderObj(companies.get(list[0]), productos));
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+                JOptionPane.showMessageDialog(this, "El rebut s'ha registrat correctament!", " ", 1);
+                this.dispose();
             }
-            list = jComboBoxProveedor.getItemAt(jComboBoxProveedor.getSelectedIndex()).split(" | ");
-            try {
-                dao.insertOrder(new OrderObj(companies.get(list[0]), productos));
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            }
-            
-            JOptionPane.showMessageDialog(this, "El rebut s'ha registrat correctament!", " ", 1);
-            this.dispose();
         } else {
             jLabelError.setText("*Has d'agregar almenys un producte");
         }
