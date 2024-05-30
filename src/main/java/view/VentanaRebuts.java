@@ -266,6 +266,11 @@ public class VentanaRebuts extends javax.swing.JDialog {
 
     private void jComboBoxProveedorPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxProveedorPopupMenuWillBecomeInvisible
         model.setNumRows(0);
+        jComboBoxRecibo.removeAllItems();
+        jComboBoxRecibo.addItem("Selecciona un rebut...");
+        jLabelPrecioTotal.setText(" ");
+        jLabelID.setText(" ");
+        
         if (jComboBoxProveedor.getSelectedItem() != null) {
             list = jComboBoxProveedor.getItemAt(jComboBoxProveedor.getSelectedIndex()).split(" | ");
             try {
@@ -276,6 +281,8 @@ public class VentanaRebuts extends javax.swing.JDialog {
             
             if (receiptsID.isEmpty()) {
                 jComboBoxRecibo.setEnabled(false);
+                jComboBoxRecibo.removeAllItems();
+                jComboBoxRecibo.addItem("No hi han rebuts");
             } else {
                 jComboBoxRecibo.setEnabled(true);
             }
