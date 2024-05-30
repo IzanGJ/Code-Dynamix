@@ -382,7 +382,7 @@ public class VentanaRebuts extends javax.swing.JDialog {
     }//GEN-LAST:event_jComboBoxReciboActionPerformed
 
     private void jButtonVolverjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverjButton1ActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_jButtonVolverjButton1ActionPerformed
 
     
