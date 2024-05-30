@@ -128,7 +128,7 @@ public class VentanaRebuts extends javax.swing.JDialog {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Float.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
@@ -297,33 +297,31 @@ public class VentanaRebuts extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBoxReciboPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxReciboPopupMenuWillBecomeInvisible
+        model.setRowCount(0);
         list = jComboBoxRecibo.getItemAt(jComboBoxRecibo.getSelectedIndex()).split(" ");
         int id_receipt = Integer.parseInt(list[1]);
         list = jComboBoxProveedor.getItemAt(jComboBoxProveedor.getSelectedIndex()).split(" | ");
         if (jComboBoxRecibo.getSelectedItem() != null) {
-            jLabelID.setText(list[1]);
+            jLabelID.setText(String.valueOf(id_receipt));
             
             OrderObj order = null;
             try {
                 order = dao.getCompanyReceipt(companies.get(list[0])).get(id_receipt);
                 System.out.println(order.getCompany().getNombre());
+                Float total = 0f;
+                for (ProductObj product : order.getProducts()) {
+                    System.out.println(order.getProducts().size());
+                    total += product.getQty() * product.getPrice();
+                    model.addRow(new Object[]{products.get(product.getCode()).getName(), product.getQty(), product.getPrice() + "€", Math.round(product.getQty() * product.getPrice() * 100.0) / 100.0 + "€"});
+                }
+            jLabelPrecioTotal.setText(String.valueOf(total) + "€");
             } catch (SQLException | CompanyException ex) {
                 System.out.println(ex.getMessage());
             }
             
             
-            Float total = 0f;
-            for (ProductObj product : order.getProducts()) {
-                System.out.println(order.getProducts().size());
-                total += product.getQty() * product.getPrice();
-                model.addRow(new Object[]{product.getName(), product.getQty(), product.getPrice() + "€", Math.round(product.getQty() * product.getPrice() * 100.0) / 100.0 + "€"});
-            }
-            System.out.println("fin");
-            jLabelPrecioTotal.setText(String.valueOf(total) + "€");
-            System.out.println("fin2");
             
-            
-            
+
         } else {
             jComboBoxRecibo.addItem("Selecciona un rebut...");
         }
@@ -341,8 +339,6 @@ public class VentanaRebuts extends javax.swing.JDialog {
                 jComboBoxRecibo.addItem("ID: " + clave);
             }
         }
-        
-
     }//GEN-LAST:event_jComboBoxReciboPopupMenuWillBecomeVisible
 
     private void jComboBoxReciboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxReciboActionPerformed

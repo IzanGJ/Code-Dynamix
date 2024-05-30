@@ -219,8 +219,8 @@
               <Table columnCount="4" rowCount="0">
                 <Column editable="false" title="Producte" type="java.lang.String"/>
                 <Column editable="false" title="Quantitat" type="java.lang.Integer"/>
-                <Column editable="false" title="Preu" type="java.lang.Float"/>
-                <Column editable="false" title="Total" type="java.lang.Float"/>
+                <Column editable="false" title="Preu" type="java.lang.String"/>
+                <Column editable="false" title="Total" type="java.lang.String"/>
               </Table>
             </Property>
           </Properties>
