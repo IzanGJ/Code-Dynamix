@@ -195,7 +195,7 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
             }
         });
 
-        jSpinnerR2.setModel(new javax.swing.SpinnerNumberModel());
+        jSpinnerR2.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
         jSpinnerR1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
@@ -213,6 +213,8 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
         jComboBoxR1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel7.setText("Nº Identificador:");
+
+        jSpinnerID.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
