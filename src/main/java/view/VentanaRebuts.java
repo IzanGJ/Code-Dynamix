@@ -298,8 +298,32 @@ public class VentanaRebuts extends javax.swing.JDialog {
 
     private void jComboBoxReciboPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxReciboPopupMenuWillBecomeInvisible
         list = jComboBoxRecibo.getItemAt(jComboBoxRecibo.getSelectedIndex()).split(" ");
-        if (jComboBoxRecibo.getSelectedItem() == null) {
+        int id_receipt = Integer.parseInt(list[1]);
+        list = jComboBoxProveedor.getItemAt(jComboBoxProveedor.getSelectedIndex()).split(" | ");
+        if (jComboBoxRecibo.getSelectedItem() != null) {
             jLabelID.setText(list[1]);
+            
+            OrderObj order = null;
+            try {
+                order = dao.getCompanyReceipt(companies.get(list[0])).get(id_receipt);
+                System.out.println(order.getCompany().getNombre());
+            } catch (SQLException | CompanyException ex) {
+                System.out.println(ex.getMessage());
+            }
+            
+            
+            Float total = 0f;
+            for (ProductObj product : order.getProducts()) {
+                System.out.println(order.getProducts().size());
+                total += product.getQty() * product.getPrice();
+                model.addRow(new Object[]{product.getName(), product.getQty(), product.getPrice() + "€", Math.round(product.getQty() * product.getPrice() * 100.0) / 100.0 + "€"});
+            }
+            System.out.println("fin");
+            jLabelPrecioTotal.setText(String.valueOf(total) + "€");
+            System.out.println("fin2");
+            
+            
+            
         } else {
             jComboBoxRecibo.addItem("Selecciona un rebut...");
         }
@@ -312,6 +336,7 @@ public class VentanaRebuts extends javax.swing.JDialog {
         }
         
         if (!jComboBoxProveedor.getItemAt(jComboBoxProveedor.getSelectedIndex()).equals("Selecciona un proveïdor...")) {
+            jComboBoxRecibo.removeAllItems();
             for (Integer clave : receipts.keySet()) {
                 jComboBoxRecibo.addItem("ID: " + clave);
             }

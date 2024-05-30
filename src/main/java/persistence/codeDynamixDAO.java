@@ -86,11 +86,11 @@ public class codeDynamixDAO {
             }
             productes.add(new ProductObj(prod_id, price, qty));
             if(del_id != placeHolder) {
-                receipt.put(placeHolder, new OrderObj(productes));
+                receipt.put(placeHolder, new OrderObj(comp, productes));
                 productes.clear();
                 placeHolder = del_id;
             } else if(rs.isLast()) {
-                receipt.put(del_id, new OrderObj(productes));
+                receipt.put(del_id, new OrderObj(comp, productes));
             }
         }
         rs.close();
