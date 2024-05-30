@@ -66,14 +66,14 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jPanelRGB" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabelColor" pref="313" max="32767" attributes="0"/>
+                                      <Component id="jLabelColor" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="jLabelPeso" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabelDescripcion" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jLabelCodigo" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jLabelNombre" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jLabelNada2" max="32767" attributes="0"/>
                                   <Component id="jLabelNada4" max="32767" attributes="0"/>
+                                  <Component id="jLabelDescripcion" alignment="0" min="-2" pref="336" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -119,7 +119,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabelDescripcion" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="jLabelDescripcion" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -152,7 +152,7 @@
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabelNada4" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" pref="38" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="32767" attributes="0"/>
               <Component id="jButtonVolver" min="-2" pref="31" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
           </Group>
@@ -271,7 +271,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelDescripcion">
       <Properties>
+        <Property name="horizontalAlignment" type="int" value="11"/>
         <Property name="text" type="java.lang.String" value=" "/>
+        <Property name="verticalAlignment" type="int" value="1"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
