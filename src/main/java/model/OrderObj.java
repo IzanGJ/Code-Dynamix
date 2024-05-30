@@ -10,6 +10,10 @@ public class OrderObj {
         this.company = company;
         this.products = products;
     }
+    
+    public OrderObj(ArrayList<ProductObj> products) {
+        this.products = products;
+    }
 
     public CompanyObj getCompany() {
         return company;

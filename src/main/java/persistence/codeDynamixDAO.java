@@ -68,18 +68,30 @@ public class codeDynamixDAO {
         desconectar(c);
     }
     
-    public HashMap<String,OrderObj> getCompanyReceipt(CompanyObj comp) throws SQLException, CompanyException {
+    public HashMap<Integer, OrderObj> getCompanyReceipt(CompanyObj comp) throws SQLException, CompanyException {
         Connection c = conectar();
         Statement st = c.createStatement();
-        String query = "SELECT * FROM company AS a JOIN delivery_note AS b ON a.CIF = b.company_ID JOIN delivery_note_prod AS c ON b.delivery_ID = c.delivery_ID WHERE a.CIF = '" + comp.getCif() + "';";
+        String query = "SELECT b.delivery_ID, c.prod_ID, c.quantity, c.price FROM company AS a JOIN delivery_note AS b ON a.CIF = b.company_ID JOIN delivery_note_prod AS c ON b.delivery_ID = c.delivery_ID WHERE a.CIF = '" + comp.getCif() + "';";
         ResultSet rs = st.executeQuery(query);
-        HashMap<String,OrderObj> receipt = new HashMap<String,OrderObj>();
+        HashMap<Integer, OrderObj> receipt = new HashMap<>();
+        ArrayList<ProductObj> productes = new ArrayList<>();
+        int placeHolder = 0;
         while (rs.next()) {
-            ArrayList<ProductObj> productes = new ArrayList<>();
-            String id = rs.getString("delivery_ID");
-            String cif = rs.getString("CIF");
-            String compName = rs.getString("title");
-            receipt.put(id, new OrderObj(new CompanyObj(cif, compName), productes));
+            int del_id = rs.getInt("delivery_ID");
+            int prod_id = rs.getInt("prod_ID");
+            Float price = rs.getFloat("price");
+            int qty = rs.getInt("quantity");
+            if(placeHolder == 0) {
+               placeHolder = del_id;
+            }
+            productes.add(new ProductObj(prod_id, price, qty));
+            if(del_id != placeHolder) {
+                receipt.put(placeHolder, new OrderObj(productes));
+                productes.clear();
+                placeHolder = del_id;
+            } else if(rs.isLast()) {
+                receipt.put(del_id, new OrderObj(productes));
+            }
         }
         rs.close();
         st.close();

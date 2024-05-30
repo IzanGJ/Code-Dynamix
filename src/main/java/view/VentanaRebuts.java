@@ -18,7 +18,7 @@ public class VentanaRebuts extends javax.swing.JDialog {
     DefaultTableModel model;
     HashMap<Integer, ProductObj> products;
     HashMap<String, CompanyObj> companies;
-    HashMap<String,OrderObj> receipts;
+    HashMap<Integer,OrderObj> receipts;
     String[] list;
 
     public VentanaRebuts(java.awt.Frame parent, boolean modal) {
@@ -312,7 +312,7 @@ public class VentanaRebuts extends javax.swing.JDialog {
         }
         
         if (!jComboBoxProveedor.getItemAt(jComboBoxProveedor.getSelectedIndex()).equals("Selecciona un proveïdor...")) {
-            for (String clave : receipts.keySet()) {
+            for (Integer clave : receipts.keySet()) {
                 jComboBoxRecibo.addItem("ID: " + clave);
             }
         }

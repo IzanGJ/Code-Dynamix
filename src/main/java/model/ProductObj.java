@@ -4,7 +4,7 @@ import view.Interprete;
 import exceptions.*;
 import persistence.codeDynamixDAO;
 
-public abstract class ProductObj {
+public class ProductObj {
     private String name;
     private int code;
     private String description;
