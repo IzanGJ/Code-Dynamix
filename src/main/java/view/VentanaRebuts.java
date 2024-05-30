@@ -215,7 +215,7 @@ public class VentanaRebuts extends javax.swing.JDialog {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabelID, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabelPrecioTotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addGap(0, 50, Short.MAX_VALUE)))
+                        .addGap(50, 50, 50)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -307,10 +307,10 @@ public class VentanaRebuts extends javax.swing.JDialog {
             OrderObj order = null;
             try {
                 order = dao.getCompanyReceipt(companies.get(list[0])).get(id_receipt);
-                System.out.println(order.getCompany().getNombre());
                 Float total = 0f;
                 for (ProductObj product : order.getProducts()) {
-                    System.out.println(order.getProducts().size());
+                    System.out.println("Order: " + id_receipt);
+                    System.out.println("Products: " + order.getProducts().size() + "\n");
                     total += product.getQty() * product.getPrice();
                     model.addRow(new Object[]{products.get(product.getCode()).getName(), product.getQty(), product.getPrice() + "€", Math.round(product.getQty() * product.getPrice() * 100.0) / 100.0 + "€"});
                 }
