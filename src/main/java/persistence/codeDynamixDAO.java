@@ -92,7 +92,6 @@ public class codeDynamixDAO {
         ArrayList<ProductObj> prod = new ArrayList<>();
         OrderObj obj = new OrderObj(prod);
         while (rs.next()) {
-            int del_id = rs.getInt("delivery_ID");
             int prod_id = rs.getInt("prod_ID");
             Float price = rs.getFloat("price");
             int qty = rs.getInt("quantity");

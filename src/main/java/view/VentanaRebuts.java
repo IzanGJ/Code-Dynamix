@@ -305,7 +305,7 @@ public class VentanaRebuts extends javax.swing.JDialog {
             jLabelID.setText(String.valueOf(id_receipt));
             OrderObj order = null;
             try {
-                order = dao.getCompanyReceipt(companies.get(list[0])).get(id_receipt);
+                order = dao.getCompanyReceiptProd(id_receipt);
                 Float total = 0f;
                 for (ProductObj product : order.getProducts()) {
                     System.out.println("Order: " + id_receipt);
@@ -332,12 +332,17 @@ public class VentanaRebuts extends javax.swing.JDialog {
             jComboBoxRecibo.removeItemAt(0);
         }
         
-        if (!jComboBoxProveedor.getItemAt(jComboBoxProveedor.getSelectedIndex()).equals("Selecciona un proveïdor...")) {
-            jComboBoxRecibo.removeAllItems();
-            for (Integer clave : receipts.keySet()) {
-                jComboBoxRecibo.addItem("ID: " + clave);
+        try {
+            if (!jComboBoxProveedor.getItemAt(jComboBoxProveedor.getSelectedIndex()).equals("Selecciona un proveïdor...")) {
+                jComboBoxRecibo.removeAllItems();
+                for (Integer clave : dao.getCompanyReceiptID(companies.get(list[0]))) {
+                    jComboBoxRecibo.addItem("ID: " + clave);
+                }
             }
+        } catch (SQLException | CompanyException ex) {
+            System.out.println(ex.getMessage());
         }
+        
     }//GEN-LAST:event_jComboBoxReciboPopupMenuWillBecomeVisible
 
     private void jComboBoxReciboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxReciboActionPerformed
