@@ -390,7 +390,7 @@ public class VentanaProductesRegistrar extends javax.swing.JDialog {
                         break;
                         
                     case 3:
-                        dao.insertMouse(new ErgonomicMouse(jCheckBoxR3.isSelected(), Integer.parseInt(String.valueOf(jSpinnerR1.getValue())), jCheckBoxR4.isSelected(), jTextFieldNombre.getText(), Integer.parseInt(jSpinnerID.getValue().toString()), jTextAreaDescripcion.getText(), Integer.parseInt(jSpinnerPeso.getValue().toString()), newColor.getRGB()));
+                        dao.insertMouse(new ErgonomicMouse(jCheckBoxR3.isSelected(), Integer.parseInt(String.valueOf(jSpinnerR2.getValue())), jCheckBoxR4.isSelected(), jTextFieldNombre.getText(), Integer.parseInt(jSpinnerID.getValue().toString()), jTextAreaDescripcion.getText(), Integer.parseInt(jSpinnerPeso.getValue().toString()), newColor.getRGB()));
                         break;
                 }
                 JOptionPane.showMessageDialog(this, "El producte s'ha registrat correctament" , " ", 1);
