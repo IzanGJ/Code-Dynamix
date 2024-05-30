@@ -47,7 +47,7 @@ public class codeDynamixDAO {
         if (!existCompany(comp.getCif())) {
             throw new CompanyException(CompanyException.EMPRESA_NOT_FOUND);
         }
-        if(!getCompanyReceipt(comp).isEmpty()) {
+        if(companyNote(comp.getCif())) {
             throw new CompanyException(CompanyException.COMPANY_RECEIPT);
         }
         Connection c = conectar();
@@ -77,7 +77,7 @@ public class codeDynamixDAO {
         while (rs.next()) {
             ArrayList<ProductObj> productes = new ArrayList<>();
             String id = rs.getString("delivery_ID");
-            String cif = rs.getString("username");
+            String cif = rs.getString("CIF");
             String compName = rs.getString("title");
             receipt.put(id, new OrderObj(new CompanyObj(cif, compName), productes));
         }
@@ -172,14 +172,13 @@ public class codeDynamixDAO {
             throw new CompanyException(CompanyException.PRODUCT_REPEAT);
         }
         Connection c = conectar();
-        PreparedStatement ps = c.prepareStatement("insert into product (ID, name, description, price, weight, color, type) values (?,?,?,?,?,?,?);");
+        PreparedStatement ps = c.prepareStatement("insert into product (ID, name, description, weight, color, type) values (?,?,?,?,?,?);");
         ps.setInt(1, pr.getCode());
         ps.setString(2, pr.getName());
         ps.setString(3, pr.getDescription());
-        ps.setFloat(4, pr.getPrice());
-        ps.setInt(5, pr.getWeight());
-        ps.setString(6, String.valueOf(pr.getColor()));
-        ps.setString(7, type);
+        ps.setInt(4, pr.getWeight());
+        ps.setString(5, String.valueOf(pr.getColor()));
+        ps.setString(6, type);
         ps.executeUpdate();
         ps.close();
         desconectar(c);
@@ -264,22 +263,14 @@ public class codeDynamixDAO {
     }
        
     public void remProduct(ProductObj product) throws SQLException, CompanyException {
-        if (product == null) {
+        if (!existProduct(product.getCode())) {
             throw new CompanyException(CompanyException.PRODUCT_NOT_FOUND);
         }
-        //Puede que falte comprobar si están en alguna factura
+        if(productNote(product.getCode())) {
+            throw new CompanyException(CompanyException.PRODUCT_RECEIPT);
+        }
         Connection c = conectar();
         PreparedStatement ps = c.prepareStatement("DELETE FROM product WHERE ID = " + product.getCode() + ";");
-        ps.executeUpdate();
-        if (product instanceof ErgonomicChair) {
-            ps = c.prepareStatement("DELETE FROM chair WHERE ID = " + product.getCode() + ";");
-        } else if (product instanceof ErgonomicKeyboard) {
-            ps = c.prepareStatement("DELETE FROM keyboard WHERE ID = " + product.getCode() + ";");
-        } else if (product instanceof ErgonomicMouse) {
-            ps = c.prepareStatement("DELETE FROM mouse WHERE ID = " + product.getCode() + ";");
-        } else if (product instanceof ErgonomicTable) {
-            ps = c.prepareStatement("DELETE FROM taula WHERE ID = " + product.getCode() + ";");
-        }
         ps.executeUpdate();
         ps.close();
         desconectar(c);
@@ -320,10 +311,40 @@ public class codeDynamixDAO {
         return existe;  
     }
     
-    private boolean existProduct(int id) throws SQLException {
+    private boolean companyNote(String cif) throws SQLException {
         Connection c = conectar();
         Statement st = c.createStatement();
-        String query = "select * from product where ID = '" + id + "';";
+        String query = "select * from company AS a JOIN delivery_note AS b ON a.CIF = b.company_ID where a.CIF = '" + cif + "';";
+        ResultSet rs = st.executeQuery(query);
+        boolean existe = false;
+        if (rs.next()) {
+            existe = true;
+        }
+        rs.close();
+        st.close();
+        desconectar(c);
+        return existe;  
+    }
+    
+    private boolean existProduct(int code) throws SQLException {
+        Connection c = conectar();
+        Statement st = c.createStatement();
+        String query = "select * from product where ID = '" + code + "';";
+        ResultSet rs = st.executeQuery(query);
+        boolean existe = false;
+        if (rs.next()) {
+            existe = true;
+        }
+        rs.close();
+        st.close();
+        desconectar(c);
+        return existe;  
+    }
+    
+    private boolean productNote(int code) throws SQLException {
+        Connection c = conectar();
+        Statement st = c.createStatement();
+        String query = "select * from product AS a JOIN delivery_note_prod AS b ON a.ID = b.prod_ID where a.ID = " + code + ";";
         ResultSet rs = st.executeQuery(query);
         boolean existe = false;
         if (rs.next()) {

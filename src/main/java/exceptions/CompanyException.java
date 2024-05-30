@@ -23,6 +23,7 @@ public class CompanyException extends Exception {
     public static final int PRODUCT_ID_ERROR = 15;
     public static final int COMPANY_RECEIPT = 16;
     public static final int PRODUCT_NOT_FOUND = 17;
+    public static final int PRODUCT_RECEIPT = 18;
     
 
     private final List<String> missatges = Arrays.asList(
@@ -42,8 +43,9 @@ public class CompanyException extends Exception {
         "*El número de botons del ratolí no pot ser negatiu",
         "*El número de potes de la taula ha de ser un enter major a 0",
         "*El ID ha de ser un enter major a 0",
-        "*Hi ha un rebut d'aquesta companya, no es pot eliminar",
-        "*L'ID introduida no correspon a cap producte registrat");
+        "*Hi ha un rebut d'aquesta companyia, no es pot eliminar",
+        "*L'ID introduida no correspon a cap producte registrat",
+        "*Hi ha un rebut amb aquest producte, no es pot eliminar");
     
     
     private final int code;
